@@ -10,6 +10,5 @@ class AppRoutes {
   static final Map<String, WidgetBuilder> routes = {
     RouteNames.splashScreen: (context) => const SplashScreen(),
     RouteNames.home: (context) => const HomeScreen(),
-
   };
 }
