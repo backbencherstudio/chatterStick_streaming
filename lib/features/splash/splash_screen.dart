@@ -1,3 +1,4 @@
+import 'package:chatterstick_streaming_app/core/constant/images.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Navigate to HomeScreen after 3 seconds
     Timer(const Duration(seconds: 3), () {
-     Navigator.pushReplacementNamed(context, RouteNames.home);
+     Navigator.pushReplacementNamed(context, RouteNames.bottomNavBar);
     });
   }
 
@@ -26,25 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              width: 100.w,
-              height: 100.h,
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'My App',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
-            const CircularProgressIndicator(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            AppImages.splash,
+            width: 248.w,
+          ),
         ),
       ),
     );
