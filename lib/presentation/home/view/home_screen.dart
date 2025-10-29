@@ -78,8 +78,8 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 20.h),
 
                       // Favourites widgets
-                      ...List.generate(favouriteComics.length, (context) {
-                        final favourite = favouriteComics[context];
+                      ...List.generate(favouriteComics.length, (index) {
+                        final favourite = favouriteComics[index];
                         return Padding(
                           padding: EdgeInsets.only(bottom: 12.h),
                           child: FavouriteComics(
@@ -92,8 +92,8 @@ class HomeScreen extends StatelessWidget {
 
                       SizedBox(height: 20.h),
 
-                      ...List.generate(libraryItems.length, (context) {
-                        final items = libraryItems[context];
+                      ...List.generate(libraryItems.length, (index) {
+                        final items = libraryItems[index];
                         return Padding(
                           padding: EdgeInsets.only(bottom: 12.h),
                           child:   LibraryList(
