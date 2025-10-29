@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Navigate to HomeScreen after 3 seconds
     Timer(const Duration(seconds: 3), () {
-     Navigator.pushReplacementNamed(context, RouteNames.home);
+     Navigator.pushReplacementNamed(context, RouteNames.bottomNavBar);
     });
   }
 

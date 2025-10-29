@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../features/home/presentation/view/screen/home_screen.dart';
+
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
 
@@ -11,7 +13,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = const [
-    // HomeScreen(),
+    HomeScreen(),
     // SubmitScreen(),
     // RecordingScreen(),
     // ProfileScreen(),

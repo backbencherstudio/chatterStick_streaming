@@ -10,13 +10,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize dependency injection
-  await diConfig();
+  // await diConfig();
 
   runApp(
-    MultiProvider(
-      providers: AppViewModels.viewmodels,
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -25,9 +22,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double width = size.width;
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: width >600?Size(800,1280) : Size( 390, 840),
       minTextAdapt: true,
+      ensureScreenSize: true,
       builder: (context, child) {
         return MaterialApp(
           title: 'Flutter App',
