@@ -1,20 +1,14 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'app/routes/app_routes.dart';
-import 'app/viewmodels/app_viewmodels.dart';
-import 'app/themes/app_theme.dart';
-import 'core/di/di_config.dart';
+import '/core/route/route_config.dart';
+import '/core/route/route_name.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() async {
+
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize dependency injection
-  // await diConfig();
-
-  runApp(
-    const MyApp(),
-  );
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,26 +16,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+     Size size = MediaQuery.of(context).size;
     double width = size.width;
     return ScreenUtilInit(
-      designSize: width >600?Size(800,1280) : Size( 390, 840),
+         designSize: width >600?Size(800,1280) : Size( 390, 840),
       minTextAdapt: true,
       ensureScreenSize: true,
-      builder: (context, child) {
-        return MaterialApp(
-          title: 'Flutter App',
-          debugShowCheckedModeBanner: false,
+      child: MaterialApp(
+           debugShowCheckedModeBanner: false,
 
           // Use AppTheme for light/dark modes
-          theme: AppTheme.light,
-          darkTheme: AppTheme.dark,
-          themeMode: ThemeMode.system,
-
-          initialRoute: AppRoutes.initialRoute,
-          routes: AppRoutes.routes,
-        );
-      },
+        //   theme: AppTheme.light,
+        //   darkTheme: AppTheme.dark,
+        //   themeMode: ThemeMode.system,
+        // title: 'Riverpod MVVM Demo',
+        // theme: ThemeData(primarySwatch: Colors.blue),
+        onGenerateRoute: AppRouter.generateRoute,
+        initialRoute: RouteName.splashScreen,
+      ),
     );
   }
 }
