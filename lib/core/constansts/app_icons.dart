@@ -7,4 +7,5 @@ class AppIcons {
   static String libraryNav = '$baseUrl/libraryNav.svg';
   static String menuNav = '$baseUrl/menuNav.svg';
   static String favouriteNav = '$baseUrl/favouriteNav.svg';
+  static String searchSvg = '$baseUrl/Search.svg';
 }

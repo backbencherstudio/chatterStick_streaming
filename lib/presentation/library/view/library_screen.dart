@@ -10,24 +10,28 @@ class LibraryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          ...List.generate(libraryItems.length, (index) {
-            final items = libraryItems[index];
-            return Padding(
-              padding: EdgeInsets.only(bottom: 12.h),
-              child:   LibraryList(
-                image: items.image,
-                title:  items.title,
-                episode: items.episode,
-                date: items.date,
-                details: items.details,
-                onTap: items.onTap,
-                isDownload: items.isDownload,
-              ),
-            );
-          }),
-        ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ...List.generate(libraryItems.length, (index) {
+                final items = libraryItems[index];
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 12.h),
+                  child:   LibraryList(
+                    image: items.image,
+                    title:  items.title,
+                    episode: items.episode,
+                    date: items.date,
+                    details: items.details,
+                    onTap: items.onTap,
+                    isDownload: items.isDownload,
+                  ),
+                );
+              }),
+            ],
+          ),
+        ),
       ),
     );
   }
