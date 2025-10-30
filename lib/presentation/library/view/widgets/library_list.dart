@@ -72,7 +72,9 @@ class LibraryList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: style.titleSmall?.copyWith(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: style.titleMedium?.copyWith(
                       color: AppColors.titleText,
                       fontWeight: FontWeight.w500,
                     ),
@@ -83,7 +85,7 @@ class LibraryList extends StatelessWidget {
                     children: [
                       Text(
                         episode,
-                        style: style.bodyMedium?.copyWith(
+                        style: style.bodySmall?.copyWith(
                           color: AppColors.subtitleText,
                           fontWeight: FontWeight.w400,
                         ),
@@ -91,7 +93,7 @@ class LibraryList extends StatelessWidget {
 
                       Text(
                         date,
-                        style: style.bodyMedium?.copyWith(
+                        style: style.bodySmall?.copyWith(
                           color: AppColors.subtitleText,
                           fontWeight: FontWeight.w400,
                         ),
@@ -103,7 +105,7 @@ class LibraryList extends StatelessWidget {
                     details,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: style.bodyMedium?.copyWith(
+                    style: style.bodySmall?.copyWith(
                       color: AppColors.subtitleText,
                       fontWeight: FontWeight.w400,
                     ),
@@ -121,7 +123,7 @@ class LibraryList extends StatelessWidget {
                       ),
                       child: Text(
                         'Download',
-                        style: style.bodyMedium?.copyWith(
+                        style: style.bodySmall?.copyWith(
                           color: AppColors.buttonText,
                           fontWeight: FontWeight.w400,
                         ),

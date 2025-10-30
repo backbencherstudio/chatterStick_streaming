@@ -4,7 +4,9 @@ import 'package:chatterstick_streaming_app/presentation/library/view/library_scr
 import 'package:chatterstick_streaming_app/presentation/setting/view/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../core/constansts/app_icons.dart';
 import '../../home/view/home_screen.dart';
 
 class BottomNavBar extends ConsumerStatefulWidget {
@@ -32,11 +34,11 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
         showSelectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.upload), label: 'Library'),
-          BottomNavigationBarItem(icon: Icon(Icons.mic), label: 'Favourte'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Setting'),
+        items: [
+          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.homeNav), label: 'Home'),
+          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.libraryNav), label: 'Library'),
+          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.favouriteNav), label: 'Favourte'),
+          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.menuNav), label: 'Setting'),
         ],
       ),
     );

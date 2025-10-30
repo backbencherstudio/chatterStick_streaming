@@ -4,6 +4,8 @@ import 'package:chatterstick_streaming_app/presentation/bottom_nav/view/bottom_n
 import 'package:chatterstick_streaming_app/presentation/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../presentation/notification/view/notification_screen.dart';
+
 
 
 class AppRouter {
@@ -13,6 +15,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RouteName.bottomNavBar:
         return MaterialPageRoute(builder: (_) => const BottomNavBar());
+        case RouteName.notificationScreen:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
