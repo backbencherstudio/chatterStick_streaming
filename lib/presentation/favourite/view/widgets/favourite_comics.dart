@@ -8,10 +8,12 @@ class FavouriteComics extends StatelessWidget {
   const FavouriteComics({
     super.key,
     required this.image,
+    required this.title,
     required this.episode,
     this.details,
   });
   final String image;
+  final String title;
   final String episode;
   final String? details;
 
@@ -49,7 +51,7 @@ class FavouriteComics extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  episode,
+                  title,
                   style: style.titleSmall?.copyWith(
                     color: AppColors.titleText,
                     fontWeight: FontWeight.w500,

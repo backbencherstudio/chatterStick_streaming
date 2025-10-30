@@ -37,7 +37,7 @@ class CustomComicBox extends StatelessWidget {
             title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: style.bodyMedium?.copyWith(
+            style: style.bodySmall?.copyWith(
               color: AppColors.blackColor,
               fontWeight: FontWeight.w400,
             ),
@@ -45,7 +45,7 @@ class CustomComicBox extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             subtitle,
-            style: style.bodySmall?.copyWith(
+            style: style.labelMedium?.copyWith(
               color: AppColors.subtitleText,
               fontWeight: FontWeight.w400,
             ),

@@ -1,3 +1,4 @@
+import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,7 +23,11 @@ class CustomHeader extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         ),
-        SvgPicture.asset(AppIcons.notificationSvg, width: 24.w, height: 24.h),
+        GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, RouteName.notificationScreen);
+            },
+            child: SvgPicture.asset(AppIcons.notificationSvg, width: 24.w, height: 24.h)),
       ],
     );
   }

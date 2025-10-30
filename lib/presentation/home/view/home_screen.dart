@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: InputDecoration(
-                          hintText: 'search...',
+                          hintText: 'Search...',
                           hintStyle: style.titleSmall?.copyWith(
                             color: AppColors.hintText,
                             fontWeight: FontWeight.w400,
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 16.h),
                       SizedBox(
-                        height: 305.h,
+                        height: 285.h,
                         child: ListView.builder(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.horizontal,
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: 22.h),
+                      SizedBox(height: 16.h),
                       Text(
                         'Last Read',
                         style: style.bodyLarge?.copyWith(
@@ -99,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 16.h),
                       SizedBox(
-                        height: 305.h,
+                        height: 285.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: comics.length,
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(height: 22.h),
+                      SizedBox(height: 16.h),
                       Text(
                         'Popular',
                         style: style.bodyLarge?.copyWith(
@@ -135,7 +135,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisCount: 2, // 2 items horizontally
                           mainAxisSpacing: 0.h,
                           crossAxisSpacing: 13.w,
-                          childAspectRatio: 0.5,
+                          childAspectRatio: 0.56,
                         ),
                         itemBuilder: (context, index) {
                           final comic = comics[index];
