@@ -45,6 +45,7 @@ class FavouriteScreen extends StatelessWidget {
                               style: styles.titleMedium!.copyWith(
                                 color: AppColors.subtitleText,
                                 fontWeight: FontWeight.w400,
+                                  fontSize: 16.sp
                               ),
                             ),
                           ],

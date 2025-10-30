@@ -18,6 +18,7 @@ class AppColors {
   static const Color titleText = Color(0xFF2F3131);
   static const Color titleText1 = Color(0xFF535353);
   static const Color subtitleText = Color(0xFF686868);
+  static const Color subtitleText1 = Color(0xFF60655C);
   static const Color mediumText = Color(0xFF363A33);
 
   // Button Text Colors

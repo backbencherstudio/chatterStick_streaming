@@ -58,6 +58,7 @@ class CustomNotification extends StatelessWidget {
                     style: style.bodyMedium?.copyWith(
                       color: AppColors.titleText,
                       fontWeight: FontWeight.w600,
+                        fontSize: 16.sp
                     ),
                   ),
                   SizedBox(height: 5.h),
@@ -68,6 +69,7 @@ class CustomNotification extends StatelessWidget {
                     style: style.labelMedium?.copyWith(
                       color: AppColors.subtitleText,
                       fontWeight: FontWeight.w400,
+                        fontSize: 12.sp
                     ),
                   ),
                   SizedBox(height: 5.h),
@@ -77,6 +79,7 @@ class CustomNotification extends StatelessWidget {
                     style: style.labelMedium?.copyWith(
                       color: AppColors.mediumText,
                       fontWeight: FontWeight.w400,
+                        fontSize: 12.sp
                     ),
                   ),
                 ],

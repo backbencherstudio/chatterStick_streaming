@@ -77,6 +77,7 @@ class LibraryList extends StatelessWidget {
                     style: style.titleMedium?.copyWith(
                       color: AppColors.titleText,
                       fontWeight: FontWeight.w500,
+                        fontSize: 20.sp
                     ),
                   ),
                   SizedBox(height: 8.h),
@@ -88,6 +89,7 @@ class LibraryList extends StatelessWidget {
                         style: style.bodySmall?.copyWith(
                           color: AppColors.subtitleText,
                           fontWeight: FontWeight.w400,
+                            fontSize: 14.sp
                         ),
                       ),
 
@@ -96,6 +98,7 @@ class LibraryList extends StatelessWidget {
                         style: style.bodySmall?.copyWith(
                           color: AppColors.subtitleText,
                           fontWeight: FontWeight.w400,
+                            fontSize: 14.sp
                         ),
                       ),
                     ],
@@ -108,6 +111,7 @@ class LibraryList extends StatelessWidget {
                     style: style.bodySmall?.copyWith(
                       color: AppColors.subtitleText,
                       fontWeight: FontWeight.w400,
+                        fontSize: 14.sp
                     ),
                   ),
                   SizedBox(height: 12.h),
@@ -126,6 +130,7 @@ class LibraryList extends StatelessWidget {
                         style: style.bodySmall?.copyWith(
                           color: AppColors.buttonText,
                           fontWeight: FontWeight.w400,
+                            fontSize: 14.sp
                         ),
                       ),
                     ),

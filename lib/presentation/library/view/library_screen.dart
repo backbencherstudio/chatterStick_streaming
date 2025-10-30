@@ -53,6 +53,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                               ? AppColors.titleText
                               : AppColors.titleText1,
                           fontWeight: FontWeight.w700,
+                            fontSize: 18.sp
                         ),
                       ),
                     ),
@@ -80,6 +81,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                               ? AppColors.titleText
                               : AppColors.titleText1,
                           fontWeight: FontWeight.w700,
+                            fontSize: 18.sp
                         ),
                       ),
                     ),
@@ -134,6 +136,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                           style: style.titleMedium!.copyWith(
                                             color: AppColors.subtitleText,
                                             fontWeight: FontWeight.w400,
+                                              fontSize: 20.sp
                                           ),
                                         ),
                                         SizedBox(height: 300.h),

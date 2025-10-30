@@ -4,6 +4,7 @@ import 'package:chatterstick_streaming_app/presentation/bottom_nav/view/bottom_n
 import 'package:chatterstick_streaming_app/presentation/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../presentation/auth/login_screen.dart';
 import '../../presentation/notification/view/notification_screen.dart';
 
 
@@ -17,6 +18,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const BottomNavBar());
         case RouteName.notificationScreen:
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
+        case RouteName.loginScreen:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
