@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                           hintStyle: style.titleSmall?.copyWith(
                             color: AppColors.hintText,
                             fontWeight: FontWeight.w400,
+                            fontSize: 18.sp
                           ),
                           prefixIcon: Padding(
                             padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),

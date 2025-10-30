@@ -43,6 +43,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             style: style.bodyMedium?.copyWith(
                               color: AppColors.mediumText,
                               fontWeight: FontWeight.w500,
+                                fontSize: 16.sp
                             ),
                           ),
                         ],
@@ -56,6 +57,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     style: style.bodyMedium?.copyWith(
                       color: AppColors.titleText,
                       fontWeight: FontWeight.w500,
+                        fontSize: 16.sp
                     ),
                   ),
                 ],

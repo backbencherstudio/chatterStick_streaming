@@ -40,6 +40,7 @@ class CustomComicBox extends StatelessWidget {
             style: style.bodySmall?.copyWith(
               color: AppColors.blackColor,
               fontWeight: FontWeight.w400,
+              fontSize: 14.sp
             ),
           ),
           SizedBox(height: 8.h),
@@ -48,6 +49,7 @@ class CustomComicBox extends StatelessWidget {
             style: style.labelMedium?.copyWith(
               color: AppColors.subtitleText,
               fontWeight: FontWeight.w400,
+                fontSize: 12.sp
             ),
           ),
         ],

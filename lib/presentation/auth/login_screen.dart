@@ -66,11 +66,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: style.headlineLarge?.copyWith(
                     color: AppColors.mediumText,
                     fontWeight: FontWeight.w500,
+                    fontSize: 32.sp
                   ),
                 ),
 
                 SizedBox(height: 20.h),
                 TextFormField(
+                    style: style.bodyMedium?.copyWith(
+                        color: AppColors.mediumText,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp
+                    ),
                   controller: _emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.next,
@@ -80,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintStyle: style.bodyMedium?.copyWith(
                       color: AppColors.hintText,
                       fontWeight: FontWeight.w400,
+                      fontSize: 16.sp
                     ),
                   ),
                   validator: (value) {
@@ -94,6 +101,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 12.h),
 
                 TextFormField(
+                  style: style.bodyMedium?.copyWith(
+                    color: AppColors.mediumText,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16.sp
+                  ),
                   controller: _passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.done,
@@ -103,6 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintStyle: style.bodyMedium?.copyWith(
                       color: AppColors.hintText,
                       fontWeight: FontWeight.w400,
+                      fontSize: 16.sp
                     ),
                     suffixIcon: Icon(
                       Icons.visibility_off_outlined,
@@ -131,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: style.bodyMedium?.copyWith(
                         color: AppColors.primary,
                         fontWeight: FontWeight.w500,
+                          fontSize: 16.sp
                       ),
                     ),
                   ),
@@ -156,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: style.bodyMedium?.copyWith(
                         color: AppColors.subtitleText1,
                         fontWeight: FontWeight.w400,
+                          fontSize: 16.sp
                       ),
                     ),
                     SizedBox(width: 5.w),
@@ -166,6 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: style.bodyMedium?.copyWith(
                           color: AppColors.mediumText,
                           fontWeight: FontWeight.w500,
+                            fontSize: 16.sp
                         ),
                       ),
                     ),

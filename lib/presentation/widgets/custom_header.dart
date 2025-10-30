@@ -21,6 +21,7 @@ class CustomHeader extends StatelessWidget {
           style: style.titleSmall?.copyWith(
             color: AppColors.titleText,
             fontWeight: FontWeight.w700,
+              fontSize: 20.sp
           ),
         ),
         GestureDetector(

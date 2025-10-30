@@ -55,6 +55,7 @@ class FavouriteComics extends StatelessWidget {
                   style: style.titleSmall?.copyWith(
                     color: AppColors.titleText,
                     fontWeight: FontWeight.w500,
+                      fontSize: 18.sp
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -63,6 +64,7 @@ class FavouriteComics extends StatelessWidget {
                   style: style.bodyMedium?.copyWith(
                     color: AppColors.subtitleText,
                     fontWeight: FontWeight.w400,
+                      fontSize: 16.sp
                   ),
                 ),
                 SizedBox(height: 12.h),
@@ -73,6 +75,7 @@ class FavouriteComics extends StatelessWidget {
                   style: style.bodyMedium?.copyWith(
                     color: AppColors.subtitleText,
                     fontWeight: FontWeight.w400,
+                      fontSize: 16.sp
                   ),
                 ),
               ],
