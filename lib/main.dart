@@ -1,12 +1,12 @@
-
+import 'package:chatterstick_streaming_app/core/route/route_config.dart';
+import 'package:chatterstick_streaming_app/core/route/route_name.dart';
+import 'package:chatterstick_streaming_app/core/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '/core/route/route_config.dart';
-import '/core/route/route_name.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -16,24 +16,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Size size = MediaQuery.of(context).size;
-    double width = size.width;
     return ScreenUtilInit(
-         designSize: width >600?Size(800,1280) : Size( 390, 840),
+      designSize: const Size(390, 840), // Default design size
       minTextAdapt: true,
-      ensureScreenSize: true,
-      child: MaterialApp(
-           debugShowCheckedModeBanner: false,
-
-          // Use AppTheme for light/dark modes
-        //   theme: AppTheme.light,
-        //   darkTheme: AppTheme.dark,
-        //   themeMode: ThemeMode.system,
-        // title: 'Riverpod MVVM Demo',
-        // theme: ThemeData(primarySwatch: Colors.blue),
-        onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: RouteName.splashScreen,
-      ),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Chatter Stick',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.system,
+          onGenerateRoute: AppRouter.generateRoute,
+          initialRoute: RouteName.splashScreen,
+         // home: child,
+        );
+      },
+      child: const SizedBox.shrink(), // Placeholder, replaced by routes
     );
   }
 }
