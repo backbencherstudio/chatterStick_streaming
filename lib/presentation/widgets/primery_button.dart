@@ -32,14 +32,11 @@ class PrimaryButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width ?? 112.w,
-
         padding: padding ?? EdgeInsets.all(Utils.isTablet(context) ? 20 : 16.h),
-
-        // padding ?? EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
-          color: containerColor ?? ColorsManager.primary,
-          border: border ?? Border.all(color: ColorsManager.transparentColor),
+          borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
+          color: containerColor ?? ColorManager.primary,
+          border: border ?? Border.all(color: ColorManager.transparentColor),
         ),
         child: Center(
           child: Text(
@@ -48,7 +45,7 @@ class PrimaryButton extends StatelessWidget {
                 textStyle ??
                 style.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: ColorsManager.whiteColor,
+                  color: ColorManager.whiteColor,
                   fontSize: 16.sp,
                 ),
           ),

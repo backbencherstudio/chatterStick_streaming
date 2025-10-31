@@ -40,8 +40,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         border: Border(
                           bottom: BorderSide(
                             color: selectedTab == 0
-                                ? ColorsManager.primary
-                                : ColorsManager.transparentColor,
+                                ? ColorManager.primary
+                                : ColorManager.transparentColor,
                             width: 2.w,
                           ),
                         ),
@@ -50,8 +50,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         'Library',
                         style: style.titleSmall!.copyWith(
                           color: selectedTab == 0
-                              ? ColorsManager.titleText
-                              : ColorsManager.titleText1,
+                              ? ColorManager.titleText
+                              : ColorManager.titleText1,
                           fontWeight: FontWeight.w700,
                           fontSize: 18.sp,
                         ),
@@ -68,8 +68,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         border: Border(
                           bottom: BorderSide(
                             color: selectedTab == 1
-                                ? ColorsManager.primary
-                                : ColorsManager.transparentColor,
+                                ? ColorManager.primary
+                                : ColorManager.transparentColor,
                             width: 2.w,
                           ),
                         ),
@@ -78,8 +78,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         'Download',
                         style: style.titleSmall!.copyWith(
                           color: selectedTab == 1
-                              ? ColorsManager.titleText
-                              : ColorsManager.titleText1,
+                              ? ColorManager.titleText
+                              : ColorManager.titleText1,
                           fontWeight: FontWeight.w700,
                           fontSize: 18.sp,
                         ),
@@ -126,7 +126,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                           height: 72.h,
                                           width: 72.w,
                                           colorFilter: const ColorFilter.mode(
-                                            ColorsManager.errorColor,
+                                            ColorManager.errorColor,
                                             BlendMode.srcIn,
                                           ),
                                         ),
@@ -134,7 +134,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                         Text(
                                           'No Downloads Yet',
                                           style: style.titleMedium!.copyWith(
-                                            color: ColorsManager.subtitleText,
+                                            color: ColorManager.subtitleText,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 20.sp,
                                           ),

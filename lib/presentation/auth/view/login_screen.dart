@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/resource/constansts/color_manger.dart';
+import '../../../core/resource/values_manager.dart';
 import '../../../core/route/route_name.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -64,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   'Log in to your\naccount',
                   style: style.headlineLarge?.copyWith(
-                    color: ColorsManager.mediumText,
+                    color: ColorManager.mediumText,
                     fontWeight: FontWeight.w500,
                     fontSize: 32.sp,
                   ),
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 20.h),
                 TextFormField(
                   style: style.bodyMedium?.copyWith(
-                    color: ColorsManager.mediumText,
+                    color: ColorManager.mediumText,
                     fontWeight: FontWeight.w400,
                     fontSize: 16.sp,
                   ),
@@ -83,11 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'Email address',
-                    hintStyle: style.bodyMedium?.copyWith(
-                      color: ColorsManager.hintText,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                    ),
                   ),
                   validator: (value) {
                     if (value == null ||
@@ -103,26 +99,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 12.h),
 
                 TextFormField(
-                  style: style.bodyMedium?.copyWith(
-                    color: ColorsManager.mediumText,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16.sp,
-                  ),
                   controller: _passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.done,
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: 'Password',
-                    hintStyle: style.bodyMedium?.copyWith(
-                      color: ColorsManager.hintText,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                    ),
                     suffixIcon: Icon(
                       Icons.visibility_off_outlined,
                       size: 24.h,
-                      color: ColorsManager.mediumText,
+                      color: ColorManager.iconColor,
                     ),
                   ),
                   validator: (value) {
@@ -138,13 +124,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 GestureDetector(
                   onTap: () {
                     log('Forgot password');
+                    Navigator.pushNamed(context, RouteName.verifyEmailScreen);
                   },
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
                       'Forgot password',
                       style: style.bodyMedium?.copyWith(
-                        color: ColorsManager.primary,
+                        color: ColorManager.primary,
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
                       ),
@@ -157,7 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: 'Login',
                   width: double.infinity,
                   onTap: () {
-                      Navigator.pushNamed(context, RouteName.bottomNavBar);
+
+                    Navigator.pushNamed(context, RouteName.bottomNavBar);
+
                     if (_formKey.currentState!.validate()) {
                       log('Login');
                       Navigator.pushNamed(context, RouteName.bottomNavBar);
@@ -171,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       'Don’t have an account?',
                       style: style.bodyMedium?.copyWith(
-                        color: ColorsManager.subtitleText1,
+                        color: ColorManager.subtitleText1,
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
                       ),
@@ -182,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'Sign up',
                         style: style.bodyMedium?.copyWith(
-                          color: ColorsManager.mediumText,
+                          color: ColorManager.mediumText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),

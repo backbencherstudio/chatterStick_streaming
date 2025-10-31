@@ -1,3 +1,4 @@
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/presentation/bottom_nav/viewmodel/bottom_nav_bar_viewmodel.dart';
 import 'package:chatterstick_streaming_app/presentation/favourite/view/favourite_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/library/view/library_screen.dart';
@@ -34,9 +35,19 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
         showSelectedLabels: true,
+        // backgroundColor: ColorsManager.primary,
+        selectedItemColor: ColorManager.primary,
+        unselectedItemColor: Colors.grey,
+
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconManager.homeNav),
+            icon: SvgPicture.asset(
+              IconManager.homeNav,
+              // colorFilter: ColorFilter.mode(
+              //   ColorsManager.primary,
+              //   BlendMode.srcIn,
+              // ),
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(

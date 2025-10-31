@@ -33,13 +33,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           Icon(
                             Icons.arrow_back_ios_new,
                             size: 20.sp,
-                            color: ColorsManager.mediumText,
+                            color: ColorManager.mediumText,
                           ),
                           SizedBox(width: 5.w),
                           Text(
                             'Back',
                             style: style.bodyMedium?.copyWith(
-                              color: ColorsManager.mediumText,
+                              color: ColorManager.mediumText,
                               fontWeight: FontWeight.w500,
                               fontSize: 16.sp,
                             ),
@@ -53,7 +53,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     'Notifications',
                     textAlign: TextAlign.center,
                     style: style.bodyMedium?.copyWith(
-                      color: ColorsManager.titleText,
+                      color: ColorManager.titleText,
                       fontWeight: FontWeight.w500,
                       fontSize: 16.sp,
                     ),

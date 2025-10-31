@@ -5,11 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppAppBarTheme {
   static AppBarTheme lightAppBarTheme = AppBarTheme(
-    backgroundColor: ColorsManager.primary,
+    backgroundColor: ColorManager.primary,
     actionsPadding: EdgeInsets.all(10),
     titleTextStyle: GoogleFonts.roboto(
       textStyle: TextStyle(
-        color: ColorsManager.primary,
+        color: ColorManager.primary,
         fontSize: 16.sp,
         fontWeight: FontWeight.w600,
       ),

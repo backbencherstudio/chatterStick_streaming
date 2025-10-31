@@ -19,7 +19,7 @@ class CustomHeader extends StatelessWidget {
         Text(
           title,
           style: style.titleSmall?.copyWith(
-            color: ColorsManager.titleText,
+            color: ColorManager.titleText,
             fontWeight: FontWeight.w700,
             fontSize: 20.sp,
           ),

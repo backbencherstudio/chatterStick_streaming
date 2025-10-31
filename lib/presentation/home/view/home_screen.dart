@@ -33,11 +33,6 @@ class HomeScreen extends StatelessWidget {
                       TextFormField(
                         decoration: InputDecoration(
                           hintText: 'Search...',
-                          hintStyle: style.titleSmall?.copyWith(
-                            color: ColorsManager.hintText,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18.sp,
-                          ),
                           prefixIcon: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.h,
@@ -52,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 24.h),
+
 
                       // Banner widgets
                       ClipRRect(
@@ -69,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Recommendation',
                         style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
@@ -99,9 +95,8 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Last Read',
                         style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
                         ),
                       ),
                       SizedBox(height: 16.h),
@@ -128,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Popular',
                         style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
