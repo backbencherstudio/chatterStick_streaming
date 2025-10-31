@@ -5,8 +5,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/resource/constansts/color_manger.dart';
-import '../../core/route/route_name.dart';
+import '../../../core/resource/constansts/color_manger.dart';
+import '../../../core/route/route_name.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -157,6 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: 'Login',
                   width: double.infinity,
                   onTap: () {
+                    Navigator.pushNamed(context, RouteName.bottomNavBar);
                     if (_formKey.currentState!.validate()) {
                       log('Login');
                       Navigator.pushNamed(context, RouteName.bottomNavBar);

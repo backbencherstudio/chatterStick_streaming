@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(390, 840), // Default design size
+      designSize: const Size(390, 840),
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(

@@ -31,13 +31,13 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
+                        style: style.bodyLarge?.copyWith(
+                          color: ColorsManager.titleText,
+                          fontWeight: FontWeight.w500,
+                        ),
                         decoration: InputDecoration(
                           hintText: 'Search...',
-                          hintStyle: style.titleSmall?.copyWith(
-                            color: ColorsManager.hintText,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18.sp,
-                          ),
+
                           prefixIcon: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.h,
@@ -49,6 +49,13 @@ class HomeScreen extends StatelessWidget {
                               width: 18.h,
                             ),
                           ),
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                      TextFormField(
+                        style: style.bodyLarge?.copyWith(
+                          color: ColorsManager.titleText,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       SizedBox(height: 24.h),
@@ -101,7 +108,6 @@ class HomeScreen extends StatelessWidget {
                         style: style.bodyLarge?.copyWith(
                           color: ColorsManager.titleText,
                           fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
                         ),
                       ),
                       SizedBox(height: 16.h),

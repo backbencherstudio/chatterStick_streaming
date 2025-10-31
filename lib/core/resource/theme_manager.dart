@@ -4,6 +4,7 @@ import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/values_manager.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
@@ -12,7 +13,7 @@ ThemeData getApplicationTheme() {
     primaryColorLight: ColorsManager.primaryDark,
     primaryColorDark: ColorsManager.primary,
     disabledColor: ColorsManager.textSecondary,
-    splashColor: ColorsManager.primaryDark,
+    splashColor: ColorsManager.whiteColor,
 
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: ColorsManager.primaryDark,
@@ -63,11 +64,16 @@ ThemeData getApplicationTheme() {
         color: ColorsManager.whiteColor,
         fontSize: FontSize.s14,
       ),
-      bodyLarge: getRegularStyle(color: ColorsManager.whiteColor),
+      bodyLarge: getRegularStyle(  fontSize: FontSize.s16,color: ColorsManager.whiteColor),
     ),
     //text formfield decoration
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.all(AppPadding.p8),
+
+
+      hintStyle: getMediunStyle(color: ColorsManager.hintText,fontSize: 16.sp),
+
+
       helperStyle: getRegularStyle(color: ColorsManager.blackColor),
       labelStyle: getMediunStyle(color: ColorsManager.blackColor),
       errorStyle: getRegularStyle(color: ColorsManager.errorColor),
