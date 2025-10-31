@@ -1,3 +1,4 @@
+import 'package:chatterstick_streaming_app/core/resource/theme_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_config.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/core/theme/theme.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Chatter Stick',
-          theme: AppTheme.lightTheme,
+          theme: getApplicationTheme(),
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.system,
           onGenerateRoute: AppRouter.generateRoute,
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
          // home: child,
         );
       },
-      child: const SizedBox.shrink(), // Placeholder, replaced by routes
+     // child: const SizedBox.shrink(), // Placeholder, replaced by routes
     );
   }
 }

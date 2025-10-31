@@ -8,39 +8,37 @@ import 'package:flutter/material.dart';
 
 import '../constansts/app_colors.dart';
 
-
-
 class AppTheme {
   AppTheme._();
   static ThemeData lightTheme = ThemeData(
-     textSelectionTheme: TextSelectionThemeData(
-      cursorColor:AppColors.primary,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: ColorManager.primary,
     ),
-     inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
-    scaffoldBackgroundColor: AppColors.whiteColor,
+    inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
+    scaffoldBackgroundColor: ColorManager.whiteColor,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: AppEvaluatedButtonThemes.evaluatedButtonTheme,
     textTheme: AppTextTheme.darkTextTheme,
-   // colorScheme: AppColors.darkColorScheme,
+    // colorScheme: AppColors.darkColorScheme,
     timePickerTheme: CustomTimePickerTheme.timePickerTheme,
     datePickerTheme: CustomDatePickerTheme.datePickerTheme,
   );
   static ThemeData darkTheme = ThemeData(
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: AppColors.primary,
+      cursorColor: ColorManager.primary,
     ),
     inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
-    scaffoldBackgroundColor: AppColors.whiteColor,
+    scaffoldBackgroundColor: ColorManager.whiteColor,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: AppEvaluatedButtonThemes.evaluatedButtonTheme,
     textTheme: AppTextTheme.darkTextTheme,
-   // colorScheme: AppColors.darkColorScheme,
+    // colorScheme: AppColors.darkColorScheme,
     timePickerTheme: CustomTimePickerTheme.timePickerTheme,
     datePickerTheme: CustomDatePickerTheme.datePickerTheme,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: AppColors.whiteColor,
-      selectedItemColor: AppColors.primary,
-      unselectedItemColor: AppColors.whiteColor,
+      backgroundColor: ColorManager.whiteColor,
+      selectedItemColor: ColorManager.primary,
+      unselectedItemColor: ColorManager.whiteColor,
       selectedIconTheme: IconThemeData(size: 28),
       unselectedIconTheme: IconThemeData(size: 24),
       showUnselectedLabels: true,

@@ -1,4 +1,3 @@
-
 import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
 import 'package:chatterstick_streaming_app/core/constansts/app_icons.dart';
 import 'package:chatterstick_streaming_app/core/constansts/app_images.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../data/models/favourite_comics_model.dart';
 import '../../../data/models/library_item_model.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,9 +28,9 @@ class HomeScreen extends StatelessWidget {
                   Text(
                     'Discover',
                     style: style.titleSmall?.copyWith(
-                      color: AppColors.titleText,
+                      color: ColorManager.titleText,
                       fontWeight: FontWeight.w700,
-                      fontSize: 18.sp
+                      fontSize: 18.sp,
                     ),
                   ),
                   SvgPicture.asset(
@@ -43,7 +41,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 24.h),
-
 
               Expanded(
                 child: SingleChildScrollView(
@@ -60,20 +57,26 @@ class HomeScreen extends StatelessWidget {
                       //     suffixIcon: Icon(Icons.search,size: 24.h,color: AppColors.hintText,)
                       //   ),
                       // )
-
                       ClipRRect(
-                          borderRadius: BorderRadius.circular(12.r),
-                          child: Image.asset(AppImages.bannerPng,width: double.infinity,fit: BoxFit.cover,)),
+                        borderRadius: BorderRadius.circular(12.r),
+                        child: Image.asset(
+                          AppImages.bannerPng,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
 
                       SizedBox(height: 24.h),
 
-
                       // Recommendation widgets
-                      Text('Recommendation',style: style.bodyLarge?.copyWith(
-                        color: AppColors.titleText,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16.sp
-                      ),),
+                      Text(
+                        'Recommendation',
+                        style: style.bodyLarge?.copyWith(
+                          color: ColorManager.titleText,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                        ),
+                      ),
                       SizedBox(height: 16.h),
                       SizedBox(
                         height: 290.h,
@@ -95,11 +98,14 @@ class HomeScreen extends StatelessWidget {
                       ),
 
                       SizedBox(height: 22.h),
-                      Text('Last Read',style: style.bodyLarge?.copyWith(
-                          color: AppColors.titleText,
+                      Text(
+                        'Last Read',
+                        style: style.bodyLarge?.copyWith(
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
-                          fontSize: 16.sp
-                      ),),
+                          fontSize: 16.sp,
+                        ),
+                      ),
                       SizedBox(height: 16.h),
                       SizedBox(
                         height: 290.h,
@@ -121,14 +127,18 @@ class HomeScreen extends StatelessWidget {
                       ),
 
                       SizedBox(height: 22.h),
-                      Text('Popular',style: style.bodyLarge?.copyWith(
-                          color: AppColors.titleText,
+                      Text(
+                        'Popular',
+                        style: style.bodyLarge?.copyWith(
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
-                          fontSize: 16.sp
-                      ),),
+                          fontSize: 16.sp,
+                        ),
+                      ),
                       SizedBox(height: 16.h),
                       GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(), // disable scrolling if inside ScrollView
+                        physics:
+                            const NeverScrollableScrollPhysics(), // disable scrolling if inside ScrollView
                         shrinkWrap: true,
                         itemCount: comics.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -145,8 +155,7 @@ class HomeScreen extends StatelessWidget {
                             subtitle: comic.subtitle,
                           );
                         },
-                      )
-
+                      ),
                     ],
                   ),
                 ),
@@ -158,10 +167,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
 
 class CustomComicBox extends StatelessWidget {
   const CustomComicBox({
@@ -198,7 +203,7 @@ class CustomComicBox extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: style.bodyMedium?.copyWith(
-              color: AppColors.blackColor,
+              color: ColorManager.blackColor,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -206,7 +211,7 @@ class CustomComicBox extends StatelessWidget {
           Text(
             subtitle,
             style: style.titleSmall?.copyWith(
-              color: AppColors.subtitleText,
+              color: ColorManager.subtitleText,
               fontWeight: FontWeight.w400,
             ),
           ),
