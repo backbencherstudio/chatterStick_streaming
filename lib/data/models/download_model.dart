@@ -1,5 +1,4 @@
-import '../../core/constansts/app_images.dart';
-
+import '../../core/resource/constansts/image_manager.dart';
 
 class DownloadComic {
   final String image;
@@ -15,7 +14,7 @@ class DownloadComic {
 
 final List<DownloadComic> downloadComics = const [
   DownloadComic(
-    image: AppImages.recoComics,
+    image: ImageManager.recoComics,
     title: "Downloaded Comics are here",
     subtitle: 'Fantasy',
   ),

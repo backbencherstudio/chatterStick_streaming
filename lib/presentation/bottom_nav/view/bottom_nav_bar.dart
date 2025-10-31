@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../core/constansts/app_icons.dart';
+import '../../../core/resource/constansts/icon_manager.dart';
 import '../../home/view/home_screen.dart';
 
 class BottomNavBar extends ConsumerStatefulWidget {
@@ -35,10 +35,22 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
         showUnselectedLabels: false,
         showSelectedLabels: true,
         items: [
-          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.homeNav), label: 'Home'),
-          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.libraryNav), label: 'Library'),
-          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.favouriteNav), label: 'Favourte'),
-          BottomNavigationBarItem(icon: SvgPicture.asset(AppIcons.menuNav), label: 'Setting'),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconManager.homeNav),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconManager.libraryNav),
+            label: 'Library',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconManager.favouriteNav),
+            label: 'Favourte',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconManager.menuNav),
+            label: 'Setting',
+          ),
         ],
       ),
     );

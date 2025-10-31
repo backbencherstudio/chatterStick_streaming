@@ -1,15 +1,14 @@
-import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
-import 'package:chatterstick_streaming_app/core/constansts/app_icons.dart';
-import 'package:chatterstick_streaming_app/core/constansts/app_images.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/data/models/comics_model.dart';
-import 'package:chatterstick_streaming_app/presentation/home/view/widgets/customComicBox.dart';
+import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../widgets/custom_header.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              CustomHeader(title: 'Discover',),
+              CustomHeader(title: 'Discover'),
               SizedBox(height: 24.h),
 
               Expanded(
@@ -35,13 +34,20 @@ class HomeScreen extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'Search...',
                           hintStyle: style.titleSmall?.copyWith(
-                            color: AppColors.hintText,
+                            color: ColorsManager.hintText,
                             fontWeight: FontWeight.w400,
-                            fontSize: 18.sp
+                            fontSize: 18.sp,
                           ),
                           prefixIcon: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
-                            child: SvgPicture.asset(AppIcons.searchSvg,height: 18.h,width: 18.h,),
+                            padding: EdgeInsets.symmetric(
+                              vertical: 8.h,
+                              horizontal: 8.w,
+                            ),
+                            child: SvgPicture.asset(
+                              IconManager.searchSvg,
+                              height: 18.h,
+                              width: 18.h,
+                            ),
                           ),
                         ),
                       ),
@@ -51,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
                         child: Image.asset(
-                          AppImages.bannerPng,
+                          ImageManager.bannerPng,
                           width: double.infinity,
                           fit: BoxFit.cover,
                         ),
@@ -63,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Recommendation',
                         style: style.bodyLarge?.copyWith(
-                          color: AppColors.titleText,
+                          color: ColorsManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
@@ -93,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Last Read',
                         style: style.bodyLarge?.copyWith(
-                          color: AppColors.titleText,
+                          color: ColorsManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
@@ -122,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Popular',
                         style: style.bodyLarge?.copyWith(
-                          color: AppColors.titleText,
+                          color: ColorsManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
@@ -158,5 +164,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

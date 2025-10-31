@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/constansts/app_colors.dart';
-import '../../../../core/constansts/app_icons.dart';
+import '../../../../core/resource/constansts/color_manger.dart';
+import '../../../../core/resource/constansts/icon_manager.dart';
 
 class CustomNotification extends StatelessWidget {
   const CustomNotification({
@@ -24,7 +24,7 @@ class CustomNotification extends StatelessWidget {
     final style = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
-        color: isRead ?AppColors.whiteColor : AppColors.containerColor,
+        color: isRead ? ColorsManager.whiteColor : ColorsManager.containerColor,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Padding(
@@ -34,13 +34,15 @@ class CustomNotification extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: isRead ? AppColors.containerColor : AppColors.containerColor1,
+                color: isRead
+                    ? ColorsManager.containerColor
+                    : ColorsManager.containerColor1,
                 shape: BoxShape.circle,
               ),
               child: Padding(
                 padding: EdgeInsets.all(12.r),
                 child: SvgPicture.asset(
-                  AppIcons.notificationSvg,
+                  IconManager.notificationSvg,
                   height: 24.h,
                   width: 24.w,
                 ),
@@ -56,20 +58,20 @@ class CustomNotification extends StatelessWidget {
                   Text(
                     title,
                     style: style.bodyMedium?.copyWith(
-                      color: AppColors.titleText,
+                      color: ColorsManager.titleText,
                       fontWeight: FontWeight.w600,
-                        fontSize: 16.sp
+                      fontSize: 16.sp,
                     ),
                   ),
                   SizedBox(height: 5.h),
                   Text(
-                   message,
+                    message,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: style.labelMedium?.copyWith(
-                      color: AppColors.subtitleText,
+                      color: ColorsManager.subtitleText,
                       fontWeight: FontWeight.w400,
-                        fontSize: 12.sp
+                      fontSize: 12.sp,
                     ),
                   ),
                   SizedBox(height: 5.h),
@@ -77,9 +79,9 @@ class CustomNotification extends StatelessWidget {
                   Text(
                     timeAgo,
                     style: style.labelMedium?.copyWith(
-                      color: AppColors.mediumText,
+                      color: ColorsManager.mediumText,
                       fontWeight: FontWeight.w400,
-                        fontSize: 12.sp
+                      fontSize: 12.sp,
                     ),
                   ),
                 ],

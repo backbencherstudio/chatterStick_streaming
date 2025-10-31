@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/constansts/app_colors.dart';
+import '../../core/resource/constansts/color_manger.dart';
 import '../../core/utils/utils.dart';
-
 
 class PrimaryButton extends StatelessWidget {
   final String title;
@@ -39,8 +38,8 @@ class PrimaryButton extends StatelessWidget {
         // padding ?? EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius ?? 8.r),
-          color: containerColor ?? AppColors.primary,
-          border: border ?? Border.all(color: AppColors.transparentColor),
+          color: containerColor ?? ColorsManager.primary,
+          border: border ?? Border.all(color: ColorsManager.transparentColor),
         ),
         child: Center(
           child: Text(
@@ -49,8 +48,8 @@ class PrimaryButton extends StatelessWidget {
                 textStyle ??
                 style.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: AppColors.whiteColor,
-                    fontSize: 16.sp
+                  color: ColorsManager.whiteColor,
+                  fontSize: 16.sp,
                 ),
           ),
         ),

@@ -1,13 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:flutter/material.dart';
-
 
 class CustomDatePickerTheme {
   static DatePickerThemeData datePickerTheme = DatePickerThemeData(
     backgroundColor: Colors.white,
-    headerBackgroundColor: AppColors.primary,
+    headerBackgroundColor: ColorsManager.primary,
     headerForegroundColor: Colors.white,
     dayForegroundColor: WidgetStateColor.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
@@ -15,28 +14,28 @@ class CustomDatePickerTheme {
       } else if (states.contains(WidgetState.disabled)) {
         return Colors.grey;
       }
-      return AppColors.primary;
+      return ColorsManager.primary;
     }),
     dayBackgroundColor: WidgetStateColor.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return AppColors.primary;
+        return ColorsManager.primary;
       } else if (states.contains(WidgetState.disabled)) {
         return Colors.grey.shade200;
       }
       return Colors.transparent;
     }),
-    todayForegroundColor: WidgetStatePropertyAll(AppColors.primary),
+    todayForegroundColor: WidgetStatePropertyAll(ColorsManager.primary),
     todayBackgroundColor: WidgetStatePropertyAll(
-      AppColors.primary.withOpacity(0.1),
+      ColorsManager.primary.withOpacity(0.1),
     ),
     yearForegroundColor: WidgetStateColor.resolveWith((states) {
       return states.contains(WidgetState.selected)
           ? Colors.white
-          : AppColors.primary;
+          : ColorsManager.primary;
     }),
     yearBackgroundColor: WidgetStateColor.resolveWith((states) {
       return states.contains(WidgetState.selected)
-          ? AppColors.primary
+          ? ColorsManager.primary
           : Colors.transparent;
     }),
   );

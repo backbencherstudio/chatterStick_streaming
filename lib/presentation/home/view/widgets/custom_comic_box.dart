@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/constansts/app_colors.dart';
+import '../../../../core/resource/constansts/color_manger.dart';
 
 class CustomComicBox extends StatelessWidget {
   const CustomComicBox({
@@ -38,18 +37,18 @@ class CustomComicBox extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: style.bodySmall?.copyWith(
-              color: AppColors.blackColor,
+              color: ColorsManager.blackColor,
               fontWeight: FontWeight.w400,
-              fontSize: 14.sp
+              fontSize: 14.sp,
             ),
           ),
           SizedBox(height: 8.h),
           Text(
             subtitle,
             style: style.labelMedium?.copyWith(
-              color: AppColors.subtitleText,
+              color: ColorsManager.subtitleText,
               fontWeight: FontWeight.w400,
-                fontSize: 12.sp
+              fontSize: 12.sp,
             ),
           ),
         ],

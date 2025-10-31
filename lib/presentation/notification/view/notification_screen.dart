@@ -1,10 +1,8 @@
-import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
-import 'package:chatterstick_streaming_app/core/constansts/app_icons.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/data/models/notification_model.dart';
 import 'package:chatterstick_streaming_app/presentation/notification/view/widgets/custom_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -35,15 +33,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           Icon(
                             Icons.arrow_back_ios_new,
                             size: 20.sp,
-                            color: AppColors.mediumText,
+                            color: ColorsManager.mediumText,
                           ),
                           SizedBox(width: 5.w),
                           Text(
                             'Back',
                             style: style.bodyMedium?.copyWith(
-                              color: AppColors.mediumText,
+                              color: ColorsManager.mediumText,
                               fontWeight: FontWeight.w500,
-                                fontSize: 16.sp
+                              fontSize: 16.sp,
                             ),
                           ),
                         ],
@@ -55,9 +53,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     'Notifications',
                     textAlign: TextAlign.center,
                     style: style.bodyMedium?.copyWith(
-                      color: AppColors.titleText,
+                      color: ColorsManager.titleText,
                       fontWeight: FontWeight.w500,
-                        fontSize: 16.sp
+                      fontSize: 16.sp,
                     ),
                   ),
                 ],

@@ -1,13 +1,13 @@
-import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/presentation/library/view/widgets/library_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../core/constansts/app_icons.dart';
+import '../../../core/resource/constansts/icon_manager.dart';
 import '../../../data/models/download_model.dart';
 import '../../../data/models/library_item_model.dart';
-import '../../home/view/widgets/customComicBox.dart';
+import '../../home/view/widgets/custom_comic_box.dart';
 import '../viewmodel/select_tab_provider.dart';
 
 class LibraryScreen extends ConsumerStatefulWidget {
@@ -40,8 +40,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         border: Border(
                           bottom: BorderSide(
                             color: selectedTab == 0
-                                ? AppColors.primary
-                                : AppColors.transparentColor,
+                                ? ColorsManager.primary
+                                : ColorsManager.transparentColor,
                             width: 2.w,
                           ),
                         ),
@@ -50,10 +50,10 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         'Library',
                         style: style.titleSmall!.copyWith(
                           color: selectedTab == 0
-                              ? AppColors.titleText
-                              : AppColors.titleText1,
+                              ? ColorsManager.titleText
+                              : ColorsManager.titleText1,
                           fontWeight: FontWeight.w700,
-                            fontSize: 18.sp
+                          fontSize: 18.sp,
                         ),
                       ),
                     ),
@@ -68,8 +68,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         border: Border(
                           bottom: BorderSide(
                             color: selectedTab == 1
-                                ? AppColors.primary
-                                : AppColors.transparentColor,
+                                ? ColorsManager.primary
+                                : ColorsManager.transparentColor,
                             width: 2.w,
                           ),
                         ),
@@ -78,10 +78,10 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         'Download',
                         style: style.titleSmall!.copyWith(
                           color: selectedTab == 1
-                              ? AppColors.titleText
-                              : AppColors.titleText1,
+                              ? ColorsManager.titleText
+                              : ColorsManager.titleText1,
                           fontWeight: FontWeight.w700,
-                            fontSize: 18.sp
+                          fontSize: 18.sp,
                         ),
                       ),
                     ),
@@ -122,11 +122,11 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                       children: [
                                         SizedBox(height: 250.h),
                                         SvgPicture.asset(
-                                          AppIcons.downloadSvg,
+                                          IconManager.downloadSvg,
                                           height: 72.h,
                                           width: 72.w,
                                           colorFilter: const ColorFilter.mode(
-                                            AppColors.errorColor,
+                                            ColorsManager.errorColor,
                                             BlendMode.srcIn,
                                           ),
                                         ),
@@ -134,9 +134,9 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                         Text(
                                           'No Downloads Yet',
                                           style: style.titleMedium!.copyWith(
-                                            color: AppColors.subtitleText,
+                                            color: ColorsManager.subtitleText,
                                             fontWeight: FontWeight.w400,
-                                              fontSize: 20.sp
+                                            fontSize: 20.sp,
                                           ),
                                         ),
                                         SizedBox(height: 300.h),

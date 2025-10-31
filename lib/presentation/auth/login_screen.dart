@@ -5,7 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/constansts/app_colors.dart';
+import '../../core/resource/constansts/color_manger.dart';
 import '../../core/route/route_name.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -64,19 +64,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   'Log in to your\naccount',
                   style: style.headlineLarge?.copyWith(
-                    color: AppColors.mediumText,
+                    color: ColorsManager.mediumText,
                     fontWeight: FontWeight.w500,
-                    fontSize: 32.sp
+                    fontSize: 32.sp,
                   ),
                 ),
 
                 SizedBox(height: 20.h),
                 TextFormField(
-                    style: style.bodyMedium?.copyWith(
-                        color: AppColors.mediumText,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp
-                    ),
+                  style: style.bodyMedium?.copyWith(
+                    color: ColorsManager.mediumText,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16.sp,
+                  ),
                   controller: _emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.next,
@@ -84,27 +84,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     hintText: 'Email address',
                     hintStyle: style.bodyMedium?.copyWith(
-                      color: AppColors.hintText,
+                      color: ColorsManager.hintText,
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp
+                      fontSize: 16.sp,
                     ),
                   ),
                   validator: (value) {
-                    if (value == null || value.isEmpty || !EmailValidator.validate(_emailController.text)) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !EmailValidator.validate(_emailController.text)) {
                       return 'Please enter your email address';
                     } else {
                       return null;
                     }
-                  }
+                  },
                 ),
 
                 SizedBox(height: 12.h),
 
                 TextFormField(
                   style: style.bodyMedium?.copyWith(
-                    color: AppColors.mediumText,
+                    color: ColorsManager.mediumText,
                     fontWeight: FontWeight.w400,
-                    fontSize: 16.sp
+                    fontSize: 16.sp,
                   ),
                   controller: _passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -113,14 +115,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     hintText: 'Password',
                     hintStyle: style.bodyMedium?.copyWith(
-                      color: AppColors.hintText,
+                      color: ColorsManager.hintText,
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp
+                      fontSize: 16.sp,
                     ),
                     suffixIcon: Icon(
                       Icons.visibility_off_outlined,
                       size: 24.h,
-                      color: AppColors.mediumText,
+                      color: ColorsManager.mediumText,
                     ),
                   ),
                   validator: (value) {
@@ -129,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     } else {
                       return null;
                     }
-                  }
+                  },
                 ),
                 SizedBox(height: 16.h),
 
@@ -142,9 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Forgot password',
                       style: style.bodyMedium?.copyWith(
-                        color: AppColors.primary,
+                        color: ColorsManager.primary,
                         fontWeight: FontWeight.w500,
-                          fontSize: 16.sp
+                        fontSize: 16.sp,
                       ),
                     ),
                   ),
@@ -168,9 +170,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       'Don’t have an account?',
                       style: style.bodyMedium?.copyWith(
-                        color: AppColors.subtitleText1,
+                        color: ColorsManager.subtitleText1,
                         fontWeight: FontWeight.w400,
-                          fontSize: 16.sp
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(width: 5.w),
@@ -179,9 +181,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'Sign up',
                         style: style.bodyMedium?.copyWith(
-                          color: AppColors.mediumText,
+                          color: ColorsManager.mediumText,
                           fontWeight: FontWeight.w500,
-                            fontSize: 16.sp
+                          fontSize: 16.sp,
                         ),
                       ),
                     ),

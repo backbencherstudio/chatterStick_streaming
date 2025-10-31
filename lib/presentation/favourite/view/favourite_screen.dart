@@ -1,5 +1,5 @@
-import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
-import 'package:chatterstick_streaming_app/core/constansts/app_icons.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,11 +31,11 @@ class FavouriteScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
-                              AppIcons.favouriteNav,
+                              IconManager.favouriteNav,
                               height: 72.h,
                               width: 72.w,
                               colorFilter: const ColorFilter.mode(
-                                AppColors.errorColor,
+                                ColorsManager.errorColor,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -43,9 +43,9 @@ class FavouriteScreen extends StatelessWidget {
                             Text(
                               'No Favorite',
                               style: styles.titleMedium!.copyWith(
-                                color: AppColors.subtitleText,
+                                color: ColorsManager.subtitleText,
                                 fontWeight: FontWeight.w400,
-                                  fontSize: 16.sp
+                                fontSize: 16.sp,
                               ),
                             ),
                           ],
