@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constansts/app_colors.dart';
-import '../../../../core/constansts/app_icons.dart';
+import '../../../../core/resource/constansts/color_manger.dart';
+import '../../../../core/resource/constansts/icon_manager.dart';
 
 class FavouriteComics extends StatelessWidget {
   const FavouriteComics({
     super.key,
     required this.image,
+    required this.title,
     required this.episode,
     this.details,
   });
   final String image;
+  final String title;
   final String episode;
   final String? details;
 
@@ -20,9 +22,9 @@ class FavouriteComics extends StatelessWidget {
     final style = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
-        color: ColorManager.whiteColor,
+        color: ColorsManager.whiteColor,
         borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: ColorManager.borderColor),
+        border: Border.all(color: ColorsManager.borderColor),
       ),
       padding: EdgeInsets.all(12.h),
       child: Row(
@@ -35,7 +37,7 @@ class FavouriteComics extends StatelessWidget {
                 bottom: 12.h,
                 right: 12.w,
                 child: Image.asset(
-                  AppIcons.favoritePng,
+                  IconManager.favoritePng,
                   width: 24.w,
                   height: 24.h,
                 ),
@@ -49,18 +51,20 @@ class FavouriteComics extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  episode,
+                  title,
                   style: style.titleSmall?.copyWith(
-                    color: ColorManager.titleText,
+                    color: ColorsManager.titleText,
                     fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
                   episode,
                   style: style.bodyMedium?.copyWith(
-                    color: ColorManager.subtitleText,
+                    color: ColorsManager.subtitleText,
                     fontWeight: FontWeight.w400,
+                    fontSize: 16.sp,
                   ),
                 ),
                 SizedBox(height: 12.h),
@@ -69,8 +73,9 @@ class FavouriteComics extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: style.bodyMedium?.copyWith(
-                    color: ColorManager.subtitleText,
+                    color: ColorsManager.subtitleText,
                     fontWeight: FontWeight.w400,
+                    fontSize: 16.sp,
                   ),
                 ),
               ],

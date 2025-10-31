@@ -6,16 +6,16 @@ import 'package:chatterstick_streaming_app/core/theme/part/time_picker_theme.dar
 import 'package:chatterstick_streaming_app/core/theme/theme_extension/text_theme.dart';
 import 'package:flutter/material.dart';
 
-import '../constansts/app_colors.dart';
+import '../resource/constansts/color_manger.dart';
 
 class AppTheme {
   AppTheme._();
   static ThemeData lightTheme = ThemeData(
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorManager.primary,
+      cursorColor: ColorsManager.primary,
     ),
     inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
-    scaffoldBackgroundColor: ColorManager.whiteColor,
+    scaffoldBackgroundColor: ColorsManager.whiteColor,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: AppEvaluatedButtonThemes.evaluatedButtonTheme,
     textTheme: AppTextTheme.darkTextTheme,
@@ -25,10 +25,10 @@ class AppTheme {
   );
   static ThemeData darkTheme = ThemeData(
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorManager.primary,
+      cursorColor: ColorsManager.primary,
     ),
     inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
-    scaffoldBackgroundColor: ColorManager.whiteColor,
+    scaffoldBackgroundColor: ColorsManager.whiteColor,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: AppEvaluatedButtonThemes.evaluatedButtonTheme,
     textTheme: AppTextTheme.darkTextTheme,
@@ -36,9 +36,9 @@ class AppTheme {
     timePickerTheme: CustomTimePickerTheme.timePickerTheme,
     datePickerTheme: CustomDatePickerTheme.datePickerTheme,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: ColorManager.whiteColor,
-      selectedItemColor: ColorManager.primary,
-      unselectedItemColor: ColorManager.whiteColor,
+      backgroundColor: ColorsManager.whiteColor,
+      selectedItemColor: ColorsManager.primary,
+      unselectedItemColor: ColorsManager.whiteColor,
       selectedIconTheme: IconThemeData(size: 28),
       unselectedIconTheme: IconThemeData(size: 24),
       showUnselectedLabels: true,

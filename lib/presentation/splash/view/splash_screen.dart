@@ -1,10 +1,8 @@
-
-import 'package:chatterstick_streaming_app/core/constansts/app_images.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,8 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Navigate to HomeScreen after 3 seconds
-    Timer(const Duration(seconds: 3), () {
-     Navigator.pushReplacementNamed(context, RouteName.bottomNavBar);
+    Timer(const Duration(seconds: 1), () {
+      Navigator.pushReplacementNamed(context, RouteName.loginScreen);
     });
   }
 
@@ -30,10 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            AppImages.splash,
-            width: 248.w,
-          ),
+          child: Image.asset(ImageManager.splash, width: 248.w),
         ),
       ),
     );

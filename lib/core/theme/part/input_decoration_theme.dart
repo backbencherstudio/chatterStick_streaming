@@ -1,16 +1,16 @@
-import 'package:chatterstick_streaming_app/core/constansts/app_colors.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppInputDecorationTheme {
   static InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     hintStyle: TextStyle(
-      color: ColorManager.hintText,
+      color: ColorsManager.hintText,
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
     ),
     errorStyle: TextStyle(
-      color: ColorManager.errorColor, // Change error text color
+      color: ColorsManager.errorColor, // Change error text color
       fontSize: 12, // Change font size
       // Make it bold
     ),
@@ -21,7 +21,7 @@ class AppInputDecorationTheme {
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: ColorManager.borderColor, width: 1.w),
+      borderSide: BorderSide(color: ColorsManager.borderColor, width: 1.w),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
@@ -29,11 +29,11 @@ class AppInputDecorationTheme {
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: ColorManager.errorColor),
+      borderSide: BorderSide(color: ColorsManager.errorColor),
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: ColorManager.borderColor),
+      borderSide: BorderSide(color: ColorsManager.borderColor),
     ),
 
     disabledBorder: OutlineInputBorder(
@@ -43,8 +43,8 @@ class AppInputDecorationTheme {
 
     contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
     filled: true,
-    fillColor: ColorManager.fillColor,
-    focusColor: ColorManager.primary,
-    hoverColor: ColorManager.primary,
+    fillColor: ColorsManager.fillColor,
+    focusColor: ColorsManager.primary,
+    hoverColor: ColorsManager.primary,
   );
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/constansts/app_colors.dart';
-import '../../../../core/constansts/app_icons.dart';
+import '../../../../core/resource/constansts/color_manger.dart';
+import '../../../../core/resource/constansts/icon_manager.dart';
 
 class LibraryList extends StatelessWidget {
   const LibraryList({
@@ -35,9 +35,9 @@ class LibraryList extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: ColorManager.whiteColor,
+          color: ColorsManager.whiteColor,
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: ColorManager.borderColor),
+          border: Border.all(color: ColorsManager.borderColor),
         ),
         padding: EdgeInsets.all(12.h),
         child: Row(
@@ -48,7 +48,7 @@ class LibraryList extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 10.w),
                 child: SvgPicture.asset(
-                  AppIcons.checkmarkSvg,
+                  IconManager.checkmarkSvg,
                   width: 24.w,
                   height: 24.h,
                 ),
@@ -72,9 +72,12 @@ class LibraryList extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: style.titleSmall?.copyWith(
-                      color: ColorManager.titleText,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: style.titleMedium?.copyWith(
+                      color: ColorsManager.titleText,
                       fontWeight: FontWeight.w500,
+                      fontSize: 20.sp,
                     ),
                   ),
                   SizedBox(height: 8.h),
@@ -83,17 +86,19 @@ class LibraryList extends StatelessWidget {
                     children: [
                       Text(
                         episode,
-                        style: style.bodyMedium?.copyWith(
-                          color: ColorManager.subtitleText,
+                        style: style.bodySmall?.copyWith(
+                          color: ColorsManager.subtitleText,
                           fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
                         ),
                       ),
 
                       Text(
                         date,
-                        style: style.bodyMedium?.copyWith(
-                          color: ColorManager.subtitleText,
+                        style: style.bodySmall?.copyWith(
+                          color: ColorsManager.subtitleText,
                           fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ],
@@ -103,15 +108,16 @@ class LibraryList extends StatelessWidget {
                     details,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: style.bodyMedium?.copyWith(
-                      color: ColorManager.subtitleText,
+                    style: style.bodySmall?.copyWith(
+                      color: ColorsManager.subtitleText,
                       fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
                     ),
                   ),
                   SizedBox(height: 12.h),
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: ColorManager.borderColor1),
+                      border: Border.all(color: ColorsManager.borderColor1),
                       borderRadius: BorderRadius.circular(30.r),
                     ),
                     child: Padding(
@@ -121,9 +127,10 @@ class LibraryList extends StatelessWidget {
                       ),
                       child: Text(
                         'Download',
-                        style: style.bodyMedium?.copyWith(
-                          color: ColorManager.buttonText,
+                        style: style.bodySmall?.copyWith(
+                          color: ColorsManager.buttonText,
                           fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ),

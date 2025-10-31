@@ -49,7 +49,7 @@ class ApiClient {
       if (e is DioException) {
         ErrorHandle.handleDioError(e);
       } else {
-        print('Non-Dio error: $e');
+        log('Non-Dio error: $e');
       }
     }
   }

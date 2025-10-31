@@ -1,4 +1,4 @@
-class AppImages {
+class ImageManager {
   static const String baseUrl = 'assets/images';
   static const String splash = '$baseUrl/splash_image.png';
   static const String recoComics = '$baseUrl/reco_comics.png';
