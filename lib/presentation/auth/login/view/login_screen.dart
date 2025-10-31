@@ -1,13 +1,12 @@
 import 'dart:developer';
 
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/resource/constansts/color_manger.dart';
-import '../../../core/resource/values_manager.dart';
-import '../../../core/route/route_name.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -167,7 +166,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(width: 5.w),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteName.signUpScreen);
+                      },
                       child: Text(
                         'Sign up',
                         style: style.bodyMedium?.copyWith(

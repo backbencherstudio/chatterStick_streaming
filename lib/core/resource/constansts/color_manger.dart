@@ -42,6 +42,8 @@ class ColorManager {
   // ===== Container & Fill Colors =====
   static const Color containerColor = Color(0xFFEFEFEF);
   static const Color containerColor1 = Color(0xFFD9DDE2);
+  static const Color containerColor2 = Color(0xFF91958E);
+  static const Color containerColor3 = Color(0xFFF4F7F2);
   static const Color fillColor = Color(0xFFFEF5F3);
 
   // ===== Feedback Colors =====
