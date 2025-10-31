@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/resource/constansts/color_manger.dart';
-import '../../../core/resource/values_manager.dart';
+
 import '../../../core/route/route_name.dart';
 
 class LoginScreen extends StatefulWidget {
