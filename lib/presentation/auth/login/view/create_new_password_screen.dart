@@ -1,11 +1,10 @@
-import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/resource/constansts/color_manger.dart';
+import '../../../../core/route/route_name.dart';
+import '../../../widgets/primery_button.dart';
 
-import '../../../core/resource/constansts/color_manger.dart';
-import '../../../core/route/route_name.dart';
-import '../../widgets/primery_button.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
   const CreateNewPasswordScreen({super.key});

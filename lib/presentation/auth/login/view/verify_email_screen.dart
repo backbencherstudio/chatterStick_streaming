@@ -1,12 +1,11 @@
 import 'dart:developer';
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
+import 'package:chatterstick_streaming_app/core/route/route_name.dart';
+import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/resource/style_manager.dart';
-import '../../../core/route/route_name.dart';
-import '../../widgets/primery_button.dart';
-
 
 class VerifyEmailScreen extends StatefulWidget {
   const VerifyEmailScreen({super.key});
@@ -42,10 +41,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     SizedBox(width: 5.w),
                     Text(
                       'Back',
-                      style: style.bodyMedium?.copyWith(
-                        color: ColorManager.mediumText,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: getRegularStyle16(color: ColorManager.mediumText),
                     ),
                   ],
                 ),
