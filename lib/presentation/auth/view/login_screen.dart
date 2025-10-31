@@ -157,7 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: 'Login',
                   width: double.infinity,
                   onTap: () {
+
                     Navigator.pushNamed(context, RouteName.bottomNavBar);
+
                     if (_formKey.currentState!.validate()) {
                       log('Login');
                       Navigator.pushNamed(context, RouteName.bottomNavBar);
