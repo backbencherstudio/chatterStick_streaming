@@ -24,7 +24,7 @@ class CustomNotification extends StatelessWidget {
     final style = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
-        color: isRead ? ColorsManager.whiteColor : ColorsManager.containerColor,
+        color: isRead ? ColorManager.whiteColor : ColorManager.containerColor,
         borderRadius: BorderRadius.circular(8.r),
       ),
       child: Padding(
@@ -35,8 +35,8 @@ class CustomNotification extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: isRead
-                    ? ColorsManager.containerColor
-                    : ColorsManager.containerColor1,
+                    ? ColorManager.containerColor
+                    : ColorManager.containerColor1,
                 shape: BoxShape.circle,
               ),
               child: Padding(
@@ -58,7 +58,7 @@ class CustomNotification extends StatelessWidget {
                   Text(
                     title,
                     style: style.bodyMedium?.copyWith(
-                      color: ColorsManager.titleText,
+                      color: ColorManager.titleText,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
                     ),
@@ -69,7 +69,7 @@ class CustomNotification extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: style.labelMedium?.copyWith(
-                      color: ColorsManager.subtitleText,
+                      color: ColorManager.subtitleText,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.sp,
                     ),
@@ -79,7 +79,7 @@ class CustomNotification extends StatelessWidget {
                   Text(
                     timeAgo,
                     style: style.labelMedium?.copyWith(
-                      color: ColorsManager.mediumText,
+                      color: ColorManager.mediumText,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.sp,
                     ),

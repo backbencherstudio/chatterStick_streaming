@@ -35,7 +35,7 @@ class FavouriteScreen extends StatelessWidget {
                               height: 72.h,
                               width: 72.w,
                               colorFilter: const ColorFilter.mode(
-                                ColorsManager.errorColor,
+                                ColorManager.errorColor,
                                 BlendMode.srcIn,
                               ),
                             ),
@@ -43,7 +43,7 @@ class FavouriteScreen extends StatelessWidget {
                             Text(
                               'No Favorite',
                               style: styles.titleMedium!.copyWith(
-                                color: ColorsManager.subtitleText,
+                                color: ColorManager.subtitleText,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16.sp,
                               ),

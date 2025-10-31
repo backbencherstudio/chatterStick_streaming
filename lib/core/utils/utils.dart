@@ -78,13 +78,13 @@ class Utils {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.dark(
-              primary: ColorsManager.whiteColor, // header background
-              onPrimary: ColorsManager.blackColor, // header text color
-              onSurface: ColorsManager.whiteColor, // body text color
+              primary: ColorManager.whiteColor, // header background
+              onPrimary: ColorManager.blackColor, // header text color
+              onSurface: ColorManager.whiteColor, // body text color
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: ColorsManager.whiteColor, // button text color
+                foregroundColor: ColorManager.whiteColor, // button text color
               ),
             ),
           ),

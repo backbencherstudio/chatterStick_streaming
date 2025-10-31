@@ -22,9 +22,9 @@ class FavouriteComics extends StatelessWidget {
     final style = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
-        color: ColorsManager.whiteColor,
+        color: ColorManager.whiteColor,
         borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: ColorsManager.borderColor),
+        border: Border.all(color: ColorManager.borderColor),
       ),
       padding: EdgeInsets.all(12.h),
       child: Row(
@@ -53,7 +53,7 @@ class FavouriteComics extends StatelessWidget {
                 Text(
                   title,
                   style: style.titleSmall?.copyWith(
-                    color: ColorsManager.titleText,
+                    color: ColorManager.titleText,
                     fontWeight: FontWeight.w500,
                     fontSize: 18.sp,
                   ),
@@ -62,7 +62,7 @@ class FavouriteComics extends StatelessWidget {
                 Text(
                   episode,
                   style: style.bodyMedium?.copyWith(
-                    color: ColorsManager.subtitleText,
+                    color: ColorManager.subtitleText,
                     fontWeight: FontWeight.w400,
                     fontSize: 16.sp,
                   ),
@@ -73,7 +73,7 @@ class FavouriteComics extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: style.bodyMedium?.copyWith(
-                    color: ColorsManager.subtitleText,
+                    color: ColorManager.subtitleText,
                     fontWeight: FontWeight.w400,
                     fontSize: 16.sp,
                   ),

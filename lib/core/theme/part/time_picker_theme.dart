@@ -5,26 +5,26 @@ class CustomTimePickerTheme {
   static TimePickerThemeData timePickerTheme = TimePickerThemeData(
     hourMinuteColor: WidgetStateColor.resolveWith((states) {
       return states.contains(WidgetState.selected)
-          ? ColorsManager.primary
+          ? ColorManager.primary
           : Colors.white;
     }),
     hourMinuteTextColor: WidgetStateColor.resolveWith((states) {
       return states.contains(WidgetState.selected)
           ? Colors.white
-          : ColorsManager.primary;
+          : ColorManager.primary;
     }),
     dayPeriodColor: WidgetStateColor.resolveWith((states) {
       return states.contains(WidgetState.selected)
-          ? ColorsManager.primary
+          ? ColorManager.primary
           : Colors.white;
     }),
     dayPeriodTextColor: WidgetStateColor.resolveWith((states) {
       return states.contains(WidgetState.selected)
           ? Colors.white
-          : ColorsManager.primary;
+          : ColorManager.primary;
     }),
     backgroundColor: Colors.white,
-    dialHandColor: ColorsManager.primary,
+    dialHandColor: ColorManager.primary,
     helpTextStyle: TextStyle(color: Colors.white),
   );
 }

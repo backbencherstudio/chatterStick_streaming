@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 /// Centralized color palette for the app.
 /// Defines both light and dark theme colors.
-class ColorsManager {
-  ColorsManager._();
+class ColorManager {
+  ColorManager._();
 
   // ===== Primary Colors =====
   static const Color primary = Color(0xFF00136B);
@@ -23,6 +23,7 @@ class ColorsManager {
   static const Color titleText1 = Color(0xFF535353);
   static const Color subtitleText = Color(0xFF686868);
   static const Color subtitleText1 = Color(0xFF60655C);
+  static const Color subtitleText2 = Color(0xFFB6B8B6);
   static const Color mediumText = Color(0xFF363A33);
 
   // ===== Button & Label Colors =====
@@ -53,4 +54,7 @@ class ColorsManager {
   static const Color shadowColor = Color(0x1A000000); // 10% opacity black
   static const Color dividerColor = Color(0xFFE0E0E0);
   static const Color overlayColor = Color(0x33000000); // 20% opacity black
+
+// ===== Utility Colors =====
+  static const Color iconColor = Color(0xFF60635E);
 }

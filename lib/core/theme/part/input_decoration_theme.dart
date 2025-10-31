@@ -5,12 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppInputDecorationTheme {
   static InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     hintStyle: TextStyle(
-      color: ColorsManager.hintText,
+      color: ColorManager.hintText,
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
     ),
     errorStyle: TextStyle(
-      color: ColorsManager.errorColor, // Change error text color
+      color: ColorManager.errorColor, // Change error text color
       fontSize: 12, // Change font size
       // Make it bold
     ),
@@ -21,7 +21,7 @@ class AppInputDecorationTheme {
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: ColorsManager.borderColor, width: 1.w),
+      borderSide: BorderSide(color: ColorManager.borderColor, width: 1.w),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
@@ -29,11 +29,11 @@ class AppInputDecorationTheme {
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: ColorsManager.errorColor),
+      borderSide: BorderSide(color: ColorManager.errorColor),
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: ColorsManager.borderColor),
+      borderSide: BorderSide(color: ColorManager.borderColor),
     ),
 
     disabledBorder: OutlineInputBorder(
@@ -43,8 +43,8 @@ class AppInputDecorationTheme {
 
     contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
     filled: true,
-    fillColor: ColorsManager.fillColor,
-    focusColor: ColorsManager.primary,
-    hoverColor: ColorsManager.primary,
+    fillColor: ColorManager.fillColor,
+    focusColor: ColorManager.primary,
+    hoverColor: ColorManager.primary,
   );
 }

@@ -35,9 +35,9 @@ class LibraryList extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: ColorsManager.whiteColor,
+          color: ColorManager.whiteColor,
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: ColorsManager.borderColor),
+          border: Border.all(color: ColorManager.borderColor),
         ),
         padding: EdgeInsets.all(12.h),
         child: Row(
@@ -75,7 +75,7 @@ class LibraryList extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: style.titleMedium?.copyWith(
-                      color: ColorsManager.titleText,
+                      color: ColorManager.titleText,
                       fontWeight: FontWeight.w500,
                       fontSize: 20.sp,
                     ),
@@ -87,7 +87,7 @@ class LibraryList extends StatelessWidget {
                       Text(
                         episode,
                         style: style.bodySmall?.copyWith(
-                          color: ColorsManager.subtitleText,
+                          color: ColorManager.subtitleText,
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                         ),
@@ -96,7 +96,7 @@ class LibraryList extends StatelessWidget {
                       Text(
                         date,
                         style: style.bodySmall?.copyWith(
-                          color: ColorsManager.subtitleText,
+                          color: ColorManager.subtitleText,
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                         ),
@@ -109,7 +109,7 @@ class LibraryList extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: style.bodySmall?.copyWith(
-                      color: ColorsManager.subtitleText,
+                      color: ColorManager.subtitleText,
                       fontWeight: FontWeight.w400,
                       fontSize: 14.sp,
                     ),
@@ -117,7 +117,7 @@ class LibraryList extends StatelessWidget {
                   SizedBox(height: 12.h),
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: ColorsManager.borderColor1),
+                      border: Border.all(color: ColorManager.borderColor1),
                       borderRadius: BorderRadius.circular(30.r),
                     ),
                     child: Padding(
@@ -128,7 +128,7 @@ class LibraryList extends StatelessWidget {
                       child: Text(
                         'Download',
                         style: style.bodySmall?.copyWith(
-                          color: ColorsManager.buttonText,
+                          color: ColorManager.buttonText,
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                         ),

@@ -31,13 +31,8 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
-                        style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
-                          fontWeight: FontWeight.w500,
-                        ),
                         decoration: InputDecoration(
                           hintText: 'Search...',
-
                           prefixIcon: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.h,
@@ -52,13 +47,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 24.h),
-                      TextFormField(
-                        style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(height: 24.h),
+
 
                       // Banner widgets
                       ClipRRect(
@@ -76,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Recommendation',
                         style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
@@ -106,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Last Read',
                         style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -134,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'Popular',
                         style: style.bodyLarge?.copyWith(
-                          color: ColorsManager.titleText,
+                          color: ColorManager.titleText,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),

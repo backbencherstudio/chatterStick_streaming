@@ -12,10 +12,10 @@ class AppTheme {
   AppTheme._();
   static ThemeData lightTheme = ThemeData(
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorsManager.primary,
+      cursorColor: ColorManager.primary,
     ),
     inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
-    scaffoldBackgroundColor: ColorsManager.whiteColor,
+    scaffoldBackgroundColor: ColorManager.whiteColor,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: AppEvaluatedButtonThemes.evaluatedButtonTheme,
     textTheme: AppTextTheme.darkTextTheme,
@@ -25,10 +25,10 @@ class AppTheme {
   );
   static ThemeData darkTheme = ThemeData(
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: ColorsManager.primary,
+      cursorColor: ColorManager.primary,
     ),
     inputDecorationTheme: AppInputDecorationTheme.inputDecorationTheme,
-    scaffoldBackgroundColor: ColorsManager.whiteColor,
+    scaffoldBackgroundColor: ColorManager.whiteColor,
     appBarTheme: AppAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: AppEvaluatedButtonThemes.evaluatedButtonTheme,
     textTheme: AppTextTheme.darkTextTheme,
@@ -36,9 +36,9 @@ class AppTheme {
     timePickerTheme: CustomTimePickerTheme.timePickerTheme,
     datePickerTheme: CustomDatePickerTheme.datePickerTheme,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: ColorsManager.whiteColor,
-      selectedItemColor: ColorsManager.primary,
-      unselectedItemColor: ColorsManager.whiteColor,
+      backgroundColor: ColorManager.whiteColor,
+      selectedItemColor: ColorManager.primary,
+      unselectedItemColor: ColorManager.whiteColor,
       selectedIconTheme: IconThemeData(size: 28),
       unselectedIconTheme: IconThemeData(size: 24),
       showUnselectedLabels: true,
