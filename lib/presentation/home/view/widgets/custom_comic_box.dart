@@ -8,11 +8,13 @@ class CustomComicBox extends StatelessWidget {
     required this.image,
     required this.title,
     required this.subtitle,
+    this.height,
   });
 
   final String image;
   final String title;
   final String subtitle;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CustomComicBox extends StatelessWidget {
             borderRadius: BorderRadius.circular(12.r),
             child: Image.asset(
               image,
-              height: 214.h,
+              height: height ?? 214.h,
               width: 160.w,
               fit: BoxFit.cover,
             ),
@@ -45,6 +47,8 @@ class CustomComicBox extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             subtitle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: style.labelMedium?.copyWith(
               color: ColorManager.subtitleText,
               fontWeight: FontWeight.w400,

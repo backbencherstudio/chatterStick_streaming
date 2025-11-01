@@ -21,6 +21,7 @@ class FavouriteScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
+              SizedBox(height: 16.h),
               const CustomHeader(title: 'Discover'),
               SizedBox(height: 24.h),
 
