@@ -82,10 +82,7 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> {
                       animationType: AnimationType.scale,
                       keyboardType: TextInputType.number,
                       cursorColor: ColorManager.primary,
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: ColorManager.titleText,
-                      ),
+                      textStyle: getMediumStyle18(color: ColorManager.titleText,fontWeight: FontWeightManager.bold700),
                       pinTheme: PinTheme(
                         shape: PinCodeFieldShape.box,
                         fieldHeight: 48.h,

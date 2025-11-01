@@ -31,18 +31,22 @@ class _ChangeNewPasswordScreenState extends State<ChangeNewPasswordScreen> {
               ),
               SizedBox(height: 20.h,),
               TextFormField(
+                style: getRegularStyle16(color: ColorManager.mediumText),
                 decoration: InputDecoration(
                   hintText: 'Current password',
+                  hintStyle: getRegularStyle16(color: ColorManager.hintText),
                 ),
               ),
               SizedBox(height: 12.h,),
               TextFormField(
+                style: getRegularStyle16(color: ColorManager.mediumText),
                 decoration: InputDecoration(
                   hintText: 'New password',
+                  hintStyle: getRegularStyle16(color: ColorManager.hintText),
                 ),
               ),
               Spacer(),
-              PrimaryButton(title: 'Create new password', onTap: (){
+              PrimaryButton(title: 'Create new password', width: double.infinity, onTap: (){
                 Navigator.pop(context);
               })
             ],

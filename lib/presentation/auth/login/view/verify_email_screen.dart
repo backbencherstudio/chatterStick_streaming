@@ -66,12 +66,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                       TextFormField(
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
-                        style: style.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: ColorManager.subtitleText,
-                        ),
+                        style: getRegularStyle16(color: ColorManager.mediumText),
                         decoration: InputDecoration(
                           hintText: "Email",
+                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
+
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {

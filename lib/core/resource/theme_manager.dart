@@ -118,8 +118,8 @@ ThemeData getApplicationTheme() {
 
     // ===== Input Field Theme =====
     inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: ColorManager.whiteColor,
+      // filled: true,
+      // fillColor: ColorManager.whiteColor,
       hintStyle: getLightStyle14(
         color: ColorManager.hintText,
         fontSize: FontSize.s14,

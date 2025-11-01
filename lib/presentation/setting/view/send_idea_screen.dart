@@ -31,9 +31,11 @@ class _SendIdeaScreenState extends State<SendIdeaScreen> {
               ),
               SizedBox(height: 16.h),
               TextFormField(
+                style: getRegularStyle16(color: ColorManager.mediumText),
                 maxLines: 7,
                 decoration: InputDecoration(
                   hintText: 'Example: The stick figure realizes his dog is made of 2 lines and a circle. Write your amazing comic idea here...',
+                  hintStyle: getRegularStyle16(color: ColorManager.hintText),
                 ),
               ),
 

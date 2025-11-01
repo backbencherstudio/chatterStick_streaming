@@ -77,12 +77,14 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
                       // New Password screen
                       TextFormField(
+                        style: getRegularStyle16(color: ColorManager.mediumText),
                         controller: _passwordController,
                         obscureText: true,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "New Password",
+                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
                           suffixIcon: Icon(
                             Icons.visibility_off_outlined,
                             size: 24.h,
@@ -103,12 +105,14 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
                       // Confirm New Password screen
                       TextFormField(
+                        style: getRegularStyle16(color: ColorManager.mediumText),
                         controller: _confirmPasswordController,
                         obscureText: true,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
                           hintText: "Re-enter the new Password",
+                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
                           suffixIcon: Icon(
                             Icons.visibility_off_outlined,
                             size: 24.h,
