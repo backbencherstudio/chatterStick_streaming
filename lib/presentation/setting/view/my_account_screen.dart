@@ -13,7 +13,6 @@ class MyAccountScreen extends StatefulWidget {
 }
 
 class _MyAccountScreenState extends State<MyAccountScreen> {
-
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
@@ -117,12 +116,22 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
               SizedBox(height: 20.h),
 
               TextFormField(
-                  controller: _nameController,
-                  decoration: InputDecoration()),
+                style: getRegularStyle16(color: ColorManager.mediumText),
+                controller: _nameController,
+                decoration: InputDecoration(
+                  hintText: 'Name',
+                  hintStyle: getRegularStyle16(color: ColorManager.hintText),
+                ),
+              ),
               SizedBox(height: 12.h),
               TextFormField(
-                  controller: _emailController,
-                  decoration: InputDecoration()),
+                style: getRegularStyle16(color: ColorManager.mediumText),
+                controller: _emailController,
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  hintStyle: getRegularStyle16(color: ColorManager.hintText),
+                ),
+              ),
             ],
           ),
         ),

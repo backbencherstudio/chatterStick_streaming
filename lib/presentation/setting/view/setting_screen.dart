@@ -3,6 +3,7 @@ import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
+import 'package:chatterstick_streaming_app/presentation/setting/view/widgets/logout.dart';
 import 'package:chatterstick_streaming_app/presentation/setting/view/widgets/profile_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,7 +94,9 @@ class _SettingScreenState extends State<SettingScreen> {
               ProfileListTile(
                 title: "Log Out",
                 leadindIcon: IconManager.logoutSvg,
-                onTap: () {},
+                onTap: () {
+                  onLogoutTap(context);
+                },
               ),
             ],
           ),

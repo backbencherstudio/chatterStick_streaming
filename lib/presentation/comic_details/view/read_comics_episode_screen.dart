@@ -57,7 +57,6 @@ class _ReadComicsEpisodeScreenState extends State<ReadComicsEpisodeScreen> {
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.zero,
-                // shrinkWrap: true,
                 itemCount: 10,
                 itemBuilder: (context, index) => Image.asset(
                   ImageManager.comic1Png,
@@ -66,44 +65,59 @@ class _ReadComicsEpisodeScreenState extends State<ReadComicsEpisodeScreen> {
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(top: 12.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        SvgPicture.asset(
+                          IconManager.previousSvg,
+                          height: 24.h,
+                          width: 24.h,
+                        ),
+                        Text('Prev'),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SvgPicture.asset(
+                          IconManager.book1Svg,
+                          height: 24.h,
+                          width: 24.h,
+                        ),
+                        Text('Episode'),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SvgPicture.asset(
+                          IconManager.favouriteNav,
+                          height: 24.h,
+                          width: 24.h,
+                        ),
+                        Text('favorite'),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SvgPicture.asset(
+                          IconManager.nextSvg,
+                          height: 24.h,
+                          width: 24.h,
+                        ),
+                        Text('Next'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              IconManager.previousSvg,
-              height: 24.h,
-              width: 24.h,
-            ),
-            label: "Prev",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              IconManager.book1Svg,
-              height: 24.h,
-              width: 24.h,
-            ),
-            label: "Episode",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              IconManager.favouriteNav,
-              height: 24.h,
-              width: 24.h,
-            ),
-            label: "favorite",
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              IconManager.nextSvg,
-              height: 24.h,
-              width: 24.h,
-            ),
-            label: "Next",
-          ),
-        ],
       ),
     );
   }

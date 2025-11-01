@@ -13,7 +13,7 @@ import '../../presentation/auth/login/view/verify_otp_screen.dart';
 import '../../presentation/auth/sign_up/view/sign_up_screen.dart';
 import '../../presentation/auth/sign_up/view/verify_new_account_otp_screen.dart';
 import '../../presentation/notification/view/notification_screen.dart';
-import '../../presentation/setting/view/create_new_password_screen.dart';
+import '../../presentation/setting/view/change_new_password_screen.dart';
 
 
 

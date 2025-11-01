@@ -1,6 +1,7 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/data/models/comics_model.dart';
 import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
@@ -32,8 +33,10 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
+                        style: getRegularStyle16(color: ColorManager.mediumText),
                         decoration: InputDecoration(
                           hintText: 'Search...',
+                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
                           prefixIcon: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.h,

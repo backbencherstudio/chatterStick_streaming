@@ -18,30 +18,30 @@ final List<DownloadComic> downloadComics = const [
     title: "Downloaded Comics are here",
     subtitle: 'Fantasy',
   ),
-  // DownloadComic(
-  //   image: AppImages.recoComics,
-  //   title: "Dragon's Legacy",
-  //   subtitle: 'Adventure',
-  // ),
-  // DownloadComic(
-  //   image: AppImages.recoComics,
-  //   title: "Space Odyssey",
-  //   subtitle: 'Sci-Fi',
-  // ),
-  //
-  // DownloadComic(
-  //   image: AppImages.recoComics,
-  //   title: "Goblin's Ascent: From Loser to Winner",
-  //   subtitle: 'Fantasy',
-  // ),
-  // DownloadComic(
-  //   image: AppImages.recoComics,
-  //   title: "Dragon's Legacy",
-  //   subtitle: 'Adventure',
-  // ),
-  // DownloadComic(
-  //   image: AppImages.recoComics,
-  //   title: "Space Odyssey",
-  //   subtitle: 'Sci-Fi',
-  // ),
+  DownloadComic(
+    image: ImageManager.recoComics,
+    title: "Dragon's Legacy",
+    subtitle: 'Adventure',
+  ),
+  DownloadComic(
+    image: ImageManager.recoComics,
+    title: "Space Odyssey",
+    subtitle: 'Sci-Fi',
+  ),
+
+  DownloadComic(
+    image: ImageManager.recoComics,
+    title: "Goblin's Ascent: From Loser to Winner",
+    subtitle: 'Fantasy',
+  ),
+  DownloadComic(
+    image: ImageManager.recoComics,
+    title: "Dragon's Legacy",
+    subtitle: 'Adventure',
+  ),
+  DownloadComic(
+    image: ImageManager.recoComics,
+    title: "Space Odyssey",
+    subtitle: 'Sci-Fi',
+  ),
 ];

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:email_validator/email_validator.dart';
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 //     ],
                 //   ),
                 // ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 16.h),
                 Text(
                   'Log in to your\naccount',
                   style: style.headlineLarge?.copyWith(
@@ -72,17 +73,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 SizedBox(height: 20.h),
                 TextFormField(
-                  style: style.bodyMedium?.copyWith(
-                    color: ColorManager.mediumText,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16.sp,
-                  ),
+                  style: getRegularStyle16(color: ColorManager.mediumText),
+
+                  // style.bodyMedium?.copyWith(
+                  //   color: ColorManager.mediumText,
+                  //   fontWeight: FontWeight.w400,
+                  //   fontSize: 16.sp,
+                  // ),
                   controller: _emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'Email address',
+                    hintStyle: getRegularStyle16(color: ColorManager.hintText),
                   ),
                   validator: (value) {
                     if (value == null ||
@@ -98,12 +102,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 12.h),
 
                 TextFormField(
+                  style: getRegularStyle16(color: ColorManager.mediumText),
                   controller: _passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.done,
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: 'Password',
+                    hintStyle: getRegularStyle16(color: ColorManager.hintText),
                     suffixIcon: Icon(
                       Icons.visibility_off_outlined,
                       size: 24.h,
@@ -180,6 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
+                SizedBox(height: 16.h),
               ],
             ),
           ),

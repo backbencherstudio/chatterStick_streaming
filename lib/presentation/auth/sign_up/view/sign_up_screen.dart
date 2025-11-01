@@ -103,6 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: 16.h),
 
                     TextFormField(
+                      style: getRegularStyle16(color: ColorManager.mediumText),
                       decoration: InputDecoration(
                         hintText: 'Enter your name',
                         hintStyle: getRegularStyle16(
@@ -112,6 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: 12.h),
                     TextFormField(
+                      style: getRegularStyle16(color: ColorManager.mediumText),
                       decoration: InputDecoration(
                         hintText: 'Email address',
                         hintStyle: getRegularStyle16(
@@ -121,6 +123,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     SizedBox(height: 12.h),
                     TextFormField(
+                      style: getRegularStyle16(color: ColorManager.mediumText),
                       decoration: InputDecoration(
                         hintText: 'Password',
                         hintStyle: getRegularStyle16(
