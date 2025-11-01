@@ -5,4 +5,5 @@ class ImageManager {
   static const String animeFev = '$baseUrl/anime_fev.png';
   static const String libraryPng = '$baseUrl/library.jpg';
   static const String bannerPng = '$baseUrl/banner.png';
+  static const String profilePng = '$baseUrl/profile.png';
 }

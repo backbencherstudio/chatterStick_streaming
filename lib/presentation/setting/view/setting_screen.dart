@@ -1,5 +1,9 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
+import 'package:chatterstick_streaming_app/core/route/route_name.dart';
+import 'package:chatterstick_streaming_app/presentation/setting/view/widgets/profile_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,34 +24,36 @@ class _SettingScreenState extends State<SettingScreen> {
       backgroundColor: ColorManager.whiteColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 16.h),
               Row(
                 children: [
                   CircleAvatar(
                     radius: 40.r,
-                    child: SvgPicture.asset(
-                      IconManager.notificationSvg,
-                      height: 24,
-                      width: 24,
+                    child: Image.asset(
+                      ImageManager.profilePng,
+                      height: 80.h,
+                      width: 80.h,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  SizedBox(width: 30),
+                  SizedBox(width: 30.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Daniel",
+                        "Daniel Jones",
                         style: getMediumStyle18(
                           color: ColorManager.textPrimary,
                         ),
                       ),
                       Text(
-                        "data@gmail.com",
+                        "daniel.jones@example.com",
                         style: getLightStyle14(
                           color: ColorManager.subtitleText,
                         ),
@@ -56,43 +62,39 @@ class _SettingScreenState extends State<SettingScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              ProfileListTile(  title:"My Account" ,leadindIcon: IconManager.checkmarkSvg ,),
-              ProfileListTile(  title:"My Account" ,leadindIcon: IconManager.downloadSvg ,),
-              ProfileListTile(  title:"My Account" ,leadindIcon: IconManager.searchSvg ,),
-              ProfileListTile(  title:"My Account" ,leadindIcon: IconManager.notificationSvg ,),
-              ProfileListTile(  title:"My Account" ,leadindIcon: IconManager.downloadSvg ,),
+              SizedBox(height: 24.h),
+              Text(
+                'General',
+                style: getLightStyle14(
+                  color: ColorManager.subtitleText3,
+                  fontWeight: FontWeightManager.semiBold600,
+                ),
+              ),
+              SizedBox(height: 12.h),
+              ProfileListTile(
+                title: "My Account",
+                leadindIcon: IconManager.userSvg,
+                onTap: () {
+                  Navigator.pushNamed(context, RouteName.myAccountScreen);
+                },
+              ),
+              ProfileListTile(
+                title: "Send Ideas",
+                leadindIcon: IconManager.ideaSvg,
+                onTap: () {},
+              ),
+              ProfileListTile(
+                title: "Change password",
+                leadindIcon: IconManager.lockPasswordSvg,
+                onTap: () {},
+              ),
+              ProfileListTile(
+                title: "Log Out",
+                leadindIcon: IconManager.logoutSvg,
+                onTap: () {},
+              ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileListTile extends StatelessWidget {
-  final String title;
-  final String leadindIcon;
-
-  const ProfileListTile({super.key, required this.title, required this.leadindIcon, });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric( vertical: 8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorManager.fillColor,
-          borderRadius: BorderRadius.circular(8.h),
-        ),
-        child: ListTile(
-          leading: SvgPicture.asset(
-          leadindIcon,
-            height: 24,
-            width: 24,
-          ),
-          title: Text("data"),
-          trailing: Icon(Icons.arrow_forward_ios,size: 24.h,color: ColorManager.iconColor,),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/auth/login/view/login_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/auth/login/view/verify_email_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/bottom_nav/view/bottom_nav_bar.dart';
+import 'package:chatterstick_streaming_app/presentation/setting/view/my_account_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/auth/login/view/create_new_password_screen.dart';
@@ -33,6 +34,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
         case RouteName.verifyNewAccountOtpScreen:
         return MaterialPageRoute(builder: (_) => const VerifyNewAccountOtpScreen());
+        case RouteName.myAccountScreen:
+        return MaterialPageRoute(builder: (_) => const MyAccountScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
