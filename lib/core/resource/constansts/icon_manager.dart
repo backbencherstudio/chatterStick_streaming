@@ -14,4 +14,8 @@ class IconManager {
   static String lockPasswordSvg = '$baseUrl/lock-password.svg';
   static String ideaSvg = '$baseUrl/idea-01.svg';
   static String arrowRightSvg = '$baseUrl/arrow-right-01.svg';
+  static String bookSvg = '$baseUrl/book-02.svg';
+  static String book1Svg = '$baseUrl/book-03.svg';
+  static String nextSvg = '$baseUrl/next.svg';
+  static String previousSvg = '$baseUrl/previous.svg';
 }

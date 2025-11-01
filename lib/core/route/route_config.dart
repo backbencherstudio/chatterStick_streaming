@@ -2,7 +2,10 @@ import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/auth/login/view/login_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/auth/login/view/verify_email_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/bottom_nav/view/bottom_nav_bar.dart';
+import 'package:chatterstick_streaming_app/presentation/comic_details/view/comic_details_screen.dart';
+import 'package:chatterstick_streaming_app/presentation/comic_details/view/read_comics_episode_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/setting/view/my_account_screen.dart';
+import 'package:chatterstick_streaming_app/presentation/setting/view/send_idea_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/splash/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/auth/login/view/create_new_password_screen.dart';
@@ -10,6 +13,7 @@ import '../../presentation/auth/login/view/verify_otp_screen.dart';
 import '../../presentation/auth/sign_up/view/sign_up_screen.dart';
 import '../../presentation/auth/sign_up/view/verify_new_account_otp_screen.dart';
 import '../../presentation/notification/view/notification_screen.dart';
+import '../../presentation/setting/view/create_new_password_screen.dart';
 
 
 
@@ -36,6 +40,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const VerifyNewAccountOtpScreen());
         case RouteName.myAccountScreen:
         return MaterialPageRoute(builder: (_) => const MyAccountScreen());
+        case RouteName.sendIdeaScreen:
+        return MaterialPageRoute(builder: (_) => const SendIdeaScreen());
+        case RouteName.changeNewPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ChangeNewPasswordScreen());
+        case RouteName.comicDetailsScreen:
+        return MaterialPageRoute(builder: (_) => const ComicDetailsScreen());
+        case RouteName.readComicsEpisodeScreen:
+        return MaterialPageRoute(builder: (_) => const ReadComicsEpisodeScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>

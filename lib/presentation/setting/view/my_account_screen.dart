@@ -32,7 +32,9 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text(
                       'Cancel',
                       style: getRegularStyle16(
@@ -49,7 +51,9 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text(
                       'Save',
                       style: getRegularStyle16(

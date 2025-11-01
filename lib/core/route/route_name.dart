@@ -10,5 +10,9 @@ class RouteName {
    static const String signUpScreen = '/SignUpScreen';
    static const String verifyNewAccountOtpScreen = '/VerifyNewAccountOtpScreen';
    static const String myAccountScreen = '/MyAccountScreen';
+   static const String sendIdeaScreen = '/SendIdeaScreen';
+   static const String changeNewPasswordScreen = '/ChangeNewPasswordScreen';
+   static const String comicDetailsScreen = '/ComicDetailsScreen';
+   static const String readComicsEpisodeScreen = '/ReadComicsEpisodeScreen';
 
 }

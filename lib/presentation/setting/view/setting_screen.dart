@@ -6,8 +6,6 @@ import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/setting/view/widgets/profile_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-
 import '../../../core/resource/style_manager.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -81,12 +79,16 @@ class _SettingScreenState extends State<SettingScreen> {
               ProfileListTile(
                 title: "Send Ideas",
                 leadindIcon: IconManager.ideaSvg,
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RouteName.sendIdeaScreen);
+                },
               ),
               ProfileListTile(
                 title: "Change password",
                 leadindIcon: IconManager.lockPasswordSvg,
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RouteName.changeNewPasswordScreen);
+                },
               ),
               ProfileListTile(
                 title: "Log Out",

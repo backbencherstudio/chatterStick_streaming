@@ -1,6 +1,7 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
+import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/data/models/comics_model.dart';
 import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
 
@@ -48,7 +49,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 24.h),
 
-
                       // Banner widgets
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
@@ -81,10 +81,18 @@ class HomeScreen extends StatelessWidget {
                             final comic = comics[index];
                             return Padding(
                               padding: EdgeInsets.only(right: 13.w),
-                              child: CustomComicBox(
-                                image: comic.image,
-                                title: comic.title,
-                                subtitle: comic.subtitle,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    RouteName.comicDetailsScreen,
+                                  );
+                                },
+                                child: CustomComicBox(
+                                  image: comic.image,
+                                  title: comic.title,
+                                  subtitle: comic.subtitle,
+                                ),
                               ),
                             );
                           },

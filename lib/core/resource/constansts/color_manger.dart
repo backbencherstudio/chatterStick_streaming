@@ -22,11 +22,13 @@ class ColorManager {
   static const Color titleText = Color(0xFF2F3131);
   static const Color titleText1 = Color(0xFF535353);
   static const Color titleText2 = Color(0xFFE33D3D);
+  static const Color titleText3 = Color(0xFF313131);
   static const Color subtitleText = Color(0xFF686868);
   static const Color subtitleText1 = Color(0xFF60655C);
   static const Color subtitleText2 = Color(0xFFB6B8B6);
   static const Color subtitleText3 = Color(0xFF70756B);
   static const Color mediumText = Color(0xFF363A33);
+  static const Color mediumText1 = Color(0xFF2F2A29);
 
   // ===== Button & Label Colors =====
   static const Color buttonText = Color(0xFF334289);
