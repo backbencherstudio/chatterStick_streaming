@@ -148,7 +148,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisCount: 2, // 2 items horizontally
                           mainAxisSpacing: 0.h,
                           crossAxisSpacing: 13.w,
-                          childAspectRatio: 0.56,
+                          childAspectRatio: 0.58,
                         ),
                         itemBuilder: (context, index) {
                           final comic = comics[index];

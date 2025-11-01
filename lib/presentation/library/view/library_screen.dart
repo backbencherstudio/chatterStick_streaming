@@ -150,11 +150,10 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                     itemCount: downloadComics.length,
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount:
-                                              2, // 2 items horizontally
+                                          crossAxisCount: 2,
                                           mainAxisSpacing: 0.h,
                                           crossAxisSpacing: 13.w,
-                                          childAspectRatio: 0.5,
+                                          childAspectRatio: 0.58,
                                         ),
                                     itemBuilder: (context, index) {
                                       final comic = downloadComics[index];
