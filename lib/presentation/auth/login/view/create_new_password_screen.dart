@@ -140,7 +140,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                           if (_formKey.currentState!.validate()) {
                             Navigator.pushNamed(
                               context,
-                              RouteName.createNewPasswordScreen,
+                              RouteName.loginScreen,
                             );
                           }
                         },

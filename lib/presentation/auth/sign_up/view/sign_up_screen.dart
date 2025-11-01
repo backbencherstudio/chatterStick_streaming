@@ -45,56 +45,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               Expanded(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Create a new account',
                       style: getBoldStyle32(color: ColorManager.mediumText),
                     ),
                     SizedBox(height: 16.h),
-                    Stack(
-                      children: [
-                        Container(
-                          height: 120.h,
-                          width: 120.w,
-                          decoration: BoxDecoration(
-                            color: ColorManager.containerColor2,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.person_2_outlined,
-                            size: 42.h,
-                            color: ColorManager.whiteColor,
-                          ),
-                        ),
-
-                        Positioned(
-                          right: -10,
-                          bottom: -10,
-                          child: Container(
+                    Center(
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 120.h,
+                            width: 120.w,
                             decoration: BoxDecoration(
-                              color: ColorManager.whiteColor,
+                              color: ColorManager.containerColor2,
                               shape: BoxShape.circle,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: ColorManager.containerColor3,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.w),
-                                  child: Icon(
-                                    Icons.camera_alt,
-                                    size: 24.h,
-                                    color: ColorManager.containerColor2,
+                            child: Icon(
+                              Icons.person_2_outlined,
+                              size: 42.h,
+                              color: ColorManager.whiteColor,
+                            ),
+                          ),
+
+                          Positioned(
+                            right: -10,
+                            bottom: -10,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: ColorManager.whiteColor,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: ColorManager.containerColor3,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.w),
+                                    child: Icon(
+                                      Icons.camera_alt,
+                                      size: 24.h,
+                                      color: ColorManager.containerColor2,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
 
                     SizedBox(height: 16.h),
@@ -144,7 +147,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     PrimaryButton(
                       title: 'Create Account',
                       width: double.infinity,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteName.verifyNewAccountOtpScreen);
+                      },
                     ),
                     SizedBox(height: 20.h),
                     Row(

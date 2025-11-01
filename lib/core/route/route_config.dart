@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../presentation/auth/login/view/create_new_password_screen.dart';
 import '../../presentation/auth/login/view/verify_otp_screen.dart';
 import '../../presentation/auth/sign_up/view/sign_up_screen.dart';
+import '../../presentation/auth/sign_up/view/verify_new_account_otp_screen.dart';
 import '../../presentation/notification/view/notification_screen.dart';
 
 
@@ -30,6 +31,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CreateNewPasswordScreen());
         case RouteName.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+        case RouteName.verifyNewAccountOtpScreen:
+        return MaterialPageRoute(builder: (_) => const VerifyNewAccountOtpScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
