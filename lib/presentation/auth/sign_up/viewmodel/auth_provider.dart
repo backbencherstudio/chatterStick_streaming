@@ -7,9 +7,28 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthModel>(
 );
 
 class AuthNotifier extends StateNotifier<AuthModel> {
-  AuthNotifier() : super(AuthModel(isLoading: false, isObscure: true));
+  AuthNotifier()
+    : super(
+        AuthModel(
+          isLoading: false,
+          isObscure: true,
+          isLoginObscure: true,
+          isCreateNewObscure: true,
+          isCreateReObscure: true,
+        ),
+      );
   void toggleObscure() {
     state = state.copyWith(isObscure: !state.isObscure);
+  }
+
+  void toggleLoginObscure() {
+    state = state.copyWith(isLoginObscure: !state.isLoginObscure);
+  }
+  void toggleCreateNewObscure() {
+    state = state.copyWith(isCreateNewObscure: !state.isCreateNewObscure);
+  }
+  void toggleCreateReObscure() {
+    state = state.copyWith(isCreateReObscure: !state.isCreateReObscure);
   }
 
   void toggleLoading() {

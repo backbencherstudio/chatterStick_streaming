@@ -25,7 +25,8 @@ class _CreateNewPasswordScreenState
 
   @override
   Widget build(BuildContext context) {
-    final isObscure = ref.watch(authProvider).isObscure;
+    final isObscure = ref.watch(authProvider).isCreateNewObscure;
+    final isReObscure = ref.watch(authProvider).isCreateReObscure;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -92,7 +93,7 @@ class _CreateNewPasswordScreenState
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              ref.read(authProvider.notifier).toggleObscure();
+                              ref.read(authProvider.notifier).toggleCreateNewObscure();
                             },
                             child: Icon(
                               isObscure
@@ -121,7 +122,7 @@ class _CreateNewPasswordScreenState
                           color: ColorManager.mediumText,
                         ),
                         controller: _confirmPasswordController,
-                        obscureText: isObscure,
+                        obscureText: isReObscure,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
@@ -131,10 +132,10 @@ class _CreateNewPasswordScreenState
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              ref.read(authProvider.notifier).toggleObscure();
+                              ref.read(authProvider.notifier).toggleCreateReObscure();
                             },
                             child: Icon(
-                              isObscure
+                              isReObscure
                                   ? Icons.visibility_off_outlined
                                   : Icons.visibility_outlined,
                               size: 24.h,

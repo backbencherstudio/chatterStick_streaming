@@ -34,7 +34,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isObscure = ref.watch(authProvider).isObscure;
+    final isLoginObscure = ref.watch(authProvider).isLoginObscure;
     final style = Theme.of(context).textTheme;
     return Scaffold(
       body: SafeArea(
@@ -110,16 +110,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   controller: _passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.done,
-                  obscureText: isObscure,
+                  obscureText: isLoginObscure,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     hintStyle: getRegularStyle16(color: ColorManager.hintText),
                     suffixIcon: GestureDetector(
                       onTap: () {
-                        ref.read(authProvider.notifier).toggleObscure();
+                        ref.read(authProvider.notifier).toggleLoginObscure();
+                        log('message');
                       },
                       child: Icon(
-                        isObscure
+                        isLoginObscure
                             ? Icons.visibility_off_outlined
                             : Icons.visibility_outlined,
                         size: 24.h,
