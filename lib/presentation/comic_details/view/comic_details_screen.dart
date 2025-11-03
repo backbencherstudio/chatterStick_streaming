@@ -7,10 +7,9 @@ import 'package:chatterstick_streaming_app/core/resource/values_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/custom_icon_button.dart';
-import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class ComicDetailsScreen extends StatefulWidget {
   const ComicDetailsScreen({super.key});

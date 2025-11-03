@@ -55,7 +55,7 @@ class ApiClient {
   }
 
   /// POST request
-  static Future<dynamic> postRequest({
+ Future<dynamic> postRequest({
     required String endpoints,
     Map<String, dynamic>? body,
 

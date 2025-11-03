@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
@@ -6,17 +8,19 @@ import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../viewmodel/sign_in_viewmodel.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -148,13 +152,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 PrimaryButton(
                   title: 'Login',
                   width: double.infinity,
-                  onTap: () {
+                  onTap: ()async {
+              
 
-                    Navigator.pushNamed(context, RouteName.bottomNavBar);
+                
 
                     if (_formKey.currentState!.validate()) {
-                      log('Login');
-                      Navigator.pushNamed(context, RouteName.bottomNavBar);
+                        final res=await   ref
+                        .read(signInViewModelProvider.notifier)
+                        .signIn(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text.trim(),
+                        );
+                        if(res){
+                              Navigator.pushNamed(context, RouteName.bottomNavBar);
+
+                        }
                     }
                   },
                 ),

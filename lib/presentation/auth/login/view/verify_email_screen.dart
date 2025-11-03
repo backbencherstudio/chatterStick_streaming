@@ -19,7 +19,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final style = Theme.of(context).textTheme;
+
 
     return Scaffold(
       body: SafeArea(

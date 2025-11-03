@@ -1,8 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../data/sources/local/shared_preference/shared_preference.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,9 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Navigate to HomeScreen after 3 seconds
-    Timer(const Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, RouteName.loginScreen);
+    Timer(const Duration(seconds: 1), () async {
+    // await SharedPreferenceData.removeToken();
+      final token = await SharedPreferenceData.getToken();
+      if (token != null) {
+        Navigator.pushNamed(context, RouteName.bottomNavBar);
+      } else {
+        Navigator.pushReplacementNamed(context, RouteName.loginScreen);
+      }
     });
   }
 
