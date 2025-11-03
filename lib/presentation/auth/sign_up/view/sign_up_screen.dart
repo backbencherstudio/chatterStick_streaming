@@ -1,20 +1,30 @@
+import 'dart:io';
+
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SignUpScreen extends StatefulWidget {
+import '../../../viewmodels/image_picker_provider.dart';
+
+class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  ConsumerState<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends ConsumerState<SignUpScreen> {
+
+
   @override
   Widget build(BuildContext context) {
+   final image = ref.watch(imagePickerProvider);
+    final notifier = ref.read(imagePickerProvider.notifier);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -54,50 +64,70 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: 16.h),
                     Center(
                       child: Stack(
-                        children: [
-                          Container(
-                            height: 120.h,
-                            width: 120.w,
-                            decoration: BoxDecoration(
-                              color: ColorManager.containerColor2,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.person_2_outlined,
-                              size: 42.h,
-                              color: ColorManager.whiteColor,
-                            ),
-                          ),
-
-                          Positioned(
-                            right: -10,
-                            bottom: -10,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: ColorManager.whiteColor,
+                              children: [
+                               image != null
+                          ? Container(
+                              width: 120,
+                              height: 120,
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
+                                color: Colors.grey,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
+                              clipBehavior: Clip
+                                  .antiAlias,
+                              child: Image.file(
+                                      File(image.path),
+                                      fit: BoxFit.cover,
+                                    )
+                                  
+                            )
+                          :  Container(
+                                  height: 120.h,
+                                  width: 120.w,
                                   decoration: BoxDecoration(
-                                    color: ColorManager.containerColor3,
+                                    color: ColorManager.containerColor2,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8.w),
-                                    child: Icon(
-                                      Icons.camera_alt,
-                                      size: 24.h,
-                                      color: ColorManager.containerColor2,
+                                  child: Icon(
+                                    Icons.person_2_outlined,
+                                    size: 42.h,
+                                    color: ColorManager.whiteColor,
+                                  ),
+                                ),
+
+                                Positioned(
+                                  right: -10,
+                                  bottom: -10,
+                                  child: GestureDetector(
+                                    onTap: () => notifier.pickImage(),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: ColorManager.whiteColor,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: ColorManager.containerColor3,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.w),
+                                            child: Icon(
+                                              Icons.camera_alt,
+                                              size: 24.h,
+                                              color:
+                                                  ColorManager.containerColor2,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
                     ),
 
                     SizedBox(height: 16.h),
@@ -151,7 +181,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       title: 'Create Account',
                       width: double.infinity,
                       onTap: () {
-                        Navigator.pushNamed(context, RouteName.verifyNewAccountOtpScreen);
+                        Navigator.pushNamed(
+                          context,
+                          RouteName.verifyNewAccountOtpScreen,
+                        );
                       },
                     ),
                     SizedBox(height: 20.h),
