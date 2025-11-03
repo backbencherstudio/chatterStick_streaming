@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../viewmodels/image_picker_provider.dart';
+import '../../provider/image_picker_provider.dart';
 
 class MyAccountScreen extends ConsumerStatefulWidget {
   const MyAccountScreen({super.key});

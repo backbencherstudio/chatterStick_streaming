@@ -7,9 +7,9 @@ import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.d
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 
-import '../../../viewmodels/image_picker_provider.dart';
+
+import '../../../provider/image_picker_provider.dart';
 
 class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});
