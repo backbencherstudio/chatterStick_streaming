@@ -24,6 +24,14 @@ class _CreateNewPasswordScreenState
       TextEditingController();
 
   @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _formKey.currentState?.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isObscure = ref.watch(authProvider).isCreateNewObscure;
     final isReObscure = ref.watch(authProvider).isCreateReObscure;
