@@ -15,6 +15,8 @@ class AuthNotifier extends StateNotifier<AuthModel> {
           isLoginObscure: true,
           isCreateNewObscure: true,
           isCreateReObscure: true,
+          isCurrentObscure: true,
+          isNewObscure: true,
         ),
       );
   void toggleObscure() {
@@ -29,6 +31,12 @@ class AuthNotifier extends StateNotifier<AuthModel> {
   }
   void toggleCreateReObscure() {
     state = state.copyWith(isCreateReObscure: !state.isCreateReObscure);
+  }
+  void toggleCurrentObscure() {
+    state = state.copyWith(isCurrentObscure: !state.isCurrentObscure);
+  }
+  void toggleNewObscure() {
+    state = state.copyWith(isNewObscure: !state.isNewObscure);
   }
 
   void toggleLoading() {
