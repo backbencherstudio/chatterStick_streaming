@@ -48,7 +48,8 @@ class _ChangeNewPasswordScreenState extends State<ChangeNewPasswordScreen> {
               Spacer(),
               PrimaryButton(title: 'Create new password', width: double.infinity, onTap: (){
                 Navigator.pop(context);
-              })
+              }),
+              SizedBox(height: 24.h,),
             ],
           ),
         ),

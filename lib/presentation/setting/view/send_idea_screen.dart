@@ -42,7 +42,8 @@ class _SendIdeaScreenState extends State<SendIdeaScreen> {
               SizedBox(height: 24.h),
               PrimaryButton(title: 'Submit Idea',width: double.infinity, onTap: (){
                 Navigator.pop(context);
-              })
+              }),
+              SizedBox(height: 24.h),
             ],
           ),
         ),

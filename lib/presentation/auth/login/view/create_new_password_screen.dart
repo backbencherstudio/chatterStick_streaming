@@ -150,11 +150,12 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         },
                       ),
 
-                      SizedBox(height: 24.h),
+
                     ],
                   ),
                 ),
               ),
+              SizedBox(height: 24.h),
             ],
           ),
         ),
