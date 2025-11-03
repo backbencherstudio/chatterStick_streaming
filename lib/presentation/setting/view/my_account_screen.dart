@@ -1,23 +1,30 @@
+import 'dart:io';
+
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyAccountScreen extends StatefulWidget {
+import '../../viewmodels/image_picker_provider.dart';
+
+class MyAccountScreen extends ConsumerStatefulWidget {
   const MyAccountScreen({super.key});
 
   @override
-  State<MyAccountScreen> createState() => _MyAccountScreenState();
+  ConsumerState<MyAccountScreen> createState() => _MyAccountScreenState();
 }
 
-class _MyAccountScreenState extends State<MyAccountScreen> {
+class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final image = ref.watch(imagePickerProvider);
+    final notifier = ref.read(imagePickerProvider.notifier);
     _nameController.text = 'Daniel Jones';
     _emailController.text = 'example@gmail.com';
     return Scaffold(
@@ -32,6 +39,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                 children: [
                   TextButton(
                     onPressed: () {
+                         notifier.clearImage();
                       Navigator.pop(context);
                     },
                     child: Text(
@@ -51,6 +59,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                   ),
                   TextButton(
                     onPressed: () {
+                      notifier.clearImage();
+
                       Navigator.pop(context);
                     },
                     child: Text(
@@ -67,42 +77,59 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
               Center(
                 child: Stack(
                   children: [
-                    Container(
-                      height: 120.h,
-                      width: 120.h,
-                      decoration: BoxDecoration(
-                        color: ColorManager.containerColor2,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.asset(
-                        ImageManager.profilePng,
-                        height: 120.h,
-                        width: 120.h,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    image != null
+                        ? Container(
+                            width: 120,
+                            height: 120,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.grey,
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: Image.file(
+                              File(image.path),
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : Container(
+                            height: 120.h,
+                            width: 120.h,
+                            decoration: BoxDecoration(
+                              color: ColorManager.containerColor2,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                              ImageManager.profilePng,
+                              height: 120.h,
+                              width: 120.h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
 
                     Positioned(
                       right: -10,
                       bottom: -10,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: ColorManager.whiteColor,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: ColorManager.containerColor3,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(8.w),
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: 24.h,
-                                color: ColorManager.containerColor2,
+                      child: GestureDetector(
+                        onTap: () => notifier.pickImage(),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: ColorManager.whiteColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: ColorManager.containerColor3,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(8.w),
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  size: 24.h,
+                                  color: ColorManager.containerColor2,
+                                ),
                               ),
                             ),
                           ),
