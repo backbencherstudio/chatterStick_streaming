@@ -1,6 +1,3 @@
-import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
-import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
-import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/data/models/notification_model.dart';
 import 'package:chatterstick_streaming_app/presentation/notification/view/widgets/custom_notification.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/middle_back_header.dart';
@@ -17,7 +14,7 @@ class NotificationScreen extends StatefulWidget {
 class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
-    final style = Theme.of(context).textTheme;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
