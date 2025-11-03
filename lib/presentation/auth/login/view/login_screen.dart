@@ -10,7 +10,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../sign_up/viewmodel/auth_provider.dart';
 import '../viewmodel/sign_in_viewmodel.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -35,6 +35,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLoginObscure = ref.watch(authProvider).isLoginObscure;
     final style = Theme.of(context).textTheme;
     return Scaffold(
       body: SafeArea(
@@ -110,14 +111,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   controller: _passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputAction: TextInputAction.done,
-                  obscureText: true,
+                  obscureText: isLoginObscure,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     hintStyle: getRegularStyle16(color: ColorManager.hintText),
-                    suffixIcon: Icon(
-                      Icons.visibility_off_outlined,
-                      size: 24.h,
-                      color: ColorManager.iconColor,
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        ref.read(authProvider.notifier).toggleLoginObscure();
+                        log('message');
+                      },
+                      child: Icon(
+                        isLoginObscure
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        size: 24.h,
+                        color: ColorManager.iconColor,
+                      ),
                     ),
                   ),
                   validator: (value) {

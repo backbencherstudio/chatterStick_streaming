@@ -1,23 +1,23 @@
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
+import 'package:chatterstick_streaming_app/presentation/auth/sign_up/viewmodel/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/resource/constansts/color_manger.dart';
 import '../../../../core/route/route_name.dart';
 import '../../../widgets/primery_button.dart';
 
-
-
-
-class CreateNewPasswordScreen extends StatefulWidget {
+class CreateNewPasswordScreen extends ConsumerStatefulWidget {
   const CreateNewPasswordScreen({super.key});
 
   @override
-  State<CreateNewPasswordScreen> createState() =>
+  ConsumerState<CreateNewPasswordScreen> createState() =>
       _CreateNewPasswordScreenState();
 }
 
-class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
+class _CreateNewPasswordScreenState
+    extends ConsumerState<CreateNewPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
@@ -25,6 +25,8 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isObscure = ref.watch(authProvider).isCreateNewObscure;
+    final isReObscure = ref.watch(authProvider).isCreateReObscure;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -77,18 +79,29 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
                       // New Password screen
                       TextFormField(
-                        style: getRegularStyle16(color: ColorManager.mediumText),
+                        style: getRegularStyle16(
+                          color: ColorManager.mediumText,
+                        ),
                         controller: _passwordController,
-                        obscureText: true,
+                        obscureText: isObscure,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "New Password",
-                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
-                          suffixIcon: Icon(
-                            Icons.visibility_off_outlined,
-                            size: 24.h,
-                            color: ColorManager.iconColor,
+                          hintStyle: getRegularStyle16(
+                            color: ColorManager.hintText,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              ref.read(authProvider.notifier).toggleCreateNewObscure();
+                            },
+                            child: Icon(
+                              isObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              size: 24.h,
+                              color: ColorManager.iconColor,
+                            ),
                           ),
                         ),
                         validator: (value) {
@@ -105,18 +118,29 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
 
                       // Confirm New Password screen
                       TextFormField(
-                        style: getRegularStyle16(color: ColorManager.mediumText),
+                        style: getRegularStyle16(
+                          color: ColorManager.mediumText,
+                        ),
                         controller: _confirmPasswordController,
-                        obscureText: true,
+                        obscureText: isReObscure,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
                           hintText: "Re-enter the new Password",
-                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
-                          suffixIcon: Icon(
-                            Icons.visibility_off_outlined,
-                            size: 24.h,
-                            color: ColorManager.iconColor,
+                          hintStyle: getRegularStyle16(
+                            color: ColorManager.hintText,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              ref.read(authProvider.notifier).toggleCreateReObscure();
+                            },
+                            child: Icon(
+                              isReObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              size: 24.h,
+                              color: ColorManager.iconColor,
+                            ),
                           ),
                         ),
                         validator: (value) {
@@ -142,15 +166,10 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         ),
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            Navigator.pushNamed(
-                              context,
-                              RouteName.loginScreen,
-                            );
+                            Navigator.pushNamed(context, RouteName.loginScreen);
                           }
                         },
                       ),
-
-
                     ],
                   ),
                 ),
