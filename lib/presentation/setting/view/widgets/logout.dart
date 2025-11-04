@@ -3,6 +3,7 @@ import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.d
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/route/route_name.dart';
+import '../../../../data/sources/local/shared_preference/shared_preference.dart';
 
 
 void onLogoutTap(BuildContext context) {
@@ -93,8 +94,9 @@ void onLogoutTap(BuildContext context) {
                         color: ColorManager.whiteColor,
                         fontSize: 16.sp,
                       ),
-                      onTap: () {
+                      onTap: () async {
                         Navigator.pop(context);
+                        await SharedPreferenceData.removeToken();
                         Navigator.pushNamed(context, RouteName.loginScreen);
                       }),
                 ),

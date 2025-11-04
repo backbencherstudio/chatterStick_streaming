@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 1), () async {
-    // await SharedPreferenceData.removeToken();
+   // await SharedPreferenceData.removeToken();
       final token = await SharedPreferenceData.getToken();
       if (token != null) {
         Navigator.pushNamed(context, RouteName.bottomNavBar);
