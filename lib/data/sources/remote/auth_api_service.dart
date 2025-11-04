@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../core/network/api_clients.dart';
 import '../../../core/network/api_endpoints.dart';
 import '../local/shared_preference/shared_preference.dart';
@@ -7,20 +8,58 @@ import '../local/shared_preference/shared_preference.dart';
 class AuthApiService {
   final ApiClient apiClient;
   AuthApiService({required this.apiClient});
-  Future<bool> register() async {
-    final Response response = await apiClient.postRequest(
-      
-      endpoints: ApiEndpoints.register,
-    );
-    log(response.toString());
+  Future<bool> register({
+    required String email,
+    required String password,
+    required String name,
+    required XFile image,
+  }) async {
+    try {
+      FormData formData = FormData.fromMap({
+        "name": name,
+        "email": email,
+        "password": password,
+        "image": await MultipartFile.fromFile(image.path),
+      });
+      final response = await apiClient.postRequest(
+       formData: formData,
+        endpoints: ApiEndpoints.register,
+      );
+      if (response['success'] == true) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      rethrow;
+    }
+  }
 
-    return true;
+  Future<bool> emailVerify({required String email,required String otp})async{
+    try {
+      final body ={
+        "email":email,
+        "token":otp
+      };
+      final response = await apiClient.postRequest(
+        body: body,
+        endpoints: ApiEndpoints.verifyMail,
+      );
+      if(response['success']){
+        return true;
+      }else{
+        return false;
+      }
+
+    }catch(error){
+      rethrow;
+    }
   }
 
   Future<bool> login({required String email, required String password}) async {
     try {
       final body = {"email": email, "password": password};
-      final dynamic response = await apiClient.postRequest(
+      final response = await apiClient.postRequest(
         body: body,
         endpoints: ApiEndpoints.login,
       );

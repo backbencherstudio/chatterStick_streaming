@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import '../../presentation/auth/login/view/create_new_password_screen.dart';
 import '../../presentation/auth/login/view/verify_otp_screen.dart';
 import '../../presentation/auth/sign_up/view/sign_up_screen.dart';
-import '../../presentation/auth/sign_up/view/verify_new_account_otp_screen.dart';
+import '../../presentation/auth/sign_up/view/verify_sign_up_otp_screen.dart';
 import '../../presentation/notification/view/notification_screen.dart';
 import '../../presentation/setting/view/change_new_password_screen.dart';
 
@@ -37,7 +37,10 @@ class AppRouter {
         case RouteName.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
         case RouteName.verifyNewAccountOtpScreen:
-        return MaterialPageRoute(builder: (_) => const VerifyNewAccountOtpScreen());
+        return MaterialPageRoute(builder: (_){
+          final email = settings.arguments as String;
+          return VerifySignUpOtpScreen(email: email,);
+        });
         case RouteName.myAccountScreen:
         return MaterialPageRoute(builder: (_) => const MyAccountScreen());
         case RouteName.sendIdeaScreen:
