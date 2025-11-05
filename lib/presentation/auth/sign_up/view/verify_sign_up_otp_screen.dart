@@ -134,17 +134,20 @@ class _VerifySignUpOtpScreenState extends ConsumerState<VerifySignUpOtpScreen> {
                             ),
                           ),
                           Text(
-                            '00:20',
+                            '02:00',
                             style: getRegularStyle16(
                               color: ColorManager.subtitleText1,
                               fontWeight: FontWeightManager.regular400,
                             ),
                           ),
-                          Text(
-                            'Resent',
-                            style: getRegularStyle16(
-                              color: ColorManager.subtitleText2,
-                              fontWeight: FontWeightManager.regular400,
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              'Resent',
+                              style: getRegularStyle16(
+                                color: ColorManager.subtitleText2,
+                                fontWeight: FontWeightManager.regular400,
+                              ),
                             ),
                           ),
                         ],
@@ -165,7 +168,7 @@ class _VerifySignUpOtpScreenState extends ConsumerState<VerifySignUpOtpScreen> {
                           if (_formKey.currentState!.validate()) {
                             final res = await ref
                                 .read(verifySignUpOtpProvider.notifier)
-                                .verifyOtp(
+                                .emailVerify(
                                   otp: _otpController.text.trim(),
                                   email: widget.email,
                                 );

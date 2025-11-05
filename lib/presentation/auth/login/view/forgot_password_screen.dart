@@ -5,22 +5,25 @@ import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class VerifyEmailScreen extends StatefulWidget {
-  const VerifyEmailScreen({super.key});
+import '../viewmodel/forgot_password_viewmodel.dart';
+
+class ForgotPasswordScreen extends ConsumerStatefulWidget {
+  const ForgotPasswordScreen({super.key});
+
 
   @override
-  State<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
+  ConsumerState<ForgotPasswordScreen> createState() =>
+      _ForgotPasswordScreenState();
 }
 
-class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
+class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   final TextEditingController _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -55,22 +58,27 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     children: [
                       Text(
                         "Forgot Password?",
-                          style: getBoldStyle32(color: ColorManager.mediumText)
+                        style: getBoldStyle32(color: ColorManager.mediumText),
                       ),
                       SizedBox(height: 16.h),
                       Text(
                         "Please enter your email address to reset\nyour password.",
-                        style: getMediumStyle18(color: ColorManager.subtitleText1),
+                        style: getMediumStyle18(
+                          color: ColorManager.subtitleText1,
+                        ),
                       ),
                       SizedBox(height: 20.h),
                       TextFormField(
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
-                        style: getRegularStyle16(color: ColorManager.mediumText),
+                        style: getRegularStyle16(
+                          color: ColorManager.mediumText,
+                        ),
                         decoration: InputDecoration(
                           hintText: "Email",
-                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
-
+                          hintStyle: getRegularStyle16(
+                            color: ColorManager.hintText,
+                          ),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -82,19 +90,36 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                           return null;
                         },
                       ),
-                     Spacer(),
+                      Spacer(),
                       PrimaryButton(
                         title: "Continue",
                         width: double.infinity,
                         containerColor: ColorManager.primary,
-                        textStyle: getMediumStyle18(color: ColorManager.whiteColor),
-                        onTap: () {
+                        textStyle: getMediumStyle18(
+                          color: ColorManager.whiteColor,
+                        ),
+                        onTap: () async {
                           log(_emailController.text);
-                          Navigator.pushNamed(context, RouteName.verifyOTPScreen);
+                          // Navigator.pushNamed(context, RouteName.verifyOTPScreen);
                           if (_formKey.currentState!.validate()) {
-                            Navigator.pushNamed(context, RouteName.verifyOTPScreen);
-
-                            // context.push(RouteName.verifyEmail);
+                            final res = await ref
+                                .read(forgotPasswordProvider.notifier)
+                                .forgotPassword(
+                                  email: _emailController.text.trim(),
+                                );
+                            if (res) {
+                              Navigator.pushNamed(
+                                context,
+                                RouteName.verifyOTPScreen,
+                                arguments: _emailController.text.trim(),
+                              );
+                            } else{
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Something went wrong"),
+                                ),
+                              );
+                            }
                           }
                         },
                       ),
@@ -110,6 +135,3 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     );
   }
 }
-
-
-

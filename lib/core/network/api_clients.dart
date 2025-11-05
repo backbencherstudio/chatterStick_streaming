@@ -58,7 +58,7 @@ class ApiClient {
  Future<dynamic> postRequest({
     required String endpoints,
     Map<String, dynamic>? body,
-
+   //Map<String, String>? headers,
     FormData? formData,
   }) async {
     try {
@@ -70,7 +70,9 @@ class ApiClient {
           headers: headers ?? {"Content-Type": "application/json"},
         ),
       );
-      //log("\nPOST Request Successful: ${response.data}\n");
+      log("\nPOST Body: $body\n");
+      log("\nPOST Request Successful: ${response.data}\n");
+
       return ResposeHandle.handleResponse(response);
     } catch (e) {
       if (e is DioException) {

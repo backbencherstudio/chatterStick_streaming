@@ -13,16 +13,18 @@ class AuthApiService {
     required String password,
     required String name,
     required XFile image,
+    required String device,
   }) async {
     try {
       FormData formData = FormData.fromMap({
         "name": name,
         "email": email,
         "password": password,
+        "device": device,
         "image": await MultipartFile.fromFile(image.path),
       });
       final response = await apiClient.postRequest(
-       formData: formData,
+        formData: formData,
         endpoints: ApiEndpoints.register,
       );
       if (response['success'] == true) {
@@ -35,23 +37,36 @@ class AuthApiService {
     }
   }
 
-  Future<bool> emailVerify({required String email,required String otp})async{
+  Future<bool> emailVerify({required String email, required String otp}) async {
     try {
-      final body ={
-        "email":email,
-        "token":otp
-      };
+      final body = {"email": email, "token": otp};
       final response = await apiClient.postRequest(
         body: body,
         endpoints: ApiEndpoints.verifyMail,
       );
-      if(response['success']){
+      if (response['success']) {
         return true;
-      }else{
+      } else {
         return false;
       }
+    } catch (error) {
+      rethrow;
+    }
+  }
 
-    }catch(error){
+  Future<bool> forgotPassword({required String email}) async {
+    try {
+      final body = {'email': email};
+      final response = await apiClient.postRequest(
+        body: body,
+        endpoints: ApiEndpoints.forgotPassword,
+      );
+      if (response['success']) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
       rethrow;
     }
   }

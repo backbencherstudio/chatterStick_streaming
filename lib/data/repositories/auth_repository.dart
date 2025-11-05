@@ -4,12 +4,13 @@ import 'package:image_picker/image_picker.dart';
 class AuthRepository {
   final AuthApiService remoteSource;
   AuthRepository({required this.remoteSource});
-  Future<bool> register({required String email, required String password, required String name, required XFile image})async {
+  Future<bool> register({required String device,required String email, required String password, required String name, required XFile image})async {
    return await remoteSource.register(
      email: email,
      password: password,
      name: name,
-     image: image
+     image: image,
+       device: device
    );
   }
     Future<bool> login({required String email ,required String password})async {
@@ -18,6 +19,9 @@ class AuthRepository {
 
   Future<bool> emailVerify({required String email,required String otp}){
     return remoteSource.emailVerify(email: email, otp: otp);
+  }
 
+  Future<bool> forgotPassword({required String email}){
+    return remoteSource.forgotPassword(email: email);
   }
 }

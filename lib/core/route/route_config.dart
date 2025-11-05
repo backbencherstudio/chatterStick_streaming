@@ -1,6 +1,6 @@
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/auth/login/view/login_screen.dart';
-import 'package:chatterstick_streaming_app/presentation/auth/login/view/verify_email_screen.dart';
+import 'package:chatterstick_streaming_app/presentation/auth/login/view/forgot_password_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/bottom_nav/view/bottom_nav_bar.dart';
 import 'package:chatterstick_streaming_app/presentation/comic_details/view/comic_details_screen.dart';
 import 'package:chatterstick_streaming_app/presentation/comic_details/view/read_comics_episode_screen.dart';
@@ -13,7 +13,7 @@ import '../../presentation/auth/login/view/verify_otp_screen.dart';
 import '../../presentation/auth/sign_up/view/sign_up_screen.dart';
 import '../../presentation/auth/sign_up/view/verify_sign_up_otp_screen.dart';
 import '../../presentation/notification/view/notification_screen.dart';
-import '../../presentation/setting/view/change_new_password_screen.dart';
+import '../../presentation/setting/view/change_old_password_screen.dart';
 
 
 
@@ -28,10 +28,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
         case RouteName.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
-        case RouteName.verifyEmailScreen:
-        return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
+
+        case RouteName.forgotPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
+
         case RouteName.verifyOTPScreen:
-        return MaterialPageRoute(builder: (_) => const VerifyOTPScreen());
+        return MaterialPageRoute(builder: (_){
+          final email = settings.arguments as String;
+          return VerifyOTPScreen(email: email,);
+        });
+
         case RouteName.createNewPasswordScreen:
         return MaterialPageRoute(builder: (_) => const CreateNewPasswordScreen());
         case RouteName.signUpScreen:
@@ -45,8 +51,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MyAccountScreen());
         case RouteName.sendIdeaScreen:
         return MaterialPageRoute(builder: (_) => const SendIdeaScreen());
-        case RouteName.changeNewPasswordScreen:
-        return MaterialPageRoute(builder: (_) => const ChangeNewPasswordScreen());
+        case RouteName.changeOldPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const ChangeOldPasswordScreen());
         case RouteName.comicDetailsScreen:
         return MaterialPageRoute(builder: (_) => const ComicDetailsScreen());
         case RouteName.readComicsEpisodeScreen:

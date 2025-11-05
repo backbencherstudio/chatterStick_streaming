@@ -67,7 +67,7 @@ class _CreateNewPasswordScreenState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 14.h),
+                      // SizedBox(height: 14.h),
 
                       // Title
                       Text(
@@ -113,10 +113,10 @@ class _CreateNewPasswordScreenState
                           ),
                         ),
                         validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.length < 6) {
+                          if (value == null || value.isEmpty) {
                             return 'Please enter your password';
+                          } else if (value.length < 8) {
+                            return 'Password must be at least 8 characters long';
                           } else {
                             return null;
                           }
@@ -152,10 +152,10 @@ class _CreateNewPasswordScreenState
                           ),
                         ),
                         validator: (value) {
-                          if (value == null ||
-                              value.isEmpty ||
-                              value.length < 6) {
-                            return 'Please enter your password';
+                          if (value == null || value.isEmpty) {
+                            return 'Please confirm your password';
+                          } else if (value != _passwordController.text) {
+                            return 'Passwords do not match';
                           } else {
                             return null;
                           }
