@@ -133,7 +133,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
                     } else if (value.length < 8) {
-                      return 'Password must be at least 8 characters long';
+                      return 'Password must be at least 8 characters';
                     } else {
                       return null;
                     }
@@ -144,7 +144,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 GestureDetector(
                   onTap: () {
                     log('Forgot password');
-                    Navigator.pushNamed(context, RouteName.verifyEmailScreen);
+                    Navigator.pushNamed(context, RouteName.forgotPasswordScreen);
                   },
                   child: Align(
                     alignment: Alignment.center,

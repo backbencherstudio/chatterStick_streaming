@@ -88,7 +88,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: "Change password",
                 leadindIcon: IconManager.lockPasswordSvg,
                 onTap: () {
-                  Navigator.pushNamed(context, RouteName.changeNewPasswordScreen);
+                  Navigator.pushNamed(context, RouteName.changeOldPasswordScreen);
                 },
               ),
               ProfileListTile(

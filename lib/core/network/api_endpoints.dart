@@ -1,11 +1,11 @@
 class ApiEndpoints {
   //auth
-  static const String baseUrl = "http://192.168.4.199:8080/api";
+  static const String baseUrl = "http://192.168.4.13:8080/api";
   static const String register = 'auth/register';
   static const String login = 'auth/login';
   static const String verifyMail = 'auth/verify-email';
   static const String forgotPassword = 'auth/forgot-password';
-  static const String changePassword = 'auth/forgot-password';
+  static const String changePassword = 'auth/change-password';
   static const String updateProfile = 'auth/update-profile';
   static const String me = 'auth/me';
   //profile

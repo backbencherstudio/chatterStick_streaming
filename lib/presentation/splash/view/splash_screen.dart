@@ -1,4 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:chatterstick_streaming_app/core/network/api_clients.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
    // await SharedPreferenceData.removeToken();
       final token = await SharedPreferenceData.getToken();
       if (token != null) {
+        ApiClient.headerSet(null);
         Navigator.pushNamed(context, RouteName.bottomNavBar);
       } else {
         Navigator.pushReplacementNamed(context, RouteName.loginScreen);

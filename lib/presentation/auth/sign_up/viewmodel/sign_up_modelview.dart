@@ -20,12 +20,14 @@ class SignUpModelview extends StateNotifier<bool> {
     required String password,
     required String name,
     required XFile image,
+    required String device,
   }) async {
     return await repository.register(
       email: email,
       password: password,
       name: name,
       image: image,
+      device: device,
     );
   }
 }

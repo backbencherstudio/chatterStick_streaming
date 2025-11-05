@@ -16,7 +16,7 @@ class SignUpOtpVerify extends StateNotifier<bool> {
   final AuthRepository repository;
   SignUpOtpVerify({required this.repository}) : super(false);
 
-  Future<bool> verifyOtp({required String otp, required String email}) async {
+  Future<bool> emailVerify({required String otp, required String email}) async {
     return await repository.emailVerify(email: email, otp: otp);
   }
 }

@@ -257,6 +257,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                                   password: _passwordController.text.trim(),
                                   name: _nameController.text.trim(),
                                   image: ref.watch(imagePickerProvider)!,
+                                  device: Platform.isAndroid
+                                      ? 'Android'
+                                      : 'IOS',
                                 );
 
                             if (res) {
