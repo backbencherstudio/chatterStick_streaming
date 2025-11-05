@@ -58,12 +58,14 @@ class _ChangeNewPasswordScreenState
                 SizedBox(height: 20.h),
                 TextFormField(
                   controller: _passwordController,
+                  textInputAction: TextInputAction.next,
                   style: getRegularStyle16(color: ColorManager.mediumText),
                   obscureText: isCurrentObscure,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     hintText: 'Current password',
                     hintStyle: getRegularStyle16(color: ColorManager.hintText),
+
                     suffixIcon: GestureDetector(
                       onTap: () {
                         ref.read(authProvider.notifier).toggleCurrentObscure();
@@ -92,6 +94,7 @@ class _ChangeNewPasswordScreenState
                   style: getRegularStyle16(color: ColorManager.mediumText),
                   obscureText: isNewObscure,
                   controller: _newPasswordController,
+                  textInputAction: TextInputAction.next,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     hintText: 'New password',
@@ -124,6 +127,7 @@ class _ChangeNewPasswordScreenState
                 TextFormField(
                   style: getRegularStyle16(color: ColorManager.mediumText),
                   obscureText: isConfirmNewObscure,
+                  textInputAction: TextInputAction.done,
                   controller: _confirmNewPasswordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
