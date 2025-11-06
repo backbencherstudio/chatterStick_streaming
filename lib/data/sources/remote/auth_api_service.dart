@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../core/network/api_clients.dart';
 import '../../../core/network/api_endpoints.dart';
+import '../../models/profile_model.dart';
 import '../local/shared_preference/shared_preference.dart';
 
 class AuthApiService {
@@ -89,6 +90,20 @@ class AuthApiService {
         return false;
       }
     } catch (error) {
+      rethrow;
+    }
+  }
+
+  Future<ProfileModel?> getProfile() async {
+    try {
+
+      final response = await apiClient.getRequest(endpoints: ApiEndpoints.me);
+      if (response['success'] == true) {
+        return ProfileModel.fromJson(response['data']);
+      } else {
+        return null;
+      }
+    } catch (e) {
       rethrow;
     }
   }

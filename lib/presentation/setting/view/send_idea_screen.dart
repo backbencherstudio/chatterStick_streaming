@@ -40,7 +40,22 @@ class _SendIdeaScreenState extends ConsumerState<SendIdeaScreen> {
             child: Column(
               children: [
                 SizedBox(height: 16.h),
-                const CustomHeader(title: 'Drop Your Idea!'),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20.sp,
+                        color: ColorManager.mediumText,
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: const CustomHeader(title: 'Drop Your Idea!'),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 24.h),
                 Text(
                   maxLines: 4,

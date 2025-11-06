@@ -1,6 +1,8 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/presentation/bottom_nav/viewmodel/bottom_nav_bar_viewmodel.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/route/route_name.dart';
 import '../../../../data/sources/local/shared_preference/shared_preference.dart';
@@ -83,22 +85,27 @@ void onLogoutTap(BuildContext context) {
                 SizedBox(
                   width: 10.w,
                 ),
-                Expanded(
-                  child: PrimaryButton(
-                      title: "Logout",
-                      containerColor: ColorManager.errorColor,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 16.w, vertical: 10.h),
-                      textStyle: style.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: ColorManager.whiteColor,
-                        fontSize: 16.sp,
-                      ),
-                      onTap: () async {
-                        Navigator.pop(context);
-                        await SharedPreferenceData.removeToken();
-                        Navigator.pushNamed(context, RouteName.loginScreen);
-                      }),
+                Consumer(
+                  builder: (context,ref,_) {
+                    return Expanded(
+                      child: PrimaryButton(
+                          title: "Logout",
+                          containerColor: ColorManager.errorColor,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16.w, vertical: 10.h),
+                          textStyle: style.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: ColorManager.whiteColor,
+                            fontSize: 16.sp,
+                          ),
+                          onTap: () async {
+                            Navigator.pop(context);
+                            ref.read(bottomNavBarProvider.notifier).onItemTapped(0);
+                            await SharedPreferenceData.removeToken();
+                            Navigator.pushNamed(context, RouteName.loginScreen);
+                          }),
+                    );
+                  }
                 ),
               ],
             ),

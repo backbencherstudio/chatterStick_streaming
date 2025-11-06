@@ -1,5 +1,8 @@
+import 'package:chatterstick_streaming_app/data/models/profile_model.dart';
 import 'package:chatterstick_streaming_app/data/sources/remote/auth_api_service.dart';
+import 'package:chatterstick_streaming_app/presentation/auth/sign_up/viewmodel/auth_provider.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepository {
   final AuthApiService remoteSource;
@@ -24,4 +27,15 @@ class AuthRepository {
   Future<bool> forgotPassword({required String email}){
     return remoteSource.forgotPassword(email: email);
   }
-}
+
+  Future<ProfileModel?> getProfile()async{
+    try {
+
+
+      return await remoteSource.getProfile(
+
+       );
+
+    }catch (e) {}
+
+}}
