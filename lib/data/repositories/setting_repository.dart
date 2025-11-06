@@ -17,4 +17,6 @@ class SettingRepository {
   Future<bool> createIdea({required String description}) {
     return remoteSource.createIdea(description: description);
   }
+
+
 }

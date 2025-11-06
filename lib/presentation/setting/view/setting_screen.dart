@@ -5,20 +5,24 @@ import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/setting/view/widgets/logout.dart';
 import 'package:chatterstick_streaming_app/presentation/setting/view/widgets/profile_list_tile.dart';
+import 'package:chatterstick_streaming_app/presentation/setting/viewmodel/profile_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/resource/style_manager.dart';
 
-class SettingScreen extends StatefulWidget {
+class SettingScreen extends ConsumerStatefulWidget {
   const SettingScreen({super.key});
 
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
+  ConsumerState<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
+class _SettingScreenState extends ConsumerState<SettingScreen> {
   @override
   Widget build(BuildContext context) {
+    var profile = ref.watch(profileViewModelProvider);
+
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
       body: SafeArea(
@@ -32,27 +36,31 @@ class _SettingScreenState extends State<SettingScreen> {
               SizedBox(height: 16.h),
               Row(
                 children: [
-                  CircleAvatar(
-                    radius: 40.r,
-                    child: Image.asset(
-                      ImageManager.profilePng,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(100.r),
+                    child: Image.network(
+                      profile?.avatarUrl ??
+                          'https://cdn-icons-png.flaticon.com/512/847/847969.png',
                       height: 80.h,
                       width: 80.h,
                       fit: BoxFit.cover,
                     ),
                   ),
+
                   SizedBox(width: 30.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Daniel Jones",
+                        profile?.name ?? "N/A",
+
                         style: getMediumStyle18(
                           color: ColorManager.textPrimary,
                         ),
                       ),
+                      SizedBox(height: 4.h),
                       Text(
-                        "daniel.jones@example.com",
+                        profile?.email ?? "N/A",
                         style: getLightStyle14(
                           color: ColorManager.subtitleText,
                         ),
@@ -88,7 +96,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: "Change password",
                 leadindIcon: IconManager.lockPasswordSvg,
                 onTap: () {
-                  Navigator.pushNamed(context, RouteName.changeOldPasswordScreen);
+                  Navigator.pushNamed(
+                    context,
+                    RouteName.changeOldPasswordScreen,
+                  );
                 },
               ),
               ProfileListTile(
