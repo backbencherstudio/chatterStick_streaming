@@ -1,4 +1,6 @@
-import 'dart:developer';
+
+import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../core/network/api_clients.dart';
@@ -29,6 +31,11 @@ class AuthApiService {
         endpoints: ApiEndpoints.register,
       );
       if (response['success'] == true) {
+         Utils.showToast(
+          message: response['message'],
+          backgroundColor: ColorManager.successColor,
+          textColor: ColorManager.whiteColor,
+        );
         return true;
       } else {
         return false;
@@ -46,6 +53,11 @@ class AuthApiService {
         endpoints: ApiEndpoints.verifyMail,
       );
       if (response['success']) {
+         Utils.showToast(
+          message: response['message'],
+          backgroundColor: ColorManager.successColor,
+          textColor: ColorManager.whiteColor,
+        );
         return true;
       } else {
         return false;
@@ -63,6 +75,11 @@ class AuthApiService {
         endpoints: ApiEndpoints.forgotPassword,
       );
       if (response['success']) {
+         Utils.showToast(
+          message: response['message'],
+          backgroundColor: ColorManager.successColor,
+          textColor: ColorManager.whiteColor,
+        );
         return true;
       } else {
         return false;
@@ -83,8 +100,12 @@ class AuthApiService {
         await SharedPreferenceData.setToken(
           response['authorization']['access_token'],
         );
-        final token = await SharedPreferenceData.getToken();
-        log("$token");
+        Utils.showToast(
+          message: response['message'],
+          backgroundColor: ColorManager.successColor,
+          textColor: ColorManager.whiteColor,
+        );
+
         return true;
       } else {
         return false;
@@ -94,17 +115,5 @@ class AuthApiService {
     }
   }
 
-  Future<ProfileModel?> getProfile() async {
-    try {
-
-      final response = await apiClient.getRequest(endpoints: ApiEndpoints.me);
-      if (response['success'] == true) {
-        return ProfileModel.fromJson(response['data']);
-      } else {
-        return null;
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
+ 
 }

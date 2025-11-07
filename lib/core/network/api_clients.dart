@@ -109,7 +109,7 @@ class ApiClient {
   }
 
   /// PATCH request
-  static Future<dynamic> patchRequest({
+Future<dynamic> patchRequest({
     required String endpoints,
     Map<String, dynamic>? body,
     // Map<String, String>? headers,
