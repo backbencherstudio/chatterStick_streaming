@@ -7,15 +7,15 @@ import '../../models/last_read_comics_model.dart';
 class HomeApiService {
   final ApiClient apiClient;
   HomeApiService({required this.apiClient});
-  Future<List<ComicsBannerModel>?> getBannarComics() async {
+  Future<List<ComicsModel>?> getBannarComics() async {
     try {
       final response = await apiClient.getRequest(
         endpoints: ApiEndpoints.bannerComics,
       );
       if (response['success'] == true) {
-        List<ComicsBannerModel> comicList = [];
+        List<ComicsModel> comicList = [];
         for (var item in response['data']) {
-          comicList.add(ComicsBannerModel.fromJson(item));
+          comicList.add(ComicsModel.fromJson(item));
         }
 
         return comicList;
@@ -27,15 +27,15 @@ class HomeApiService {
     }
   }
 
-  Future<List<ComicsBannerModel>?> getRecomandationComics() async {
+  Future<List<ComicsModel>?> getRecomandationComics() async {
     try {
       final response = await apiClient.getRequest(
         endpoints: ApiEndpoints.recommendedComics,
       );
       if (response['success'] == true) {
-          List<ComicsBannerModel> comicList = [];
+        List<ComicsModel> comicList = [];
         for (var item in response['data']) {
-          comicList.add(ComicsBannerModel.fromJson(item));
+          comicList.add(ComicsModel.fromJson(item));
         }
 
         return comicList;
@@ -53,13 +53,12 @@ class HomeApiService {
         endpoints: ApiEndpoints.recommendedComics,
       );
       if (response['success'] == true) {
-           List<LastReadComicsModel> comicList = [];
+        List<LastReadComicsModel> comicList = [];
         for (var item in response['data']) {
           comicList.add(LastReadComicsModel.fromJson(item));
         }
 
         return comicList;
-        
       } else {
         return null;
       }
@@ -68,15 +67,15 @@ class HomeApiService {
     }
   }
 
-  Future<List<ComicsBannerModel>?> getPopularComics() async {
+  Future<List<ComicsModel>?> getPopularComics() async {
     try {
       final response = await apiClient.getRequest(
         endpoints: ApiEndpoints.popularComics,
       );
       if (response['success'] == true) {
-                 List<ComicsBannerModel> comicList = [];
+        List<ComicsModel> comicList = [];
         for (var item in response['data']) {
-          comicList.add(ComicsBannerModel.fromJson(item));
+          comicList.add(ComicsModel.fromJson(item));
         }
 
         return comicList;

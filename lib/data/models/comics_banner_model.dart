@@ -1,12 +1,12 @@
-class ComicsBannerModel {
+class ComicsModel {
   String? id;
   String? title;
   String? thumbnail;
   String? author;
 
-  ComicsBannerModel({this.id, this.title, this.thumbnail, this.author});
+  ComicsModel({this.id, this.title, this.thumbnail, this.author});
 
-  ComicsBannerModel.fromJson(Map<String, dynamic> json) {
+  ComicsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     thumbnail = json['thumbnail'];

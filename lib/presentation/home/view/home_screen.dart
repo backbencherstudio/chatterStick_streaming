@@ -2,7 +2,6 @@ import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
-import 'package:chatterstick_streaming_app/data/models/comics_model.dart';
 import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -44,6 +44,11 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                       height: 80.h,
                       width: 80.h,
                       fit: BoxFit.cover,
+                       errorBuilder: (context, error, stackTrace) {
+                return const Icon(
+                  Icons.broken_image,
+                ); // fallback widget if image fails to load
+              },
                     ),
                   ),
 

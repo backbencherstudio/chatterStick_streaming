@@ -5,11 +5,11 @@ import '../sources/remote/home_api_service.dart' show HomeApiService;
 class HomeRepository {
   HomeApiService remoteSource;
   HomeRepository({required this.remoteSource});
- Future<List<ComicsBannerModel>?> getBannarComics() {
+  Future<List<ComicsModel>?> getBannarComics() {
     return remoteSource.getBannarComics();
   }
 
-  Future<List<ComicsBannerModel>?> getRecomandationComics() {
+  Future<List<ComicsModel>?> getRecomandationComics() {
     return remoteSource.getRecomandationComics();
   }
 
@@ -17,7 +17,7 @@ class HomeRepository {
     return remoteSource.getLastReadComics();
   }
 
-  Future<List<ComicsBannerModel>?> getPopularComics() {
-   return  remoteSource.getPopularComics();
+  Future<List<ComicsModel>?> getPopularComics() {
+    return remoteSource.getPopularComics();
   }
 }

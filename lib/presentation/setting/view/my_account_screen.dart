@@ -112,6 +112,11 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
                               height: 120.h,
                               width: 120.h,
                               fit: BoxFit.cover,
+                               errorBuilder: (context, error, stackTrace) {
+                return const Icon(
+                  Icons.broken_image,
+                ); // fallback widget if image fails to load
+              },
                             ),
                           )
                         : ClipRRect(

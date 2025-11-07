@@ -2,10 +2,10 @@ import 'package:chatterstick_streaming_app/data/models/comics_banner_model.dart'
 import 'package:chatterstick_streaming_app/data/models/last_read_comics_model.dart';
 
 class HomeScreenModel {
-  final List<ComicsBannerModel> bannerData;
-  final List<ComicsBannerModel> recomandationData;
+  final List<ComicsModel> bannerData;
+  final List<ComicsModel> recomandationData;
   final List<LastReadComicsModel> lastReadData;
-  final List<ComicsBannerModel> popularData;
+  final List<ComicsModel> popularData;
   final bool isLoading;
 
   const HomeScreenModel({
@@ -17,10 +17,10 @@ class HomeScreenModel {
   });
 
   HomeScreenModel copyWith({
-    List<ComicsBannerModel>? bannerData,
-    List<ComicsBannerModel>? recomandationData,
+    List<ComicsModel>? bannerData,
+    List<ComicsModel>? recomandationData,
     List<LastReadComicsModel>? lastReadData,
-    List<ComicsBannerModel>? popularData,
+    List<ComicsModel>? popularData,
     bool? isLoading,
   }) {
     return HomeScreenModel(
