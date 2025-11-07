@@ -26,11 +26,16 @@ class CustomComicBox extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12.r),
-            child: Image.asset(
+            child: Image.network(
               image,
               height: height ?? 214.h,
               width: 160.w,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(
+                  Icons.broken_image,
+                ); // fallback widget if image fails to load
+              },
             ),
           ),
           SizedBox(height: 8.h),

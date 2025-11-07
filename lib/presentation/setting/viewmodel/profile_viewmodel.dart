@@ -1,19 +1,20 @@
 import 'package:chatterstick_streaming_app/core/network/api_clients.dart';
+import 'package:chatterstick_streaming_app/data/repositories/setting_repository.dart';
+import 'package:chatterstick_streaming_app/data/sources/remote/setting_api_service.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import '../../../data/models/profile_model.dart';
-import '../../../data/repositories/auth_repository.dart';
-import '../../../data/sources/remote/auth_api_service.dart';
+
 final profileViewModelProvider =
     StateNotifierProvider<ProfileModelView, ProfileModel?>(
       (ref) => ProfileModelView(
-        repository: AuthRepository(
-          remoteSource: AuthApiService(apiClient: ApiClient()),
+        repository: SettingRepository(
+          remoteSource: SettingApiService(apiClient: ApiClient()),
         ),
       ),
     );
 
 class ProfileModelView extends StateNotifier<ProfileModel?> {
-  final AuthRepository repository;
+  final SettingRepository repository;
 
   ProfileModelView({required this.repository}) : super(ProfileModel()) {getProfile();}
   Future<void> getProfile() async {

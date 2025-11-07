@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../provider/image_picker_provider.dart';
+import '../viewmodel/profile_update.dart';
+import '../viewmodel/profile_viewmodel.dart';
 
 class MyAccountScreen extends ConsumerStatefulWidget {
   const MyAccountScreen({super.key});
@@ -23,10 +25,11 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var profile = ref.watch(profileViewModelProvider);
     final image = ref.watch(imagePickerProvider);
     final notifier = ref.read(imagePickerProvider.notifier);
-    _nameController.text = 'Daniel Jones';
-    _emailController.text = 'example@gmail.com';
+    _nameController.text = profile?.name ?? 'N/A';
+    _emailController.text = profile?.email ?? 'N/A';
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -39,7 +42,7 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
                 children: [
                   TextButton(
                     onPressed: () {
-                         notifier.clearImage();
+                      notifier.clearImage();
                       Navigator.pop(context);
                     },
                     child: Text(
@@ -58,8 +61,18 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      notifier.clearImage();
+                    onPressed: ()async {
+                    var res= await ref
+                          .read(profileUpdateViewModelProvider.notifier)
+                          .updateProfile(
+                            name: _nameController.text.trim(),
+                            image: image!,
+                          );
+                          if(res){
+                      ref.read(profileViewModelProvider.notifier).getProfile();
+
+                          }
+                   
 
                       Navigator.pop(context);
                     },
@@ -91,13 +104,23 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
                               fit: BoxFit.cover,
                             ),
                           )
-                        : Container(
-                            height: 120.h,
-                            width: 120.h,
-                            decoration: BoxDecoration(
-                              color: ColorManager.containerColor2,
-                              shape: BoxShape.circle,
+                        : profile?.avatarUrl != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(100.r),
+                            child: Image.network(
+                              profile?.avatarUrl ?? '',
+                              height: 120.h,
+                              width: 120.h,
+                              fit: BoxFit.cover,
+                               errorBuilder: (context, error, stackTrace) {
+                return const Icon(
+                  Icons.broken_image,
+                ); // fallback widget if image fails to load
+              },
                             ),
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(100.r),
                             child: Image.asset(
                               ImageManager.profilePng,
                               height: 120.h,
@@ -152,9 +175,19 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
               ),
               SizedBox(height: 12.h),
               TextFormField(
+                readOnly: true,
                 style: getRegularStyle16(color: ColorManager.mediumText),
                 controller: _emailController,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: ColorManager.borderColor),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: ColorManager.borderColor),
+                  ),
+                  disabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: ColorManager.borderColor),
+                  ),
                   hintText: 'Email',
                   hintStyle: getRegularStyle16(color: ColorManager.hintText),
                 ),

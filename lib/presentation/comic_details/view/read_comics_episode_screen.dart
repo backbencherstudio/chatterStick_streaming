@@ -1,6 +1,7 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
-import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
+
+
 import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/data/models/episode_model.dart';
