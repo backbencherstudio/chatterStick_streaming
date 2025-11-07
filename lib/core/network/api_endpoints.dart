@@ -13,19 +13,17 @@ class ApiEndpoints {
   static const String getMyIdea = 'profile/my-ideas';
   static const String createIdea = 'profile/create-idea';
   //comics
+  static const String bannerComics = 'comics/banner';
+  static const String recommendedComics = 'comics/recommended';
+  static const String lastReadComics = 'profile/last-reads';
+   static const String popularComics = 'comics/popular';
   static const String singleEpisode = 'comics/episode';
   static const String popularList = 'comics/popular-list';
   static const String library = 'comics/';
   static const String singleComics = 'comics/';
-  static const String popularComics = 'comics/popular';
+ 
   //favorite
   static const String favorite = 'favorite';
   //download
   static const String download = 'download';
-
-
-
-
-
-
 }

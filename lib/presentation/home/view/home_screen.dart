@@ -1,25 +1,27 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
-import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/data/models/comics_model.dart';
 import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../widgets/custom_header.dart';
+import '../viewmodel/home_screen_viewmodel.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeData = ref.watch(homeProvider);
+
     final style = Theme.of(context).textTheme;
     return Scaffold(
-      body: Padding(
+      body:homeData.isLoading?Center(child:CircularProgressIndicator() ,): Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SafeArea(
           child: Column(
@@ -33,10 +35,14 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
-                        style: getRegularStyle16(color: ColorManager.mediumText),
+                        style: getRegularStyle16(
+                          color: ColorManager.mediumText,
+                        ),
                         decoration: InputDecoration(
                           hintText: 'Search...',
-                          hintStyle: getRegularStyle16(color: ColorManager.hintText),
+                          hintStyle: getRegularStyle16(
+                            color: ColorManager.hintText,
+                          ),
                           prefixIcon: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 8.h,
@@ -53,14 +59,14 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(height: 24.h),
 
                       // Banner widgets
-                      ClipRRect(
+                     homeData.bannerData.isNotEmpty? ClipRRect(
                         borderRadius: BorderRadius.circular(12.r),
-                        child: Image.asset(
-                          ImageManager.bannerPng,
+                        child: Image.network(
+                  homeData.bannerData[0].thumbnail??'',
                           width: double.infinity,
                           fit: BoxFit.cover,
                         ),
-                      ),
+                      ):SizedBox(),
 
                       SizedBox(height: 24.h),
 
@@ -79,9 +85,9 @@ class HomeScreen extends StatelessWidget {
                         child: ListView.builder(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.horizontal,
-                          itemCount: comics.length,
+                          itemCount: homeData.recomandationData.length,
                           itemBuilder: (context, index) {
-                            final comic = comics[index];
+                            final comic = homeData.recomandationData[index];
                             return Padding(
                               padding: EdgeInsets.only(right: 13.w),
                               child: GestureDetector(
@@ -92,9 +98,9 @@ class HomeScreen extends StatelessWidget {
                                   );
                                 },
                                 child: CustomComicBox(
-                                  image: comic.image,
-                                  title: comic.title,
-                                  subtitle: comic.subtitle,
+                                  image: comic.thumbnail??"",
+                                  title: comic.title??'N/A',
+                                  subtitle: comic.author??"N/A",
                                 ),
                               ),
                             );
@@ -115,15 +121,15 @@ class HomeScreen extends StatelessWidget {
                         height: 285.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: comics.length,
+                          itemCount: homeData.lastReadData.length,
                           itemBuilder: (context, index) {
-                            final comic = comics[index];
+                            final comic = homeData.lastReadData[index];
                             return Padding(
                               padding: EdgeInsets.only(right: 13.w),
                               child: CustomComicBox(
-                                image: comic.image,
-                                title: comic.title,
-                                subtitle: comic.subtitle,
+                                image: comic.thumbnail??'',
+                                title: comic.title??"N/A",
+                                subtitle: comic.title??"N/A",
                               ),
                             );
                           },
@@ -143,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                       GridView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: comics.length,
+                        itemCount:homeData.popularData.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, // 2 items horizontally
                           mainAxisSpacing: 0.h,
@@ -151,11 +157,11 @@ class HomeScreen extends StatelessWidget {
                           childAspectRatio: 0.58,
                         ),
                         itemBuilder: (context, index) {
-                          final comic = comics[index];
+                          final comic = homeData.popularData[index];
                           return CustomComicBox(
-                            image: comic.image,
-                            title: comic.title,
-                            subtitle: comic.subtitle,
+                            image: comic.thumbnail??'',
+                            title: comic.title??"N/A",
+                            subtitle: comic.author??"N/A",
                           );
                         },
                       ),

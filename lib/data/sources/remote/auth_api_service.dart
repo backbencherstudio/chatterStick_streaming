@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../core/network/api_clients.dart';
 import '../../../core/network/api_endpoints.dart';
-import '../../models/profile_model.dart';
+
 import '../local/shared_preference/shared_preference.dart';
 
 class AuthApiService {
