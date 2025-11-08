@@ -3,13 +3,15 @@ import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/font_manager.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/utils.dart';
 import 'package:chatterstick_streaming_app/core/resource/values_manager.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
+import 'package:chatterstick_streaming_app/presentation/comic_details/view/widgets/share_bottomsheet.dart';
 import 'package:chatterstick_streaming_app/presentation/home/view/widgets/custom_comic_box.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:share_plus/share_plus.dart';
 
 class ComicDetailsScreen extends StatefulWidget {
   const ComicDetailsScreen({super.key});
@@ -56,16 +58,35 @@ class _ComicDetailsScreenState extends State<ComicDetailsScreen> {
                               size: 24.sp,
                             ),
                           ),
-                          IconButton(
-                            onPressed: () {
-                              // change if needed
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.save_alt_outlined,
-                              color: Colors.white,
-                              size: 24.sp,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Share.share('Check this out');
+                                },
+                                icon: Icon(
+                                  Icons.share,
+                                  color: Colors.white,
+                                  size: 24.sp,
+                                ),
+                              ),
+                              // SizedBox(width: 4.w),
+                              IconButton(
+                                onPressed: () {
+                                  Utils.showToast(
+                                    message: 'Successfully Downloaded',
+                                    backgroundColor: ColorManager.primary,
+                                    textColor: ColorManager.whiteColor,
+                                  );
+                                },
+                                icon: Icon(
+                                  Icons.save_alt_outlined,
+                                  color: Colors.white,
+                                  size: 24.sp,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -169,7 +190,10 @@ class _ComicDetailsScreenState extends State<ComicDetailsScreen> {
                         // final comic = comics[index];
                         return GestureDetector(
                           onTap: () {
-                          Navigator.pushNamed(context, RouteName.readComicsEpisodeScreen);
+                            Navigator.pushNamed(
+                              context,
+                              RouteName.readComicsEpisodeScreen,
+                            );
                           },
                           child: CustomComicBox(
                             image: ImageManager.recoComics,

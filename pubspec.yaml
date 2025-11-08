@@ -49,18 +49,14 @@ dependencies:
   connectivity_plus: ^7.0.0
   pin_code_fields: ^8.0.1
   image_picker: ^1.2.0
-  flutter_launcher_icons: ^0.14.4
   share_plus: ^12.0.1
+
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter_launcher_icons:
-    android: "launcher_icon"
-    ios: true
-    image_path: "assets/images/splash_image.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
