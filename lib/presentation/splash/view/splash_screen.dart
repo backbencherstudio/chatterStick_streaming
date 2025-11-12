@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 1), () async {
+    Timer(const Duration(seconds: 2), () async {
    // await SharedPreferenceData.removeToken();
       final token = await SharedPreferenceData.getToken();
       if (token != null) {
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset(ImageManager.splash, width: 248.w),
+          child: Image.asset(ImageManager.chattersticSplash, width: 248.w),
         ),
       ),
     );

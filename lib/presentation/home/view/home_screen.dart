@@ -58,16 +58,16 @@ class HomeScreen extends ConsumerWidget {
                       SizedBox(height: 24.h),
 
                       // Banner widgets
-                     homeData.bannerData.isNotEmpty? ClipRRect(
-                        borderRadius: BorderRadius.circular(12.r),
-                        child: Image.network(
-                  homeData.bannerData[0].thumbnail??'',
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ):SizedBox(),
-
-                      SizedBox(height: 24.h),
+                  //    homeData.bannerData.isNotEmpty? ClipRRect(
+                  //       borderRadius: BorderRadius.circular(12.r),
+                  //       child: Image.network(
+                  // homeData.bannerData[0].thumbnail??'',
+                  //         width: double.infinity,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //     ):SizedBox(),
+                  //
+                  //     SizedBox(height: 24.h),
 
                       // Recommendation widgets
                       Text(
