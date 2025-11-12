@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Chatterstick',
+          title: 'Chattertick',
           theme: getApplicationTheme(),
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.system,

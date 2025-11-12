@@ -18,4 +18,5 @@ class IconManager {
   static String book1Svg = '$baseUrl/book-03.svg';
   static String nextSvg = '$baseUrl/next.svg';
   static String previousSvg = '$baseUrl/previous.svg';
+  static String appIcon = '$baseUrl/chatterstick_appIcon.png';
 }

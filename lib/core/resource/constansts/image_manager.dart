@@ -8,4 +8,5 @@ class ImageManager {
   static const String profilePng = '$baseUrl/profile.png';
   static const String comic1Png = '$baseUrl/komik-baca.png';
   static const String imgBreakPng = '$baseUrl/image-break.png';
+  static const String chattersticSplash = '$baseUrl/chatterstic_splash.png';
 }
