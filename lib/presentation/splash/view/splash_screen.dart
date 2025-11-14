@@ -18,8 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 10), () async {
-   // await SharedPreferenceData.removeToken();
+    Timer(const Duration(seconds: 1), () async {
+      // await SharedPreferenceData.removeToken();
       final token = await SharedPreferenceData.getToken();
       if (token != null) {
         ApiClient.headerSet(null);

@@ -1,5 +1,6 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/utils.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/custom_header.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _SendIdeaScreenState extends ConsumerState<SendIdeaScreen> {
                 SizedBox(height: 24.h),
                 Text(
                   maxLines: 4,
-                  "Got a hilarious plot, a witty one-liner, or a deep thought for a stick-figure comic? We're listening! Your idea could be the next Chattersticks hit",
+                  "Kids are the best thing on earth! Tell me a story about the kids in your life so we can draw it in comic form and share it for everyone to enjoy!",
                   style: getRegularStyle16(color: ColorManager.mediumText1),
                 ),
                 SizedBox(height: 16.h),
@@ -100,15 +101,9 @@ class _SendIdeaScreenState extends ConsumerState<SendIdeaScreen> {
 
                       if (res) {
                         Navigator.pop(context);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Idea sent successfully'),
-                          ),
-                        );
+                        Utils.showToast(message: 'Share Story successfully', backgroundColor: ColorManager.primary , textColor: ColorManager.whiteColor);
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Something went wrong')),
-                        );
+                        Utils.showToast(message: 'Something went wrong', backgroundColor: ColorManager.errorColor , textColor: ColorManager.whiteColor);
                       }
                     }
                   },

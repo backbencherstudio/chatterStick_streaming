@@ -20,6 +20,12 @@ class SettingScreen extends ConsumerStatefulWidget {
 
 class _SettingScreenState extends ConsumerState<SettingScreen> {
   @override
+  void initState() {
+
+    super.initState();
+    ref.read(profileViewModelProvider.notifier).getProfile();
+  }
+  @override
   Widget build(BuildContext context) {
     var profile = ref.watch(profileViewModelProvider);
 
@@ -91,7 +97,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 },
               ),
               ProfileListTile(
-                title: "Send Ideas",
+                title: "Share a Story",
                 leadindIcon: IconManager.ideaSvg,
                 onTap: () {
                   Navigator.pushNamed(context, RouteName.sendIdeaScreen);
