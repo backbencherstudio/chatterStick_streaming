@@ -5,21 +5,31 @@ import 'package:flutter_riverpod/legacy.dart';
 import '../../../data/models/profile_model.dart';
 
 final profileViewModelProvider =
-    StateNotifierProvider<ProfileModelView, ProfileModel?>(
+StateNotifierProvider<ProfileModelView, ProfileModel?>(
       (ref) => ProfileModelView(
-        repository: SettingRepository(
-          remoteSource: SettingApiService(apiClient: ApiClient()),
-        ),
-      ),
-    );
+    repository: SettingRepository(
+      remoteSource: SettingApiService(apiClient: ApiClient()),
+    ),
+  ),
+);
 
 class ProfileModelView extends StateNotifier<ProfileModel?> {
   final SettingRepository repository;
 
-  ProfileModelView({required this.repository}) : super(ProfileModel()) {getProfile();}
-  Future<void> getProfile() async {
-   final profile=await  repository.getProfile(
-    );
-   state=profile;
+  ProfileModelView({required this.repository}) : super(ProfileModel()) {
+    getProfile();
+  }
 
-}}
+  Future<void> getProfile() async {
+    final profile = await repository.getProfile();
+    state = profile;
+  }
+
+  // Add this updateName method for safe, reactive updates
+  void updateName(String name) {
+    // assuming ProfileModel has a copyWith
+    if (state != null) {
+      state = state!.copyWith(name: name);
+    }
+  }
+}

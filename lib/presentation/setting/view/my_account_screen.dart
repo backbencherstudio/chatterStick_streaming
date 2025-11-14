@@ -7,6 +7,7 @@ import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../provider/image_picker_provider.dart';
 import '../viewmodel/profile_update.dart';
@@ -24,12 +25,19 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
   final TextEditingController _emailController = TextEditingController();
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final profile = ref.watch(profileViewModelProvider);
+    _nameController.text = profile?.name ?? 'N/A';
+    _emailController.text = profile?.email ?? 'N/A';
+  }
+
+  @override
   Widget build(BuildContext context) {
     var profile = ref.watch(profileViewModelProvider);
     final image = ref.watch(imagePickerProvider);
     final notifier = ref.read(imagePickerProvider.notifier);
-    _nameController.text = profile?.name ?? 'N/A';
-    _emailController.text = profile?.email ?? 'N/A';
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -61,21 +69,41 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: ()async {
-                    var res= await ref
+                    onPressed: () async {
+                      final profile = ref.read(profileViewModelProvider);
+                      final nameChanged = _nameController.text.trim() != (profile?.name ?? '');
+                      final imageChanged = image != null;
+
+                      if (!nameChanged && !imageChanged) {
+                        Fluttertoast.showToast(
+                          msg: "No changes to update",
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                        );
+                        return;
+                      }
+
+                      var res = await ref
                           .read(profileUpdateViewModelProvider.notifier)
                           .updateProfile(
-                            name: _nameController.text.trim(),
-                            image: image!,
-                          );
-                          if(res){
-                      ref.read(profileViewModelProvider.notifier).getProfile();
-
-                          }
-                   
-
-                      Navigator.pop(context);
+                        name: _nameController.text.trim(),
+                        image: image!,
+                      );
+                      if (res) {
+                        await ref.read(profileViewModelProvider.notifier).getProfile();
+                        Navigator.pop(context);
+                      } else {
+                        Fluttertoast.showToast(
+                          msg: "Profile update failed",
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                        );
+                      }
                     },
+
+
                     child: Text(
                       'Save',
                       style: getRegularStyle16(
@@ -90,45 +118,41 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
               Center(
                 child: Stack(
                   children: [
-                    image != null
-                        ? Container(
-                            width: 120,
-                            height: 120,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
-                            clipBehavior: Clip.antiAlias,
-                            child: Image.file(
-                              File(image.path),
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        : profile?.avatarUrl != null
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(100.r),
-                            child: Image.network(
-                              profile?.avatarUrl ?? '',
-                              height: 120.h,
-                              width: 120.h,
-                              fit: BoxFit.cover,
-                               errorBuilder: (context, error, stackTrace) {
-                return const Icon(
-                  Icons.broken_image,
-                ); // fallback widget if image fails to load
-              },
-                            ),
-                          )
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(100.r),
-                            child: Image.asset(
-                              ImageManager.profilePng,
-                              height: 120.h,
-                              width: 120.h,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-
+                    if (image != null)
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey,
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        child: Image.file(File(image.path), fit: BoxFit.cover),
+                      )
+                    else if (profile?.avatarUrl != null &&
+                        profile?.avatarUrl != '')
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(100.r),
+                        child: Image.network(
+                          profile!.avatarUrl!,
+                          height: 120.h,
+                          width: 120.h,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(Icons.broken_image);
+                          },
+                        ),
+                      )
+                    else
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(100.r),
+                        child: Image.asset(
+                          ImageManager.profilePng,
+                          height: 120.h,
+                          width: 120.h,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     Positioned(
                       right: -10,
                       bottom: -10,
@@ -162,9 +186,7 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
                   ],
                 ),
               ),
-
               SizedBox(height: 20.h),
-
               TextFormField(
                 style: getRegularStyle16(color: ColorManager.mediumText),
                 controller: _nameController,
@@ -197,5 +219,12 @@ class _MyAccountScreenState extends ConsumerState<MyAccountScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    super.dispose();
   }
 }
