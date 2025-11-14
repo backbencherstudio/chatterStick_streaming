@@ -91,7 +91,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 },
               ),
               ProfileListTile(
-                title: "Send Ideas",
+                title: "Share a Story",
                 leadindIcon: IconManager.ideaSvg,
                 onTap: () {
                   Navigator.pushNamed(context, RouteName.sendIdeaScreen);

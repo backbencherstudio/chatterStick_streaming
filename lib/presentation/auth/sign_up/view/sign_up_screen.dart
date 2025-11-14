@@ -249,33 +249,39 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         title: 'Create Account',
                         width: double.infinity,
                         onTap: () async {
-                          if (_formKey.currentState!.validate()) {
-                            final res = await ref
-                                .read(signUpViewModelProvider.notifier)
-                                .register(
-                                  email: _emailController.text.trim(),
-                                  password: _passwordController.text.trim(),
-                                  name: _nameController.text.trim(),
-                                  image: ref.watch(imagePickerProvider)!,
-                                  device: Platform.isAndroid
-                                      ? 'Android'
-                                      : 'IOS',
-                                );
+                          Navigator.pushNamed(
+                            context,
+                            RouteName.verifyNewAccountOtpScreen,
+                            arguments: _emailController.text.trim(),
+                          );
 
-                            if (res) {
-                              Navigator.pushNamed(
-                                context,
-                                RouteName.verifyNewAccountOtpScreen,
-                                arguments: _emailController.text.trim(),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Something went wrong'),
-                                ),
-                              );
-                            }
-                          }
+                          // if (_formKey.currentState!.validate()) {
+                          //   final res = await ref
+                          //       .read(signUpViewModelProvider.notifier)
+                          //       .register(
+                          //         email: _emailController.text.trim(),
+                          //         password: _passwordController.text.trim(),
+                          //         name: _nameController.text.trim(),
+                          //         image: ref.watch(imagePickerProvider)!,
+                          //         device: Platform.isAndroid
+                          //             ? 'Android'
+                          //             : 'IOS',
+                          //       );
+                          //
+                          //   if (res) {
+                          //     Navigator.pushNamed(
+                          //       context,
+                          //       RouteName.verifyNewAccountOtpScreen,
+                          //       arguments: _emailController.text.trim(),
+                          //     );
+                          //   } else {
+                          //     ScaffoldMessenger.of(context).showSnackBar(
+                          //       const SnackBar(
+                          //         content: Text('Something went wrong'),
+                          //       ),
+                          //     );
+                          //   }
+                          // }
                         },
                       ),
                       SizedBox(height: 20.h),

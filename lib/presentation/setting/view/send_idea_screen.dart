@@ -59,7 +59,7 @@ class _SendIdeaScreenState extends ConsumerState<SendIdeaScreen> {
                 SizedBox(height: 24.h),
                 Text(
                   maxLines: 4,
-                  "Got a hilarious plot, a witty one-liner, or a deep thought for a stick-figure comic? We're listening! Your idea could be the next Chattersticks hit",
+                  "Kids are the best thing on earth! Tell me a story about the kids in your life so we can draw it in comic form and share it for everyone to enjoy!",
                   style: getRegularStyle16(color: ColorManager.mediumText1),
                 ),
                 SizedBox(height: 16.h),

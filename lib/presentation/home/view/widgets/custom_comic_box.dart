@@ -28,7 +28,7 @@ class CustomComicBox extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12.r),
-            child: Image.network(
+            child: Image.asset(
               image,
               height: height ?? 214.h,
               width: 160.w,

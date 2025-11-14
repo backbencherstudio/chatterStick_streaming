@@ -100,27 +100,27 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         ),
                         onTap: () async {
                           log(_emailController.text);
-                          // Navigator.pushNamed(context, RouteName.verifyOTPScreen);
-                          if (_formKey.currentState!.validate()) {
-                            final res = await ref
-                                .read(forgotPasswordProvider.notifier)
-                                .forgotPassword(
-                                  email: _emailController.text.trim(),
-                                );
-                            if (res) {
-                              Navigator.pushNamed(
-                                context,
-                                RouteName.verifyOTPScreen,
-                                arguments: _emailController.text.trim(),
-                              );
-                            } else{
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Something went wrong"),
-                                ),
-                              );
-                            }
-                          }
+                          Navigator.pushNamed(context, RouteName.verifyOTPScreen,arguments: '');
+                          // if (_formKey.currentState!.validate()) {
+                          //   final res = await ref
+                          //       .read(forgotPasswordProvider.notifier)
+                          //       .forgotPassword(
+                          //         email: _emailController.text.trim(),
+                          //       );
+                          //   if (res) {
+                          //     Navigator.pushNamed(
+                          //       context,
+                          //       RouteName.verifyOTPScreen,
+                          //       arguments: _emailController.text.trim(),
+                          //     );
+                          //   } else{
+                          //     ScaffoldMessenger.of(context).showSnackBar(
+                          //       const SnackBar(
+                          //         content: Text("Something went wrong"),
+                          //       ),
+                          //     );
+                          //   }
+                          // }
                         },
                       ),
                       SizedBox(height: 24.h),

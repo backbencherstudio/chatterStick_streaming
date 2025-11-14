@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../data/models/comics_model.dart';
 import '../../widgets/custom_header.dart';
 import '../viewmodel/home_screen_viewmodel.dart';
 
@@ -20,7 +21,7 @@ class HomeScreen extends ConsumerWidget {
 
     final style = Theme.of(context).textTheme;
     return Scaffold(
-      body:homeData.isLoading?Center(child:CircularProgressIndicator() ,): Padding(
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SafeArea(
           child: Column(
@@ -84,9 +85,9 @@ class HomeScreen extends ConsumerWidget {
                         child: ListView.builder(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.horizontal,
-                          itemCount: homeData.recomandationData.length,
+                          itemCount: comics.length,
                           itemBuilder: (context, index) {
-                            final comic = homeData.recomandationData[index];
+                            final comic = comics[index];
                             return Padding(
                               padding: EdgeInsets.only(right: 13.w),
                               child: GestureDetector(
@@ -97,9 +98,9 @@ class HomeScreen extends ConsumerWidget {
                                   );
                                 },
                                 child: CustomComicBox(
-                                  image: comic.thumbnail??"",
+                                  image: comic.image??"",
                                   title: comic.title??'N/A',
-                                  subtitle: comic.author??"N/A",
+                                  subtitle: comic.subtitle??"N/A",
                                 ),
                               ),
                             );
@@ -120,15 +121,15 @@ class HomeScreen extends ConsumerWidget {
                         height: 285.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: homeData.lastReadData.length,
+                          itemCount: comics.length,
                           itemBuilder: (context, index) {
-                            final comic = homeData.lastReadData[index];
+                            final comic = comics[index];
                             return Padding(
                               padding: EdgeInsets.only(right: 13.w),
                               child: CustomComicBox(
-                                image: comic.thumbnail??'',
-                                title: comic.title??"N/A",
-                                subtitle: comic.title??"N/A",
+                                image: comic.image??"",
+                                title: comic.title??'N/A',
+                                subtitle: comic.subtitle??"N/A",
                               ),
                             );
                           },
@@ -148,7 +149,7 @@ class HomeScreen extends ConsumerWidget {
                       GridView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount:homeData.popularData.length,
+                        itemCount:comics.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, // 2 items horizontally
                           mainAxisSpacing: 0.h,
@@ -156,11 +157,11 @@ class HomeScreen extends ConsumerWidget {
                           childAspectRatio: 0.58,
                         ),
                         itemBuilder: (context, index) {
-                          final comic = homeData.popularData[index];
+                          final comic = comics[index];
                           return CustomComicBox(
-                            image: comic.thumbnail??'',
-                            title: comic.title??"N/A",
-                            subtitle: comic.author??"N/A",
+                            image: comic.image??"",
+                            title: comic.title??'N/A',
+                            subtitle: comic.subtitle??"N/A",
                           );
                         },
                       ),

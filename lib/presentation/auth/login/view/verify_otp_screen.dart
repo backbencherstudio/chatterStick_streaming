@@ -166,24 +166,29 @@ class _VerifyOTPScreenState extends ConsumerState<VerifyOTPScreen> {
                           fontWeight: FontWeight.w500,
                         ),
                         onTap: () async {
-                          if (_formKey.currentState!.validate()) {
-                            final res = await ref
-                                .read(verifySignUpOtpProvider.notifier)
-                                .emailVerify(
-                              otp: _otpController.text.trim(),
-                              email: widget.email,
-                            );
-                            if(res){
-                              Navigator.pushNamed(
-                                context,
-                                RouteName.createNewPasswordScreen,
-                              );
-                            }
-                          }else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Invalid OTP')),
-                            );
-                          }
+
+                          Navigator.pushNamed(
+                            context,
+                            RouteName.createNewPasswordScreen,
+                          );
+                          // if (_formKey.currentState!.validate()) {
+                          //   final res = await ref
+                          //       .read(verifySignUpOtpProvider.notifier)
+                          //       .emailVerify(
+                          //     otp: _otpController.text.trim(),
+                          //     email: widget.email,
+                          //   );
+                          //   if(res){
+                          //     Navigator.pushNamed(
+                          //       context,
+                          //       RouteName.createNewPasswordScreen,
+                          //     );
+                          //   }
+                          // }else {
+                          //   ScaffoldMessenger.of(context).showSnackBar(
+                          //     SnackBar(content: Text('Invalid OTP')),
+                          //   );
+                          // }
                         },
                       ),
 

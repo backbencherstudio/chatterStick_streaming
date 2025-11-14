@@ -173,9 +173,10 @@ class _CreateNewPasswordScreenState
                           fontWeight: FontWeight.w500,
                         ),
                         onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.pushNamed(context, RouteName.loginScreen);
-                          }
+                          Navigator.pushNamed(context, RouteName.loginScreen);
+                          // if (_formKey.currentState!.validate()) {
+                          //   Navigator.pushNamed(context, RouteName.loginScreen);
+                          // }
                         },
                       ),
                     ],

@@ -164,22 +164,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   title: 'Login',
                   width: double.infinity,
                   onTap: ()async {
-              
 
+                    Navigator.pushNamed(context, RouteName.bottomNavBar);
                 
 
-                    if (_formKey.currentState!.validate()) {
-                        final res=await   ref
-                        .read(signInViewModelProvider.notifier)
-                        .signIn(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim(),
-                        );
-                        if(res){
-                              Navigator.pushNamed(context, RouteName.bottomNavBar);
-
-                        }
-                    }
+                    // if (_formKey.currentState!.validate()) {
+                    //     final res=await   ref
+                    //     .read(signInViewModelProvider.notifier)
+                    //     .signIn(
+                    //       email: _emailController.text.trim(),
+                    //       password: _passwordController.text.trim(),
+                    //     );
+                    //     if(res){
+                    //           Navigator.pushNamed(context, RouteName.bottomNavBar);
+                    //
+                    //     }
+                    // }
                   },
                 ),
                 SizedBox(height: 20.h),
