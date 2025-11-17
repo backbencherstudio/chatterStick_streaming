@@ -22,9 +22,15 @@ class AuthRepository {
     return remoteSource.emailVerify(email: email, otp: otp);
   }
 
+  Future<bool> verifyToken({required String email,required String token}){
+    return remoteSource.verifyToken(email: email, token: token);
+  }
+
   Future<bool> forgotPassword({required String email}){
     return remoteSource.forgotPassword(email: email);
   }
-
+  Future<bool> newPassword({required String email,required String password, required String otp}){
+    return remoteSource.newPassword(email: email,password: password, token: otp);
+  }
   
 }

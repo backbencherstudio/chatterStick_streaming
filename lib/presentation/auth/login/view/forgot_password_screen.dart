@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/style_manager.dart';
+import 'package:chatterstick_streaming_app/core/resource/utils.dart';
 import 'package:chatterstick_streaming_app/core/route/route_name.dart';
 import 'package:chatterstick_streaming_app/presentation/widgets/primery_button.dart';
 import 'package:email_validator/email_validator.dart';
@@ -12,7 +13,6 @@ import '../viewmodel/forgot_password_viewmodel.dart';
 
 class ForgotPasswordScreen extends ConsumerStatefulWidget {
   const ForgotPasswordScreen({super.key});
-
 
   @override
   ConsumerState<ForgotPasswordScreen> createState() =>
@@ -100,7 +100,6 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         ),
                         onTap: () async {
                           log(_emailController.text);
-                          // Navigator.pushNamed(context, RouteName.verifyOTPScreen);
                           if (_formKey.currentState!.validate()) {
                             final res = await ref
                                 .read(forgotPasswordProvider.notifier)
@@ -113,11 +112,11 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                 RouteName.verifyOTPScreen,
                                 arguments: _emailController.text.trim(),
                               );
-                            } else{
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Something went wrong"),
-                                ),
+                            } else {
+                              Utils.showToast(
+                                message: 'Something went wrong',
+                                backgroundColor: ColorManager.errorColor,
+                                textColor: ColorManager.whiteColor,
                               );
                             }
                           }

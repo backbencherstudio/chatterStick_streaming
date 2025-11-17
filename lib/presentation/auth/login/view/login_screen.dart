@@ -129,6 +129,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                     ),
                   ),
+
+
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
@@ -164,10 +166,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   title: 'Login',
                   width: double.infinity,
                   onTap: ()async {
-              
-
-                
-
                     if (_formKey.currentState!.validate()) {
                         final res=await   ref
                         .read(signInViewModelProvider.notifier)

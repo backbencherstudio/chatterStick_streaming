@@ -38,9 +38,18 @@ class AppRouter {
           return VerifyOTPScreen(email: email,);
         });
 
-        case RouteName.createNewPasswordScreen:
-        return MaterialPageRoute(builder: (_) => const CreateNewPasswordScreen());
-        case RouteName.signUpScreen:
+      case RouteName.createNewPasswordScreen:
+        return MaterialPageRoute(builder: (_) {
+          final args = settings.arguments as List<String>;
+          final email = args[0];
+          final token = args[1];
+          return CreateNewPasswordScreen(
+            email: email,
+            token: token,
+          );
+        });
+
+      case RouteName.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
         case RouteName.verifyNewAccountOtpScreen:
         return MaterialPageRoute(builder: (_){

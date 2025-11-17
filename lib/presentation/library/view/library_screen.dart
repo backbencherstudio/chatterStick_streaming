@@ -1,4 +1,5 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
+import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:chatterstick_streaming_app/presentation/library/view/widgets/library_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/resource/constansts/icon_manager.dart';
 import '../../../data/models/download_model.dart';
-import '../../../data/models/library_item_model.dart';
 import '../../home/view/widgets/custom_comic_box.dart';
+import '../viewmodel/library_item_viewmodel.dart';
 import '../viewmodel/select_tab_provider.dart';
 
 class LibraryScreen extends ConsumerStatefulWidget {
@@ -19,9 +20,16 @@ class LibraryScreen extends ConsumerStatefulWidget {
 
 class _LibraryScreenState extends ConsumerState<LibraryScreen> {
   @override
+  void initState() {
+    super.initState();
+    ref.read(libraryItemViewModel.notifier).getLibrary();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final style = Theme.of(context).textTheme;
     final selectedTab = ref.watch(selectedTabProvider);
+    var library = ref.watch(libraryItemViewModel);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -95,18 +103,28 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                   child: selectedTab == 0
                       ? Column(
                           children: [
-                            ...List.generate(libraryItems.length, (index) {
-                              final items = libraryItems[index];
+                            ...List.generate(library.length, (index) {
+                              final items = library[index];
                               return Padding(
                                 padding: EdgeInsets.only(bottom: 12.h),
-                                child: LibraryList(
-                                  image: items.image,
-                                  title: items.title,
-                                  episode: items.episode,
-                                  date: items.date,
-                                  details: items.details,
-                                  onTap: items.onTap,
-                                  isDownload: items.isDownload,
+                                child: GestureDetector(
+                                  onLongPress: () {
+                                    ref
+                                            .read(isDownloadProvider.notifier)
+                                            .state =
+                                        'download';
+                                  },
+                                  child: LibraryList(
+                                    image:
+                                        items?.thumbnail ??
+                                        ImageManager.imgBreakPng,
+                                    title: items?.title ?? '',
+                                    episode:
+                                        items?.cCount?.episodes.toString() ??
+                                        'n/a',
+                                    date: items?.createdAt.toString() ?? '',
+                                    details: items?.description ?? '',
+                                  ),
                                 ),
                               );
                             }),
