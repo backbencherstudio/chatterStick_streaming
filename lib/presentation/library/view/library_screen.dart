@@ -30,6 +30,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
     final style = Theme.of(context).textTheme;
     final selectedTab = ref.watch(selectedTabProvider);
     var library = ref.watch(libraryItemViewModel);
+    var isSelected = ref.watch(isDownloadProvider);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -110,9 +111,9 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                 child: GestureDetector(
                                   onLongPress: () {
                                     ref
-                                            .read(isDownloadProvider.notifier)
-                                            .state =
-                                        'download';
+                                        .read(isDownloadProvider.notifier)
+                                        .toggleIsSelect(index);
+                                   
                                   },
                                   child: LibraryList(
                                     image:
@@ -124,6 +125,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                         'n/a',
                                     date: items?.createdAt.toString() ?? '',
                                     details: items?.description ?? '',
+                                    isSelected: isSelected[index],
                                   ),
                                 ),
                               );
