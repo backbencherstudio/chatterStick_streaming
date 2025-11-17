@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -102,5 +105,18 @@ class Utils {
   static bool isTablet(BuildContext context) {
     return MediaQuery.of(context).size.width > 600;
   }
+
+  // static String getTimer(){
+  //    int state =120;
+  //   Timer? _timer;
+  //    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+  //      if (state == 0) {
+  //        _timer?.cancel();
+  //      } else {
+  //        state--;
+  //        log('$state');
+  //      }});
+  //   return '$state';
+  // }
   
 }

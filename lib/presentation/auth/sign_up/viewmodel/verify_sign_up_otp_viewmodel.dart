@@ -19,4 +19,7 @@ class SignUpOtpVerify extends StateNotifier<bool> {
   Future<bool> emailVerify({required String otp, required String email}) async {
     return await repository.emailVerify(email: email, otp: otp);
   }
+  Future<bool> verifyToken({required String token, required String email}) async {
+    return await repository.verifyToken(email: email, token: token);
+  }
 }

@@ -7,10 +7,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/resource/constansts/color_manger.dart';
 import '../../../../core/route/route_name.dart';
 import '../../../widgets/primery_button.dart';
+import '../viewmodel/create_new_password_viewmodel.dart';
 
 class CreateNewPasswordScreen extends ConsumerStatefulWidget {
-  const CreateNewPasswordScreen({super.key});
-
+  const CreateNewPasswordScreen({
+    super.key,
+    required this.email,
+    required this.token,
+  });
+  final String email;
+  final String token;
   @override
   ConsumerState<CreateNewPasswordScreen> createState() =>
       _CreateNewPasswordScreenState();
@@ -101,7 +107,9 @@ class _CreateNewPasswordScreenState
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              ref.read(authProvider.notifier).toggleCreateNewObscure();
+                              ref
+                                  .read(authProvider.notifier)
+                                  .toggleCreateNewObscure();
                             },
                             child: Icon(
                               isObscure
@@ -140,7 +148,9 @@ class _CreateNewPasswordScreenState
                           ),
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              ref.read(authProvider.notifier).toggleCreateReObscure();
+                              ref
+                                  .read(authProvider.notifier)
+                                  .toggleCreateReObscure();
                             },
                             child: Icon(
                               isReObscure
@@ -172,9 +182,22 @@ class _CreateNewPasswordScreenState
                           color: ColorManager.whiteColor,
                           fontWeight: FontWeight.w500,
                         ),
-                        onTap: () {
+                        onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            Navigator.pushNamed(context, RouteName.loginScreen);
+                            final res = await ref
+                                .read(createNewPasswordProvider.notifier)
+                                .newPassword(
+                                  email: widget.email,
+                                  password: _passwordController.text.trim(),
+                                  token: widget.token,
+                                );
+
+                            if (res) {
+                              Navigator.pushNamed(
+                                context,
+                                RouteName.loginScreen,
+                              );
+                            }
                           }
                         },
                       ),

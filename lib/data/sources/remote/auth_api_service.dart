@@ -67,6 +67,28 @@ class AuthApiService {
     }
   }
 
+  Future<bool> verifyToken({required String email, required String token}) async {
+    try {
+      final body = {"email": email, "token": token};
+      final response = await apiClient.postRequest(
+        body: body,
+        endpoints: ApiEndpoints.verifyToken,
+      );
+      if (response['success']) {
+         Utils.showToast(
+          message: response['message'],
+          backgroundColor: ColorManager.successColor,
+          textColor: ColorManager.whiteColor,
+        );
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      rethrow;
+    }
+  }
+
   Future<bool> forgotPassword({required String email}) async {
     try {
       final body = {'email': email};
@@ -76,6 +98,29 @@ class AuthApiService {
       );
       if (response['success']) {
          Utils.showToast(
+          message: response['message'],
+          backgroundColor: ColorManager.successColor,
+          textColor: ColorManager.whiteColor,
+        );
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+
+  Future<bool> newPassword({required String email, required String password, required String token}) async {
+    try {
+      final body = {'email': email, 'password': password, 'token': token};
+      final response = await apiClient.postRequest(
+        body: body,
+        endpoints: ApiEndpoints.resetPassword,
+      );
+      if (response['success']) {
+        Utils.showToast(
           message: response['message'],
           backgroundColor: ColorManager.successColor,
           textColor: ColorManager.whiteColor,
@@ -115,5 +160,4 @@ class AuthApiService {
     }
   }
 
- 
 }
