@@ -22,7 +22,16 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
   @override
   void initState() {
     super.initState();
-    ref.read(libraryItemViewModel.notifier).getLibrary();
+    getData();
+  }
+
+  getData() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      ref
+          .read(isDownloadProvider.notifier)
+          .getlength(length: 0, isAllSelect: false);
+      await ref.read(libraryItemViewModel.notifier).getLibrary();
+    });
   }
 
   @override
@@ -46,6 +55,12 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         GestureDetector(
                           onTap: () {
                             ref.read(selectedTabProvider.notifier).state = 0;
+                            ref
+                                .read(isDownloadProvider.notifier)
+                                .getlength(
+                                  length: library.length,
+                                  isAllSelect: false,
+                                );
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -74,6 +89,9 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         GestureDetector(
                           onTap: () {
                             ref.read(selectedTabProvider.notifier).state = 1;
+                            ref
+                                .read(isDownloadProvider.notifier)
+                                .getlength(length: 0, isAllSelect: false);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -168,7 +186,10 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                                     '',
                                                 details:
                                                     items?.description ?? '',
-                                                isSelected: isSelected[index],
+                                                isSelected:
+                                                    isSelected.isNotEmpty
+                                                    ? isSelected[index]
+                                                    : false,
                                               ),
                                             ),
                                     );
@@ -249,37 +270,39 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                        ref.read(isDownloadProvider.notifier).isSelectAll()? GestureDetector(
-                            onTap: () {
-                              ref
-                                  .read(isDownloadProvider.notifier)
-                                  .getlength(
-                                    length: library.length,
-                                    isAllSelect: false,
-                                  );
-                            },
-                            child: Text(
-                              "Unselect All",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ): GestureDetector(
-                            onTap: () {
-                              ref
-                                  .read(isDownloadProvider.notifier)
-                                  .getlength(
-                                    length: library.length,
-                                    isAllSelect: true,
-                                  );
-                            },
-                            child: Text(
-                              "Select All",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
+                          ref.read(isDownloadProvider.notifier).isSelectAll()
+                              ? GestureDetector(
+                                  onTap: () {
+                                    ref
+                                        .read(isDownloadProvider.notifier)
+                                        .getlength(
+                                          length: library.length,
+                                          isAllSelect: false,
+                                        );
+                                  },
+                                  child: Text(
+                                    "Unselect All",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    ref
+                                        .read(isDownloadProvider.notifier)
+                                        .getlength(
+                                          length: library.length,
+                                          isAllSelect: true,
+                                        );
+                                  },
+                                  child: Text(
+                                    "Select All",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
                           SizedBox(width: 40.w),
                           GestureDetector(
                             child: Text(
-                              "Download",
+                              selectedTab == 0 ? "Download" : "Delete",
                               style: TextStyle(
                                 fontSize: 16,
                                 color: ColorManager.errorColor,
