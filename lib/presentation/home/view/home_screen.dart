@@ -125,10 +125,18 @@ class HomeScreen extends ConsumerWidget {
                             final comic = homeData.lastReadData[index];
                             return Padding(
                               padding: EdgeInsets.only(right: 13.w),
-                              child: CustomComicBox(
-                                image: comic.thumbnail??'',
-                                title: comic.title??"N/A",
-                                subtitle: comic.title??"N/A",
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    RouteName.comicDetailsScreen,
+                                  );
+                                },
+                                child: CustomComicBox(
+                                  image: comic.thumbnail??'',
+                                  title: comic.title??"N/A",
+                                  subtitle: comic.title??"N/A",
+                                ),
                               ),
                             );
                           },
@@ -157,10 +165,19 @@ class HomeScreen extends ConsumerWidget {
                         ),
                         itemBuilder: (context, index) {
                           final comic = homeData.popularData[index];
-                          return CustomComicBox(
-                            image: comic.thumbnail??'',
-                            title: comic.title??"N/A",
-                            subtitle: comic.author??"N/A",
+
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                RouteName.comicDetailsScreen,
+                              );
+                            },
+                            child: CustomComicBox(
+                              image: comic.thumbnail??'',
+                              title: comic.title??"N/A",
+                              subtitle: comic.author??"N/A",
+                            ),
                           );
                         },
                       ),
