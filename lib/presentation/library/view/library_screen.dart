@@ -4,7 +4,8 @@ import 'package:chatterstick_streaming_app/presentation/library/view/widgets/lib
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../data/models/download_model.dart';
+import '../../../data/models/library_model.dart';
+import '../viewmodel/downloaded_library_provider.dart';
 import '../viewmodel/library_item_viewmodel.dart';
 import '../viewmodel/select_tab_provider.dart';
 
@@ -37,7 +38,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
     final selectedTab = ref.watch(selectedTabProvider);
     var library = ref.watch(libraryItemViewModel);
     var isSelected = ref.watch(isDownloadProvider);
-    final itemCount = selectedTab == 0 ? library.length : downloadComics.length;
+    final downloads = ref.watch(downloadedLibraryProvider);
+    final itemCount = selectedTab == 0 ? library.length : downloads.length;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -123,52 +125,68 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         child: selectedTab == 0
                             ? Column(
                                 children: [
-                                  if(library.isNotEmpty)
-                                  ...List.generate(library.length, (index) {
-                                    final items = library[index];
-                                    return Padding(
-                                      padding: EdgeInsets.only(bottom: 12.h),
-                                      child:
-                                          ref
-                                              .read(isDownloadProvider.notifier)
-                                              .isSelectOne()
-                                          ? GestureDetector(
-                                              onTap: () {
-                                                ref
-                                                    .read(
-                                                      isDownloadProvider
-                                                          .notifier,
-                                                    )
-                                                    .toggleIsSelect(index);
-                                                ref.watch(isDownloadProvider);
-                                              },
-                                              child: LibraryList(
-                                              library: items!,
-                                                onTap: (){},
-                                                isSelected: isSelected[index],
+                                  if (library.isNotEmpty)
+                                    ...List.generate(library.length, (index) {
+                                      final items = library[index];
+                                      return Padding(
+                                        padding: EdgeInsets.only(bottom: 12.h),
+                                        child:
+                                            ref
+                                                .read(
+                                                  isDownloadProvider.notifier,
+                                                )
+                                                .isSelectOne()
+                                            ? GestureDetector(
+                                                onTap: () {
+                                                  ref
+                                                      .read(
+                                                        isDownloadProvider
+                                                            .notifier,
+                                                      )
+                                                      .toggleIsSelect(index);
+                                                  ref.watch(isDownloadProvider);
+                                                },
+                                                child: LibraryList(
+                                                  library: items!,
+                                                  onTap: () {
+                                                    ref
+                                                        .read(
+                                                          downloadedLibraryProvider
+                                                              .notifier,
+                                                        )
+                                                        .addItem(items);
+                                                  },
+                                                  isSelected: isSelected[index],
+                                                ),
+                                              )
+                                            : GestureDetector(
+                                                onLongPress: () {
+                                                  ref
+                                                      .read(
+                                                        isDownloadProvider
+                                                            .notifier,
+                                                      )
+                                                      .toggleIsSelect(index);
+                                                  ref.watch(isDownloadProvider);
+                                                },
+                                                child: LibraryList(
+                                                  library: items!,
+                                                  onTap: () {
+                                                    ref
+                                                        .read(
+                                                          downloadedLibraryProvider
+                                                              .notifier,
+                                                        )
+                                                        .addItem(items);
+                                                  },
+                                                  isSelected:
+                                                      isSelected.isNotEmpty
+                                                      ? isSelected[index]
+                                                      : false,
+                                                ),
                                               ),
-                                            )
-                                          : GestureDetector(
-                                              onLongPress: () {
-                                                ref
-                                                    .read(
-                                                      isDownloadProvider
-                                                          .notifier,
-                                                    )
-                                                    .toggleIsSelect(index);
-                                                ref.watch(isDownloadProvider);
-                                              },
-                                              child: LibraryList(
-                                              library: items!,
-                                                onTap: (){},
-                                                isSelected:
-                                                    isSelected.isNotEmpty
-                                                    ? isSelected[index]
-                                                    : false,
-                                              ),
-                                            ),
-                                    );
-                                  }),
+                                      );
+                                    }),
                                 ],
                               )
                             : DownloadComics(),
@@ -219,7 +237,42 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                           SizedBox(width: 40.w),
                           GestureDetector(
                             onTap: () {
-                              // You can add your download or delete logic here
+                              if (selectedTab == 0) {
+                                final downloadedNotifier = ref.read(
+                                  downloadedLibraryProvider.notifier,
+                                );
+                                for (int i = 0; i < library.length; i++) {
+                                  if (isSelected.length > i && isSelected[i]) {
+                                    downloadedNotifier.addItem(library[i]!);
+                                  }
+                                }
+
+                                ref
+                                    .read(isDownloadProvider.notifier)
+                                    .getLength(
+                                      length: library.length,
+                                      isAllSelect: false,
+                                    );
+                              } else {
+                                final downloads = ref.read(
+                                  downloadedLibraryProvider,
+                                );
+                                final toRemove = <LibraryModel>[];
+                                for (int i = 0; i < downloads.length; i++) {
+                                  if (isSelected.length > i && isSelected[i]) {
+                                    toRemove.add(downloads[i]);
+                                  }
+                                }
+                                ref
+                                    .read(downloadedLibraryProvider.notifier)
+                                    .removeItems(toRemove);
+                                ref
+                                    .read(isDownloadProvider.notifier)
+                                    .getLength(
+                                      length: downloads.length,
+                                      isAllSelect: false,
+                                    );
+                              }
                             },
                             child: Text(
                               selectedTab == 0 ? "Download" : "Delete",

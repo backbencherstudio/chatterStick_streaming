@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../core/resource/constansts/color_manger.dart';
 import '../../../../core/resource/constansts/icon_manager.dart';
-import '../../../../data/models/download_model.dart';
 import '../../../home/view/widgets/custom_comic_box.dart';
+import '../../viewmodel/downloaded_library_provider.dart';
 import '../../viewmodel/select_tab_provider.dart';
 
 class DownloadComics extends ConsumerWidget {
@@ -15,12 +14,13 @@ class DownloadComics extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final style = Theme.of(context).textTheme;
-    final comics = downloadComics;
+    // final comics = downloadComics;
     final selectedStatus = ref.watch(isDownloadProvider);
+    final downloads = ref.watch(downloadedLibraryProvider);
 
-    if (selectedStatus.length != comics.length) {
+    if (selectedStatus.length != downloads.length) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        ref.read(isDownloadProvider.notifier).getLength(length: comics.length, isAllSelect: false);
+        ref.read(isDownloadProvider.notifier).getLength(length: downloads.length, isAllSelect: false);
       });
       return SizedBox.shrink();
     }
@@ -29,7 +29,7 @@ class DownloadComics extends ConsumerWidget {
 
     return Column(
       children: [
-        comics.isEmpty
+        downloads.isEmpty
             ? Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +61,7 @@ class DownloadComics extends ConsumerWidget {
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           padding: EdgeInsets.zero,
-          itemCount: comics.length,
+          itemCount: downloads.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 0.h,
@@ -69,7 +69,7 @@ class DownloadComics extends ConsumerWidget {
             childAspectRatio: 0.58,
           ),
           itemBuilder: (context, index) {
-            final comic = comics[index];
+            final comic = downloads[index];
             final isSelected = selectedStatus[index];
 
             return GestureDetector(
@@ -79,7 +79,7 @@ class DownloadComics extends ConsumerWidget {
                   final anySelected = ref.read(isDownloadProvider.notifier).isSelectOne();
                   if (!anySelected) {
                     ref.read(isDownloadProvider.notifier).getLength(
-                      length: comics.length,
+                      length: downloads.length,
                       isAllSelect: false,
                     );
                   }
@@ -89,9 +89,9 @@ class DownloadComics extends ConsumerWidget {
                 ref.read(isDownloadProvider.notifier).toggleIsSelect(index);
               },
               child: CustomComicBox(
-                image: comic.image,
-                title: comic.title,
-                subtitle: comic.subtitle,
+                image: comic.thumbnail ?? '',
+                title: comic.title ?? '',
+                subtitle: comic.author ?? '',
                 isSelected: isSelected,
               ),
             );
