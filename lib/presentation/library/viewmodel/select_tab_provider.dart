@@ -28,6 +28,17 @@ class DownloadNotifier extends StateNotifier<List<bool>> {
     }
   }
 
+  bool isSelectAll() {
+    if (state.length > 0) {
+      if (state.contains(false)) {
+        return false;
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void toggleIsSelect(int index) {
     final newState = [...state];
     newState[index] = !newState[index];

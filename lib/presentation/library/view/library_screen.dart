@@ -249,7 +249,20 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          GestureDetector(
+                        ref.read(isDownloadProvider.notifier).isSelectAll()? GestureDetector(
+                            onTap: () {
+                              ref
+                                  .read(isDownloadProvider.notifier)
+                                  .getlength(
+                                    length: library.length,
+                                    isAllSelect: false,
+                                  );
+                            },
+                            child: Text(
+                              "Unselect All",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ): GestureDetector(
                             onTap: () {
                               ref
                                   .read(isDownloadProvider.notifier)
