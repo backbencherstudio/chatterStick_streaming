@@ -22,13 +22,14 @@ class LibraryModelView extends StateNotifier<List<LibraryModel?>> {
   LibraryModelView({required this.repository, required this.ref}) : super([]) {
     getLibrary();
     if (state.isNotEmpty) {
-      ref.read(isDownloadProvider.notifier).getlength(state.length);
+      ref.read(isDownloadProvider.notifier).getlength( length:state.length);
     }
   }
 
   Future<void> getLibrary() async {
     final library = await repository.getLibrary();
     state = library!;
+   await  ref.read(isDownloadProvider.notifier).getlength(length:state.length);
   }
 
  

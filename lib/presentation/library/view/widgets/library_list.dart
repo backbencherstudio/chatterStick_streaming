@@ -1,14 +1,16 @@
+import 'dart:developer';
+
 import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/resource/constansts/color_manger.dart';
 import '../../../../core/resource/constansts/icon_manager.dart';
-import '../../viewmodel/select_tab_provider.dart';
 
-class LibraryList extends ConsumerWidget {
+
+class LibraryList extends StatelessWidget {
   const LibraryList({
     super.key,
     required this.image,
@@ -16,7 +18,7 @@ class LibraryList extends ConsumerWidget {
     required this.episode,
     required this.date,
     required this.details,
-    required this. isSelected,
+    required this.isSelected,
   });
 
   final String image;
@@ -27,8 +29,9 @@ class LibraryList extends ConsumerWidget {
   final bool isSelected;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isDownload = ref.watch(isDownloadProvider);
+  Widget build(BuildContext context) {
+    log(isSelected.toString());
+    //  final isDownload = ref.watch(isDownloadProvider);
     final style = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
