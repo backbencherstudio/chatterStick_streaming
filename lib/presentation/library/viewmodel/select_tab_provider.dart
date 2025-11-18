@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_riverpod/legacy.dart';
 
 final selectedTabProvider = StateProvider<int>((ref) => 0);
@@ -9,7 +7,7 @@ final isDownloadProvider = StateNotifierProvider<DownloadNotifier, List<bool>>(
 
 class DownloadNotifier extends StateNotifier<List<bool>> {
   DownloadNotifier() : super([]);
-  Future<void> getlength({
+  Future<void> getLength({
     required int length,
     bool isAllSelect = false,
   }) async {

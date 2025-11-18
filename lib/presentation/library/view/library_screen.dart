@@ -1,13 +1,10 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
-import 'package:chatterstick_streaming_app/core/resource/constansts/image_manager.dart';
+import 'package:chatterstick_streaming_app/presentation/library/view/widgets/download_comics.dart';
 import 'package:chatterstick_streaming_app/presentation/library/view/widgets/library_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../core/resource/constansts/icon_manager.dart';
 import '../../../data/models/download_model.dart';
-import '../../home/view/widgets/custom_comic_box.dart';
 import '../viewmodel/library_item_viewmodel.dart';
 import '../viewmodel/select_tab_provider.dart';
 
@@ -29,7 +26,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       ref
           .read(isDownloadProvider.notifier)
-          .getlength(length: 0, isAllSelect: false);
+          .getLength(length: 0, isAllSelect: false);
       await ref.read(libraryItemViewModel.notifier).getLibrary();
     });
   }
@@ -40,6 +37,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
     final selectedTab = ref.watch(selectedTabProvider);
     var library = ref.watch(libraryItemViewModel);
     var isSelected = ref.watch(isDownloadProvider);
+    final itemCount = selectedTab == 0 ? library.length : downloadComics.length;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -57,7 +55,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                             ref.read(selectedTabProvider.notifier).state = 0;
                             ref
                                 .read(isDownloadProvider.notifier)
-                                .getlength(
+                                .getLength(
                                   length: library.length,
                                   isAllSelect: false,
                                 );
@@ -91,7 +89,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                             ref.read(selectedTabProvider.notifier).state = 1;
                             ref
                                 .read(isDownloadProvider.notifier)
-                                .getlength(length: 0, isAllSelect: false);
+                                .getLength(length: 0, isAllSelect: false);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -125,6 +123,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         child: selectedTab == 0
                             ? Column(
                                 children: [
+                                  if(library.isNotEmpty)
                                   ...List.generate(library.length, (index) {
                                     final items = library[index];
                                     return Padding(
@@ -144,20 +143,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                                 ref.watch(isDownloadProvider);
                                               },
                                               child: LibraryList(
-                                                image:
-                                                    items?.thumbnail ??
-                                                    ImageManager.imgBreakPng,
-                                                title: items?.title ?? '',
-                                                episode:
-                                                    items?.cCount?.episodes
-                                                        .toString() ??
-                                                    'n/a',
-                                                date:
-                                                    items?.createdAt
-                                                        .toString() ??
-                                                    '',
-                                                details:
-                                                    items?.description ?? '',
+                                              library: items!,
+                                                onTap: (){},
                                                 isSelected: isSelected[index],
                                               ),
                                             )
@@ -172,20 +159,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                                 ref.watch(isDownloadProvider);
                                               },
                                               child: LibraryList(
-                                                image:
-                                                    items?.thumbnail ??
-                                                    ImageManager.imgBreakPng,
-                                                title: items?.title ?? '',
-                                                episode:
-                                                    items?.cCount?.episodes
-                                                        .toString() ??
-                                                    'n/a',
-                                                date:
-                                                    items?.createdAt
-                                                        .toString() ??
-                                                    '',
-                                                details:
-                                                    items?.description ?? '',
+                                              library: items!,
+                                                onTap: (){},
                                                 isSelected:
                                                     isSelected.isNotEmpty
                                                     ? isSelected[index]
@@ -196,65 +171,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                   }),
                                 ],
                               )
-                            : Column(
-                                children: [
-                                  downloadComics.isEmpty
-                                      ? Center(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              SizedBox(height: 250.h),
-                                              SvgPicture.asset(
-                                                IconManager.downloadSvg,
-                                                height: 72.h,
-                                                width: 72.w,
-                                                colorFilter:
-                                                    const ColorFilter.mode(
-                                                      ColorManager.errorColor,
-                                                      BlendMode.srcIn,
-                                                    ),
-                                              ),
-                                              SizedBox(height: 8.h),
-                                              Text(
-                                                'No Downloads Yet',
-                                                style: style.titleMedium!
-                                                    .copyWith(
-                                                      color: ColorManager
-                                                          .subtitleText,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontSize: 20.sp,
-                                                    ),
-                                              ),
-                                              SizedBox(height: 300.h),
-                                            ],
-                                          ),
-                                        )
-                                      : GridView.builder(
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          padding: EdgeInsets.zero,
-                                          itemCount: downloadComics.length,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 2,
-                                                mainAxisSpacing: 0.h,
-                                                crossAxisSpacing: 13.w,
-                                                childAspectRatio: 0.58,
-                                              ),
-                                          itemBuilder: (context, index) {
-                                            final comic = downloadComics[index];
-                                            return CustomComicBox(
-                                              image: comic.image,
-                                              title: comic.title,
-                                              subtitle: comic.subtitle,
-                                            );
-                                          },
-                                        ),
-                                ],
-                              ),
+                            : DownloadComics(),
                       ),
                     ),
                   ],
@@ -264,7 +181,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
             ref.read(isDownloadProvider.notifier).isSelectOne()
                 ? Container(
                     width: double.infinity,
-                    color: Color(0XFFd4dcff),
+                    color: const Color(0XFFd4dcff),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
                       child: Row(
@@ -275,12 +192,12 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                   onTap: () {
                                     ref
                                         .read(isDownloadProvider.notifier)
-                                        .getlength(
-                                          length: library.length,
+                                        .getLength(
+                                          length: itemCount,
                                           isAllSelect: false,
                                         );
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Unselect All",
                                     style: TextStyle(fontSize: 16),
                                   ),
@@ -289,18 +206,21 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                   onTap: () {
                                     ref
                                         .read(isDownloadProvider.notifier)
-                                        .getlength(
-                                          length: library.length,
+                                        .getLength(
+                                          length: itemCount,
                                           isAllSelect: true,
                                         );
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Select All",
                                     style: TextStyle(fontSize: 16),
                                   ),
                                 ),
                           SizedBox(width: 40.w),
                           GestureDetector(
+                            onTap: () {
+                              // You can add your download or delete logic here
+                            },
                             child: Text(
                               selectedTab == 0 ? "Download" : "Delete",
                               style: TextStyle(
@@ -313,7 +233,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                       ),
                     ),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ],
         ),
       ),

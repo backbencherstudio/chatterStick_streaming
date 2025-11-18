@@ -8,24 +8,18 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/resource/constansts/color_manger.dart';
 import '../../../../core/resource/constansts/icon_manager.dart';
-
+import '../../../../data/models/library_model.dart';
 
 class LibraryList extends StatelessWidget {
   const LibraryList({
     super.key,
-    required this.image,
-    required this.title,
-    required this.episode,
-    required this.date,
-    required this.details,
+    required this.library,
+    required this.onTap,
     required this.isSelected,
   });
 
-  final String image;
-  final String title;
-  final String episode;
-  final String date;
-  final String details;
+  final LibraryModel library;
+final VoidCallback onTap;
   final bool isSelected;
 
   @override
@@ -57,7 +51,7 @@ class LibraryList extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(6.r),
             child: Image.network(
-              image,
+              library.thumbnail ?? '',
               width: 100.w,
               height: 173.h,
               fit: BoxFit.cover,
@@ -73,13 +67,12 @@ class LibraryList extends StatelessWidget {
           ),
 
           SizedBox(width: 10.w),
-          // 👇 Use Expanded so text area takes remaining space automatically
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  library.title ?? '',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: style.titleMedium?.copyWith(
@@ -94,7 +87,7 @@ class LibraryList extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Eps ${episode}',
+                        'Eps ${library.cCount!.episodes}',
                         style: style.bodySmall?.copyWith(
                           color: ColorManager.subtitleText,
                           fontWeight: FontWeight.w400,
@@ -105,7 +98,7 @@ class LibraryList extends StatelessWidget {
 
                     Expanded(
                       child: Text(
-                        date,
+                        library.createdAt ?? '',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: style.bodySmall?.copyWith(
@@ -119,7 +112,7 @@ class LibraryList extends StatelessWidget {
                 ),
                 SizedBox(height: 12.h),
                 Text(
-                  details,
+                  library.description ?? 'N/A',
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: style.bodySmall?.copyWith(
@@ -129,22 +122,25 @@ class LibraryList extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 12.h),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: ColorManager.borderColor1),
-                    borderRadius: BorderRadius.circular(30.r),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8.h,
-                      horizontal: 16.w,
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: ColorManager.borderColor1),
+                      borderRadius: BorderRadius.circular(30.r),
                     ),
-                    child: Text(
-                      'Download',
-                      style: style.bodySmall?.copyWith(
-                        color: ColorManager.buttonText,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.h,
+                        horizontal: 16.w,
+                      ),
+                      child: Text(
+                        'Download',
+                        style: style.bodySmall?.copyWith(
+                          color: ColorManager.buttonText,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                        ),
                       ),
                     ),
                   ),
