@@ -7,16 +7,20 @@ class LibraryModel {
   String? status;
   String? createdAt;
   Count? cCount;
+ 
 
-  LibraryModel(
-      {this.id,
-        this.title,
-        this.author,
-        this.thumbnail,
-        this.description,
-        this.status,
-        this.createdAt,
-        this.cCount});
+  LibraryModel({
+    this.id,
+    this.title,
+    this.author,
+    this.thumbnail,
+    this.description,
+    this.status,
+    this.createdAt,
+    this.cCount,
+
+  });
+ 
 
   LibraryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
