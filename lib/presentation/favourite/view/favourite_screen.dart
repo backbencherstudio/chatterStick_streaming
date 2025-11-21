@@ -1,19 +1,20 @@
 import 'package:chatterstick_streaming_app/core/resource/constansts/color_manger.dart';
 import 'package:chatterstick_streaming_app/core/resource/constansts/icon_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../data/models/favourite_comics_model.dart';
 import '../../widgets/custom_header.dart';
+import '../viewmodel/favourite_viewmodel.dart';
 import 'widgets/favourite_comics.dart';
 
-class FavouriteScreen extends StatelessWidget {
+class FavouriteScreen extends ConsumerWidget {
   const FavouriteScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final styles = Theme.of(context).textTheme;
+    final favoriteList = ref.watch(favoriteComicProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -26,51 +27,48 @@ class FavouriteScreen extends StatelessWidget {
               SizedBox(height: 24.h),
 
               Expanded(
-                child: favouriteComics.isEmpty
+                child: favoriteList.isEmpty
                     ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              IconManager.favouriteNav,
-                              height: 72.h,
-                              width: 72.w,
-                              colorFilter: const ColorFilter.mode(
-                                ColorManager.errorColor,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            SizedBox(height: 8.h),
-                            Text(
-                              'No Favorite',
-                              style: styles.titleMedium!.copyWith(
-                                color: ColorManager.subtitleText,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ...List.generate(favouriteComics.length, (index) {
-                              final favourite = favouriteComics[index];
-                              return Padding(
-                                padding: EdgeInsets.only(bottom: 12.h),
-                                child: FavouriteComics(
-                                  image: favourite.image,
-                                  title: favourite.title,
-                                  episode: favourite.episode,
-                                  details: favourite.details,
-                                ),
-                              );
-                            }),
-                          ],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        IconManager.favouriteNav,
+                        height: 72.h,
+                        width: 72.w,
+                        colorFilter: const ColorFilter.mode(
+                          ColorManager.errorColor,
+                          BlendMode.srcIn,
                         ),
                       ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        'No Favorite',
+                        style: styles.titleMedium!.copyWith(
+                          color: ColorManager.subtitleText,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16.sp,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+                    : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ...List.generate(favoriteList.length, (index) {
+                        final favourite = favoriteList[index];
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 12.h),
+                          child: FavouriteComics(
+                            item: favourite!,
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -79,3 +77,4 @@ class FavouriteScreen extends StatelessWidget {
     );
   }
 }
+

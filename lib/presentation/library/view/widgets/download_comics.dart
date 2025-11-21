@@ -20,7 +20,9 @@ class DownloadComics extends ConsumerWidget {
 
     if (selectedStatus.length != downloads.length) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        ref.read(isDownloadProvider.notifier).getLength(length: downloads.length, isAllSelect: false);
+        ref
+            .read(isDownloadProvider.notifier)
+            .getLength(length: downloads.length, isAllSelect: false);
       });
       return SizedBox.shrink();
     }
@@ -31,72 +33,80 @@ class DownloadComics extends ConsumerWidget {
       children: [
         downloads.isEmpty
             ? Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 250.h),
-              SvgPicture.asset(
-                IconManager.downloadSvg,
-                height: 72.h,
-                width: 72.w,
-                colorFilter: const ColorFilter.mode(
-                  ColorManager.errorColor,
-                  BlendMode.srcIn,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 250.h),
+                    SvgPicture.asset(
+                      IconManager.downloadSvg,
+                      height: 72.h,
+                      width: 72.w,
+                      colorFilter: const ColorFilter.mode(
+                        ColorManager.errorColor,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
+                    Text(
+                      'No Downloads Yet',
+                      style: style.titleMedium!.copyWith(
+                        color: ColorManager.subtitleText,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20.sp,
+                      ),
+                    ),
+                    SizedBox(height: 300.h),
+                  ],
                 ),
-              ),
-              SizedBox(height: 8.h),
-              Text(
-                'No Downloads Yet',
-                style: style.titleMedium!.copyWith(
-                  color: ColorManager.subtitleText,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20.sp,
-                ),
-              ),
-              SizedBox(height: 300.h),
-            ],
-          ),
-        )
+              )
             : GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          padding: EdgeInsets.zero,
-          itemCount: downloads.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 0.h,
-            crossAxisSpacing: 13.w,
-            childAspectRatio: 0.58,
-          ),
-          itemBuilder: (context, index) {
-            final comic = downloads[index];
-            final isSelected = selectedStatus[index];
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                itemCount: downloads.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 0.h,
+                  crossAxisSpacing: 13.w,
+                  childAspectRatio: 0.58,
+                ),
+                itemBuilder: (context, index) {
+                  final comic = downloads[index];
+                  final isSelected = selectedStatus[index];
 
-            return GestureDetector(
-              onTap: () {
-                if (selectMode) {
-                  ref.read(isDownloadProvider.notifier).toggleIsSelect(index);
-                  final anySelected = ref.read(isDownloadProvider.notifier).isSelectOne();
-                  if (!anySelected) {
-                    ref.read(isDownloadProvider.notifier).getLength(
-                      length: downloads.length,
-                      isAllSelect: false,
-                    );
-                  }
-                }
-              },
-              onLongPress: () {
-                ref.read(isDownloadProvider.notifier).toggleIsSelect(index);
-              },
-              child: CustomComicBox(
-                image: comic.thumbnail ?? '',
-                title: comic.title ?? '',
-                subtitle: comic.author ?? '',
-                isSelected: isSelected,
+                  return GestureDetector(
+                    onTap: () {
+                      if (selectMode) {
+                        ref
+                            .read(isDownloadProvider.notifier)
+                            .toggleIsSelect(index);
+                        final anySelected = ref
+                            .read(isDownloadProvider.notifier)
+                            .isSelectOne();
+                        if (!anySelected) {
+                          ref
+                              .read(isDownloadProvider.notifier)
+                              .getLength(
+                                length: downloads.length,
+                                isAllSelect: false,
+                              );
+                        }
+                      }
+                    },
+                    onLongPress: () {
+                      ref
+                          .read(isDownloadProvider.notifier)
+                          .toggleIsSelect(index);
+                    },
+                    child: CustomComicBox(
+                      image: comic.thumbnail ?? '',
+                      title: comic.title ?? '',
+                      subtitle: comic.author ?? '',
+                      isSelected: isSelected,
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
       ],
     );
   }
