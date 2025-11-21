@@ -6,7 +6,7 @@ import 'package:chatterstick_streaming_app/presentation/library/viewmodel/select
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
-final libraryItemViewModel =
+final libraryItemProvider =
     StateNotifierProvider<LibraryModelView, List<LibraryModel?>>(
       (ref) => LibraryModelView(
         repository: LibraryRepository(

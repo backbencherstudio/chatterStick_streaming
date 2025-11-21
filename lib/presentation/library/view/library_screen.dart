@@ -28,7 +28,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
       ref
           .read(isDownloadProvider.notifier)
           .getLength(length: 0, isAllSelect: false);
-      await ref.read(libraryItemViewModel.notifier).getLibrary();
+      await ref.read(libraryItemProvider.notifier).getLibrary();
     });
   }
 
@@ -36,7 +36,7 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
   Widget build(BuildContext context) {
     final style = Theme.of(context).textTheme;
     final selectedTab = ref.watch(selectedTabProvider);
-    var library = ref.watch(libraryItemViewModel);
+    var library = ref.watch(libraryItemProvider);
     var isSelected = ref.watch(isDownloadProvider);
     final downloads = ref.watch(downloadedLibraryProvider);
     final itemCount = selectedTab == 0 ? library.length : downloads.length;
